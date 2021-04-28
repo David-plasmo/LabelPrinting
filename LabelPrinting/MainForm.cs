@@ -13,6 +13,9 @@ using LabelPrinting;
 
 namespace LabelPrinting
 {
+ /// <summary>
+ /// Application main form
+ /// </summary>
     public partial class MainForm : Form
     {
         delegate void SetComboBoxCellType(int iRowIndex);
