@@ -1,0 +1,1100 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ProductDataService
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ProductDataService
+   ">
+    <meta name="generator" content="docfx 2.56.5.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DataService.ProductDataService">
+  
+  
+  <h1 id="DataService_ProductDataService" data-uid="DataService.ProductDataService" class="text-break">Class ProductDataService
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="DataService.DataAccessBase.html">DataAccessBase</a></div>
+    <div class="level2"><span class="xref">ProductDataService</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_Txn">DataAccessBase.Txn</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_DABCmd">DataAccessBase.DABCmd</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_GetConnectionString">DataAccessBase.GetConnectionString()</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_BeginTransaction">DataAccessBase.BeginTransaction()</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_ExecuteDataSet_System_String_System_Data_IDataParameter___">DataAccessBase.ExecuteDataSet(String, IDataParameter[])</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_ExecuteDataSet_System_Data_SqlClient_SqlCommand__System_String_System_Data_IDataParameter___">DataAccessBase.ExecuteDataSet(SqlCommand, String, IDataParameter[])</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_ExecuteNonQuery_System_String_System_Data_IDataParameter___">DataAccessBase.ExecuteNonQuery(String, IDataParameter[])</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_ExecuteNonQuery_System_Data_SqlClient_SqlCommand__System_String_System_Data_IDataParameter___">DataAccessBase.ExecuteNonQuery(SqlCommand, String, IDataParameter[])</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CreateParameter_System_String_System_Data_SqlDbType_System_Object_">DataAccessBase.CreateParameter(String, SqlDbType, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CreateParameter_System_String_System_Data_SqlDbType_System_Data_ParameterDirection_">DataAccessBase.CreateParameter(String, SqlDbType, ParameterDirection)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CreateParameter_System_String_System_Data_SqlDbType_System_Object_System_Data_ParameterDirection_">DataAccessBase.CreateParameter(String, SqlDbType, Object, ParameterDirection)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CreateParameter_System_String_System_Data_SqlDbType_System_Object_System_Int32_">DataAccessBase.CreateParameter(String, SqlDbType, Object, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CreateParameter_System_String_System_Data_SqlDbType_System_Object_System_Int32_System_Data_ParameterDirection_">DataAccessBase.CreateParameter(String, SqlDbType, Object, Int32, ParameterDirection)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CreateParameter_System_String_System_Data_SqlDbType_System_Object_System_Int32_System_Byte_">DataAccessBase.CreateParameter(String, SqlDbType, Object, Int32, Byte)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CreateParameter_System_String_System_Data_SqlDbType_System_Object_System_Int32_System_Byte_System_Data_ParameterDirection_">DataAccessBase.CreateParameter(String, SqlDbType, Object, Int32, Byte, ParameterDirection)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_GetGuid_System_Object_">DataAccessBase.GetGuid(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CheckParamValue_System_String_">DataAccessBase.CheckParamValue(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CheckParamValue_System_Guid_">DataAccessBase.CheckParamValue(Guid)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CheckParamValue_System_DateTime_">DataAccessBase.CheckParamValue(DateTime)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CheckParamValue_System_Double_">DataAccessBase.CheckParamValue(Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CheckParamValue_System_Single_">DataAccessBase.CheckParamValue(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CheckParamValue_System_Decimal_">DataAccessBase.CheckParamValue(Decimal)</a>
+    </div>
+    <div>
+      <a class="xref" href="DataService.DataAccessBase.html#DataService_DataAccessBase_CheckParamValue_System_Int32_">DataAccessBase.CheckParamValue(Int32)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="DataService.html">DataService</a></h6>
+  <h6><strong>Assembly</strong>: LabelPrinting.dll</h6>
+  <h5 id="DataService_ProductDataService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ProductDataService : DataAccessBase</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService__ctor.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L18">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService__ctor_" data-uid="DataService.ProductDataService.#ctor*"></a>
+  <h4 id="DataService_ProductDataService__ctor" data-uid="DataService.ProductDataService.#ctor">ProductDataService()</h4>
+  <div class="markdown level1 summary"><p>Creates a new DataService</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProductDataService()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService__ctor_System_Data_IDbTransaction_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.%23ctor(System.Data.IDbTransaction)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L26">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService__ctor_" data-uid="DataService.ProductDataService.#ctor*"></a>
+  <h4 id="DataService_ProductDataService__ctor_System_Data_IDbTransaction_" data-uid="DataService.ProductDataService.#ctor(System.Data.IDbTransaction)">ProductDataService(IDbTransaction)</h4>
+  <div class="markdown level1 summary"><p>Creates a new DataService and specifies a transaction with
+which to operate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProductDataService(IDbTransaction txn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.IDbTransaction</span></td>
+        <td><span class="parametername">txn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_PSClasses.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.PSClasses%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L896">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_PSClasses_" data-uid="DataService.ProductDataService.PSClasses*"></a>
+  <h4 id="DataService_ProductDataService_PSClasses" data-uid="DataService.ProductDataService.PSClasses">PSClasses</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataView PSClasses { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataView</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_EnqueueBartenderLabels_System_Data_DataSet_System_Int32_System_Int32_System_Nullable_System_Int32___.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.EnqueueBartenderLabels(System.Data.DataSet%2CSystem.Int32%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L30">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_EnqueueBartenderLabels_" data-uid="DataService.ProductDataService.EnqueueBartenderLabels*"></a>
+  <h4 id="DataService_ProductDataService_EnqueueBartenderLabels_System_Data_DataSet_System_Int32_System_Int32_System_Nullable_System_Int32___" data-uid="DataService.ProductDataService.EnqueueBartenderLabels(System.Data.DataSet,System.Int32,System.Int32,System.Nullable{System.Int32}@)">EnqueueBartenderLabels(DataSet, Int32, Int32, ref Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnqueueBartenderLabels(DataSet ds, int labelTypeId, int numReqd, ref int? newJobRun)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td><span class="parametername">ds</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">labelTypeId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">numReqd</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">newJobRun</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetLabelPrintJob_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetLabelPrintJob(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L863">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetLabelPrintJob_" data-uid="DataService.ProductDataService.GetLabelPrintJob*"></a>
+  <h4 id="DataService_ProductDataService_GetLabelPrintJob_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="DataService.ProductDataService.GetLabelPrintJob(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">GetLabelPrintJob(Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Fetches current label print job summary for editing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetLabelPrintJob(int jobId, int labelTypeId, int numSpare, int startNo, int endNo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">jobId</span></td>
+        <td><p>Print job identifier</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">labelTypeId</span></td>
+        <td><p>Label type identifier</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">numSpare</span></td>
+        <td><p>Number of spare labels to print</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startNo</span></td>
+        <td><p>Label number to start printing from, eg. 1</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">endNo</span></td>
+        <td><p>Label number to end printing on, eg. 10</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td><p>DataSet</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="DataService_ProductDataService_GetLabelPrintJob_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>References stored procedure GetLabelPrintJob</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetLabelSetting_System_String_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetLabelSetting(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L728">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetLabelSetting_" data-uid="DataService.ProductDataService.GetLabelSetting*"></a>
+  <h4 id="DataService_ProductDataService_GetLabelSetting_System_String_" data-uid="DataService.ProductDataService.GetLabelSetting(System.String)">GetLabelSetting(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetLabelSetting(string printer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">printer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetLabelTypes.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetLabelTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L658">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetLabelTypes_" data-uid="DataService.ProductDataService.GetLabelTypes*"></a>
+  <h4 id="DataService_ProductDataService_GetLabelTypes" data-uid="DataService.ProductDataService.GetLabelTypes">GetLabelTypes()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetLabelTypes()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetLabelTypesTV.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetLabelTypesTV%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L674">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetLabelTypesTV_" data-uid="DataService.ProductDataService.GetLabelTypesTV*"></a>
+  <h4 id="DataService_ProductDataService_GetLabelTypesTV" data-uid="DataService.ProductDataService.GetLabelTypesTV">GetLabelTypesTV()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetLabelTypesTV()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetMaterialAndGrade.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetMaterialAndGrade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L644">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetMaterialAndGrade_" data-uid="DataService.ProductDataService.GetMaterialAndGrade*"></a>
+  <h4 id="DataService_ProductDataService_GetMaterialAndGrade" data-uid="DataService.ProductDataService.GetMaterialAndGrade">GetMaterialAndGrade()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetMaterialAndGrade()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetMaterialIndex.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetMaterialIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L703">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetMaterialIndex_" data-uid="DataService.ProductDataService.GetMaterialIndex*"></a>
+  <h4 id="DataService_ProductDataService_GetMaterialIndex" data-uid="DataService.ProductDataService.GetMaterialIndex">GetMaterialIndex()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetMaterialIndex()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetNextID.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetNextID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L903">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetNextID_" data-uid="DataService.ProductDataService.GetNextID*"></a>
+  <h4 id="DataService_ProductDataService_GetNextID" data-uid="DataService.ProductDataService.GetNextID">GetNextID()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetNextID()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPastelCategory.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPastelCategory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L842">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetPastelCategory_" data-uid="DataService.ProductDataService.GetPastelCategory*"></a>
+  <h4 id="DataService_ProductDataService_GetPastelCategory" data-uid="DataService.ProductDataService.GetPastelCategory">GetPastelCategory()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetPastelCategory()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPastelMaster.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPastelMaster%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L400">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetPastelMaster_" data-uid="DataService.ProductDataService.GetPastelMaster*"></a>
+  <h4 id="DataService_ProductDataService_GetPastelMaster" data-uid="DataService.ProductDataService.GetPastelMaster">GetPastelMaster()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetPastelMaster()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPastelProductIndex.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPastelProductIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L830">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetPastelProductIndex_" data-uid="DataService.ProductDataService.GetPastelProductIndex*"></a>
+  <h4 id="DataService_ProductDataService_GetPastelProductIndex" data-uid="DataService.ProductDataService.GetPastelProductIndex">GetPastelProductIndex()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetPastelProductIndex()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPlainLabels.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPlainLabels%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L382">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetPlainLabels_" data-uid="DataService.ProductDataService.GetPlainLabels*"></a>
+  <h4 id="DataService_ProductDataService_GetPlainLabels" data-uid="DataService.ProductDataService.GetPlainLabels">GetPlainLabels()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetPlainLabels()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPlasmoProductIndex.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPlasmoProductIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L818">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetPlasmoProductIndex_" data-uid="DataService.ProductDataService.GetPlasmoProductIndex*"></a>
+  <h4 id="DataService_ProductDataService_GetPlasmoProductIndex" data-uid="DataService.ProductDataService.GetPlasmoProductIndex">GetPlasmoProductIndex()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetPlasmoProductIndex()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetProductCompany.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetProductCompany%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L690">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetProductCompany_" data-uid="DataService.ProductDataService.GetProductCompany*"></a>
+  <h4 id="DataService_ProductDataService_GetProductCompany" data-uid="DataService.ProductDataService.GetProductCompany">GetProductCompany()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetProductCompany()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetProductGradeIndex.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetProductGradeIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L716">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetProductGradeIndex_" data-uid="DataService.ProductDataService.GetProductGradeIndex*"></a>
+  <h4 id="DataService_ProductDataService_GetProductGradeIndex" data-uid="DataService.ProductDataService.GetProductGradeIndex">GetProductGradeIndex()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetProductGradeIndex()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetProductIndex_System_Int32_System_String_System_String_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetProductIndex(System.Int32%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L801">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_GetProductIndex_" data-uid="DataService.ProductDataService.GetProductIndex*"></a>
+  <h4 id="DataService_ProductDataService_GetProductIndex_System_Int32_System_String_System_String_" data-uid="DataService.ProductDataService.GetProductIndex(System.Int32,System.String,System.String)">GetProductIndex(Int32, String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets product labels of a specified type for a specificed company</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet GetProductIndex(int LabelTypeId, string LabelNo, string Company)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">LabelTypeId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">LabelNo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">Company</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td><p>DataSet</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="DataService_ProductDataService_GetProductIndex_System_Int32_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>References stored procedure GetProductIndex</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_PromptPrintJob_System_Int32_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.PromptPrintJob(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L414">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_PromptPrintJob_" data-uid="DataService.ProductDataService.PromptPrintJob*"></a>
+  <h4 id="DataService_ProductDataService_PromptPrintJob_System_Int32_" data-uid="DataService.ProductDataService.PromptPrintJob(System.Int32)">PromptPrintJob(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataSet PromptPrintJob(int LabelTypeId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">LabelTypeId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdateLabelSetting_System_String_System_String_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdateLabelSetting(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L741">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_UpdateLabelSetting_" data-uid="DataService.ProductDataService.UpdateLabelSetting*"></a>
+  <h4 id="DataService_ProductDataService_UpdateLabelSetting_System_String_System_String_" data-uid="DataService.ProductDataService.UpdateLabelSetting(System.String,System.String)">UpdateLabelSetting(String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateLabelSetting(string printer, string labelNo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">printer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">labelNo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdatePastelMaster_System_Data_DataSet_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdatePastelMaster(System.Data.DataSet)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L431">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_UpdatePastelMaster_" data-uid="DataService.ProductDataService.UpdatePastelMaster*"></a>
+  <h4 id="DataService_ProductDataService_UpdatePastelMaster_System_Data_DataSet_" data-uid="DataService.ProductDataService.UpdatePastelMaster(System.Data.DataSet)">UpdatePastelMaster(DataSet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePastelMaster(DataSet ds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td><span class="parametername">ds</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdatePlainLabels_System_Data_DataSet_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdatePlainLabels(System.Data.DataSet)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L285">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_UpdatePlainLabels_" data-uid="DataService.ProductDataService.UpdatePlainLabels*"></a>
+  <h4 id="DataService_ProductDataService_UpdatePlainLabels_System_Data_DataSet_" data-uid="DataService.ProductDataService.UpdatePlainLabels(System.Data.DataSet)">UpdatePlainLabels(DataSet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePlainLabels(DataSet ds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td><span class="parametername">ds</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdatePrintJobs_System_Data_DataSet_System_Int32_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdatePrintJobs(System.Data.DataSet%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L88">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_UpdatePrintJobs_" data-uid="DataService.ProductDataService.UpdatePrintJobs*"></a>
+  <h4 id="DataService_ProductDataService_UpdatePrintJobs_System_Data_DataSet_System_Int32_" data-uid="DataService.ProductDataService.UpdatePrintJobs(System.Data.DataSet,System.Int32)">UpdatePrintJobs(DataSet, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePrintJobs(DataSet ds, int LabelTypeId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td><span class="parametername">ds</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">LabelTypeId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdateProductMaterial_System_Data_DataSet_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdateProductMaterial(System.Data.DataSet)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L536">View Source</a>
+  </span>
+  <a id="DataService_ProductDataService_UpdateProductMaterial_" data-uid="DataService.ProductDataService.UpdateProductMaterial*"></a>
+  <h4 id="DataService_ProductDataService_UpdateProductMaterial_System_Data_DataSet_" data-uid="DataService.ProductDataService.UpdateProductMaterial(System.Data.DataSet)">UpdateProductMaterial(DataSet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateProductMaterial(DataSet ds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataSet</span></td>
+        <td><span class="parametername">ds</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService.md&amp;value=---%0Auid%3A%20DataService.ProductDataService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

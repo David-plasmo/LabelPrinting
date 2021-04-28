@@ -1,0 +1,333 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/David/source/repos/LabelPrinting/DocFx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Concepts/Abstract.md",
+      "output": {
+        ".html": {
+          "relative_path": "Concepts/Abstract.html",
+          "hash": "bDsJ8uRHmzmWTpPcJnC+SQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "Concepts/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "Concepts/toc.html",
+          "hash": "5R0X0OqOda0VspFv1v3wyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/DataService.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/DataService.Constants.html",
+          "hash": "UdKTRdIRHovqFITu14pyOA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/DataService.DataAccessBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/DataService.DataAccessBase.html",
+          "hash": "wtM3m/gDqZyPRn88+TYdew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/DataService.ProductDataService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/DataService.ProductDataService.html",
+          "hash": "1zbUW7l8cROVOOC/ebE6mA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/DataService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/DataService.html",
+          "hash": "dL8AZNkX8UC+lwspax+qNA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.ComboBoxItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.ComboBoxItem.html",
+          "hash": "t9gN3PQe4ErdUKVCpBA03Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.EditPastelMaster.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.EditPastelMaster.html",
+          "hash": "1ng+HSRKhFMCWzh/zHEKNQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.EditPastelMasterRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.EditPastelMasterRow.html",
+          "hash": "EsS/XFrDZx3iUIpId326dw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.EditPlainLabelRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.EditPlainLabelRow.html",
+          "hash": "AJKEkC+HuR5bgO2eXqxbtg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.EditPlainLabels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.EditPlainLabels.html",
+          "hash": "g9xI90K/HjOy+S2DEQSg1g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.EditProductMaterialRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.EditProductMaterialRow.html",
+          "hash": "gUV4BxrzX54Sq6TKubwf/A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.LabelDictionary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.LabelDictionary.html",
+          "hash": "uPKRzdG+88t0mwtBkYNlGQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.LabelTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.LabelTypes.html",
+          "hash": "T9T3kOvTV51H4NO9J6c5TQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.MainForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.MainForm.html",
+          "hash": "8uCIkxnWE00WZna8IIhWwQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.PastelDataClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.PastelDataClass.html",
+          "hash": "ei67O+MX9LepDhTWKUACPA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.PlainLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.PlainLabel.html",
+          "hash": "iKRqb4D7WIX73WiKlLFOAg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.PlasmoLabelTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.PlasmoLabelTypes.html",
+          "hash": "kFZLAfOGAg6GYzjF+uWkBQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.ProductMaterial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.ProductMaterial.html",
+          "hash": "O+doSFdB96OoH/vzmWFUig=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.ProductMaterialMaint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.ProductMaterialMaint.html",
+          "hash": "3gcKF3C4+4pBhB1Tsag4Sg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.SetMediaMsg.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.SetMediaMsg.html",
+          "hash": "o/scgeziSOJMptA+k0BiAA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/LabelPrinting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/LabelPrinting.html",
+          "hash": "O/SR3APE+6SFYazEkn9LWw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "reference/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/toc.html",
+          "hash": "IScwy2nU+iBtvlyGNQYz9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 1,
+          "skipped_file_count": 1
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 20,
+          "skipped_file_count": 20
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
