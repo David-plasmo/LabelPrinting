@@ -24,14 +24,21 @@ namespace DataService
         /// </summary>
         ////////////////////////////////////////////////////////////////////////
         public ProductDataService(IDbTransaction txn) : base(txn) { }
-
-
-        //create print queue for Blow Moulded products
+        /// <summary>
+        /// Creates a BarTender print queue              
+        /// <para>Implemented by table LabelPrintQueue in Database BarTender<br/>
+        /// Invokes SP BarTender.dbo.ClearBarTenderPrintQueue, PlasmoIntegration.dbo.EnqueuePrintLabels
+        /// </para>
+        /// </summary>
+        /// <param name="ds">DataSet containing print queue</param>
+        /// <param name="labelTypeId">Print label identifier</param>
+        /// <param name="numReqd">Number of labels to print</param>
+        /// <param name="newJobRun">Identifies a production job run</param>        
         public void EnqueueBartenderLabels(DataSet ds, int labelTypeId, int numReqd, ref int? newJobRun)
         {           
             try
             {
-                //string qCode = "MP";                          
+                //string qCode = "MP";
                 ExecuteNonQuery("ClearBarTenderPrintQueue");
 
                 DataViewRowState dvrs = DataViewRowState.CurrentRows;
@@ -83,8 +90,14 @@ namespace DataService
             }
         }
 
-        
 
+        /// <summary>
+        /// Logs label printing jobs, and updates print status        
+        /// <para>Implemented by table LabelPrintJob in database BarTender<br/>
+        /// Invokes AddPrintJob, UpdatePrintJob, DeletePrintJob</para>
+        /// <summary>
+        /// <param name="ds">DataSet containing BarTender label print job details</param>
+        /// <param name="LabelTypeId">Label type identifier</param>
         public void UpdatePrintJobs(DataSet ds, int LabelTypeId)
         {
             //CREATE PROCEDURE [dbo].[AddPrintJob](
@@ -282,6 +295,12 @@ namespace DataService
                 throw;
             }
         }
+        /// <summary>
+        /// Maintains a table of items designated for printing onto plain labels        
+        /// <para>Implemented by table PlasmoPlainLabels, in database BarTender <br/>
+        /// Invokes SP AddPlasmoLabels, UpdatePlasmoPlainLabels, DeletePlasmoPlainLabels</para>
+        /// </summary>
+        /// <param name="ds">DataSet containing plain label product items</param>
         public void UpdatePlainLabels(DataSet ds)
         {
             //CREATE PROCEDURE[dbo].[AddPlasmoPlainLabels](@Code char(31), @Description varchar(101), 
@@ -378,7 +397,11 @@ namespace DataService
             }
         }
 
-       
+       /// <summary>
+       /// Retrieves products designated for printing onto plain labels, for presentation on DataGridView
+       /// <para>Invokes SP GetPlasmoPlainLabels in database BarTender</para>
+       /// </summary>
+       /// <returns>DataSet</returns>
         public DataSet GetPlainLabels()
         {
             try
