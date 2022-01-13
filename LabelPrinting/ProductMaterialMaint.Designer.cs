@@ -34,6 +34,8 @@
             this.cboSearchCode = new System.Windows.Forms.ComboBox();
             this.btnReturn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.cboCompanyCode = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -64,6 +66,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
+            this.splitContainer1.Panel1.Controls.Add(this.cboCompanyCode);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.cboSearchCode);
             this.splitContainer1.Panel1.Controls.Add(this.btnReturn);
@@ -79,18 +83,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(422, 18);
+            this.label2.Location = new System.Drawing.Point(609, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Search";
+            this.label2.Text = "Search Product";
             // 
             // cboSearchCode
             // 
             this.cboSearchCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboSearchCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboSearchCode.FormattingEnabled = true;
-            this.cboSearchCode.Location = new System.Drawing.Point(469, 15);
+            this.cboSearchCode.Location = new System.Drawing.Point(696, 15);
             this.cboSearchCode.Name = "cboSearchCode";
             this.cboSearchCode.Size = new System.Drawing.Size(162, 21);
             this.cboSearchCode.TabIndex = 2;
@@ -115,6 +119,23 @@
             this.label1.Size = new System.Drawing.Size(278, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Product Material and Grade";
+            // 
+            // cboCompanyCode
+            // 
+            this.cboCompanyCode.FormattingEnabled = true;
+            this.cboCompanyCode.Location = new System.Drawing.Point(438, 13);
+            this.cboCompanyCode.Name = "cboCompanyCode";
+            this.cboCompanyCode.Size = new System.Drawing.Size(116, 21);
+            this.cboCompanyCode.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(381, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Company";
             // 
             // ProductMaterialMaint
             // 
@@ -144,5 +165,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboSearchCode;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboCompanyCode;
     }
 }

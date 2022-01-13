@@ -52,6 +52,8 @@
             this.txtCompany = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDGNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,7 +145,7 @@
             // txtLastUpdatedOn
             // 
             this.txtLastUpdatedOn.Enabled = false;
-            this.txtLastUpdatedOn.Location = new System.Drawing.Point(102, 228);
+            this.txtLastUpdatedOn.Location = new System.Drawing.Point(102, 257);
             this.txtLastUpdatedOn.Name = "txtLastUpdatedOn";
             this.txtLastUpdatedOn.ReadOnly = true;
             this.txtLastUpdatedOn.Size = new System.Drawing.Size(170, 20);
@@ -152,7 +154,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 231);
+            this.label5.Location = new System.Drawing.Point(12, 260);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 13);
             this.label5.TabIndex = 73;
@@ -161,7 +163,7 @@
             // txtLastUpdatedBy
             // 
             this.txtLastUpdatedBy.Enabled = false;
-            this.txtLastUpdatedBy.Location = new System.Drawing.Point(102, 202);
+            this.txtLastUpdatedBy.Location = new System.Drawing.Point(102, 231);
             this.txtLastUpdatedBy.Name = "txtLastUpdatedBy";
             this.txtLastUpdatedBy.ReadOnly = true;
             this.txtLastUpdatedBy.Size = new System.Drawing.Size(170, 20);
@@ -170,7 +172,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 205);
+            this.label4.Location = new System.Drawing.Point(12, 234);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 71;
@@ -188,7 +190,7 @@
             // txtPmlID
             // 
             this.txtPmlID.Enabled = false;
-            this.txtPmlID.Location = new System.Drawing.Point(102, 147);
+            this.txtPmlID.Location = new System.Drawing.Point(102, 176);
             this.txtPmlID.Name = "txtPmlID";
             this.txtPmlID.ReadOnly = true;
             this.txtPmlID.Size = new System.Drawing.Size(54, 20);
@@ -197,7 +199,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 150);
+            this.label1.Location = new System.Drawing.Point(12, 179);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 64;
@@ -206,7 +208,7 @@
             // txtImagePath
             // 
             this.txtImagePath.Enabled = false;
-            this.txtImagePath.Location = new System.Drawing.Point(102, 173);
+            this.txtImagePath.Location = new System.Drawing.Point(102, 202);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.ReadOnly = true;
             this.txtImagePath.Size = new System.Drawing.Size(422, 20);
@@ -215,7 +217,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 176);
+            this.label3.Location = new System.Drawing.Point(12, 205);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 90;
@@ -262,11 +264,29 @@
             this.label8.TabIndex = 95;
             this.label8.Text = "Description";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 149);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.TabIndex = 97;
+            this.label6.Text = "DGNumber";
+            // 
+            // txtDGNumber
+            // 
+            this.txtDGNumber.Location = new System.Drawing.Point(102, 146);
+            this.txtDGNumber.Name = "txtDGNumber";
+            this.txtDGNumber.Size = new System.Drawing.Size(106, 20);
+            this.txtDGNumber.TabIndex = 98;
+            // 
             // EditProductMaterialRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 339);
+            this.Controls.Add(this.txtDGNumber);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCompany);
@@ -323,5 +343,7 @@
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtDGNumber;
+        private System.Windows.Forms.Label label6;
     }
 }

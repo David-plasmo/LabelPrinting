@@ -34,7 +34,7 @@ namespace DataService
         /// <param name="labelTypeId">Print label identifier</param>
         /// <param name="numReqd">Number of labels to print</param>
         /// <param name="newJobRun">Identifies a production job run</param>        
-        public void EnqueueBartenderLabels(DataSet ds, int labelTypeId, int numReqd, ref int? newJobRun)
+        public void EnqueueBartenderLabels(DataSet ds, int labelTypeId, int numReqd, int newJobRun)
         {           
             try
             {
@@ -43,6 +43,12 @@ namespace DataService
 
                 DataViewRowState dvrs = DataViewRowState.CurrentRows;
                 DataRow[] rows = ds.Tables[0].Select("", "", dvrs);
+                int result;
+                //newJobRun = null;
+
+               //ExecuteNonQuery("PlasmoIntegration.dbo.CreateJobRun",
+               //                     CreateParameter("@JobRun", SqlDbType.Int, newJobRun, ParameterDirection.Output));
+               // newJobRun = (int)this.DABCmd.Parameters["@JobRun"].Value;
 
                 for (int i = 0; i < rows.Length; i++)
                 {
@@ -53,9 +59,7 @@ namespace DataService
                         //[EnqueueMouldLabels](@Code char(31), @Description varchar(101), @CtnQty int, @BottleSize char(11),
                         //@Style char(11), @NeckSize char(11), @Colour char(11), @Material char(11), @JobRun int, @CompanyCode char(2),
                         //@LabelNo int, @DoLabelNo bit, @QCode varchar(2))  
-                        newJobRun = null;
-                        int result;
-                        if (Int32.TryParse(dr["JobRun"].ToString(), out result)) newJobRun = result;
+                                               
                         if (Int32.TryParse(dr["LabelNo"].ToString(), out result))
                         {
                             ExecuteNonQuery("[PlasmoIntegration].[dbo].[EnqueuePrintLabels]",
@@ -68,14 +72,14 @@ namespace DataService
                                             CreateParameter("@NeckSize", SqlDbType.VarChar, dr["NeckSize"].ToString()),
                                             CreateParameter("@Colour", SqlDbType.VarChar, dr["Colour"].ToString()),
                                             CreateParameter("@Material", SqlDbType.VarChar, dr["Material"].ToString()),
-                                            CreateParameter("@JobRun", SqlDbType.Int, newJobRun, ParameterDirection.InputOutput),
+                                            CreateParameter("@JobRun", SqlDbType.Int, newJobRun),
                                             CreateParameter("@CompanyCode", SqlDbType.VarChar, dr["CompanyCode"].ToString()),
                                             CreateParameter("@LabelNo", SqlDbType.Int, Convert.ToInt32(dr["LabelNo"].ToString())),
                                             CreateParameter("@DoLabelNo", SqlDbType.Bit, Convert.ToBoolean(dr["DoLabelNo"].ToString())),
                                             CreateParameter("@LabelTypeId", SqlDbType.Int, labelTypeId),
                                             CreateParameter("@ImagePath", SqlDbType.VarChar, dr["ImagePath"].ToString())
                                            );
-                            if (Int32.TryParse(this.DABCmd.Parameters["@JobRun"].Value.ToString(), out result)) newJobRun = result;
+                            
                         }
 
                                        
@@ -112,11 +116,12 @@ namespace DataService
                 //Process new rows:-
                 DataViewRowState dvrs = DataViewRowState.Added;
                 DataRow[] rows = ds.Tables[0].Select("", "", dvrs);
-                int newJobRunNo = 0;
+                
                 int newJobID = 0;
                 string newLastUpdatedBy = "last_updated_by";
                 DateTime newLastUpdatedOn = DateTime.MinValue;
-                DateTime date = DateTime.MinValue;
+                DateTime date;
+                string format = "yyyy-MM-dd";
                 for (int i = 0; i < rows.Length; i++)
                 {
                     DataRow dr = rows[i];
@@ -131,7 +136,8 @@ namespace DataService
                     int? numReqd = null;
                     int? startNo = null;
                     int? endNo = null;
-                    int number;
+                    int? newJobRun = null;
+                    int number, result;
                     if (dr.Table.Columns.Contains("CtnQty"))
                     {
                         if (Int32.TryParse(dr["CtnQty"].ToString(), out number))
@@ -152,6 +158,13 @@ namespace DataService
                         if (Int32.TryParse(dr["EndNo"].ToString(), out number))
                             endNo = number;
                     }
+                    
+                    ExecuteNonQuery("PlasmoIntegration.dbo.CreateJobRun",
+                                         CreateParameter("@JobRun", SqlDbType.Int, newJobRun, ParameterDirection.Output));
+
+                    newJobRun = (int)this.DABCmd.Parameters["@JobRun"].Value;
+                    
+
                     ExecuteNonQuery("AddPrintJob",
                         CreateParameter("@LabelTypeId", SqlDbType.Int, Convert.ToInt32(dr["LabelTypeId"].ToString())),
                         CreateParameter("@Code", SqlDbType.VarChar, dr["Code"].ToString()),
@@ -169,8 +182,8 @@ namespace DataService
                         CreateParameter("@NeckSize", SqlDbType.VarChar, necksize),
                         CreateParameter("@Colour", SqlDbType.VarChar, colour),
                         CreateParameter("@Material", SqlDbType.VarChar, material),
-                        CreateParameter("@JobRun", SqlDbType.Int, newJobRunNo, ParameterDirection.Output),
-                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, date, ParameterDirection.Output),
+                        CreateParameter("@JobRun", SqlDbType.Int, newJobRun),
+                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, newLastUpdatedOn, ParameterDirection.Output),
                         CreateParameter("@last_updated_by", SqlDbType.VarChar, newLastUpdatedBy, ParameterDirection.InputOutput),
                         CreateParameter("@JobID", SqlDbType.Int, newJobID, ParameterDirection.Output));
 
@@ -182,10 +195,12 @@ namespace DataService
                     newLastUpdatedOn = (DateTime)this.DABCmd.Parameters["@last_updated_on"].Value;
                     newLastUpdatedBy = (string)this.DABCmd.Parameters["@last_updated_by"].Value;
                     newJobID = (int)this.DABCmd.Parameters["@JobID"].Value;
-                    
+                    //newJobRun = (int)this.DABCmd.Parameters["@JobRun"].Value;
+
                     dr["last_updated_on"] = newLastUpdatedOn;
                     dr["last_updated_by"] = newLastUpdatedBy;
                     dr["JobID"] = newJobID;
+                    dr["JobRun"] = newJobRun;
                 }
 
 
@@ -260,7 +275,7 @@ namespace DataService
                         CreateParameter("@Colour", SqlDbType.VarChar, colour),
                         CreateParameter("@Material", SqlDbType.VarChar, material),
                         CreateParameter("@JobRun", SqlDbType.Int, jobrun),
-                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, date, ParameterDirection.InputOutput),
+                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, date, ParameterDirection.Output),
                         CreateParameter("@last_updated_by", SqlDbType.VarChar, newLastUpdatedBy, ParameterDirection.InputOutput));
 
                     newLastUpdatedOn = (DateTime)this.DABCmd.Parameters["@last_updated_on"].Value;
@@ -291,8 +306,8 @@ namespace DataService
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
-                throw;
+                MessageBox.Show(ex.Message);
+                //throw;
             }
         }
         /// <summary>
@@ -316,7 +331,7 @@ namespace DataService
                 int newPlainLabelID = 0;
                 string newLastUpdatedBy = "last_updated_by";
                 DateTime newLastUpdatedOn = DateTime.MinValue;
-                DateTime date = DateTime.MinValue;
+                //DateTime date = DateTime.MinValue;
                 for (int i = 0; i < rows.Length; i++)
                 {
                     DataRow dr = rows[i];
@@ -327,7 +342,7 @@ namespace DataService
                         CreateParameter("@ItemClass", SqlDbType.VarChar, dr["ItemClass"].ToString()),
                         CreateParameter("@LabelNo", SqlDbType.VarChar, dr["LabelNo"].ToString()),
                         CreateParameter("@Purpose", SqlDbType.VarChar, dr["Purpose"].ToString()),                        
-                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, date, ParameterDirection.Output),
+                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, newLastUpdatedOn, ParameterDirection.Output),
                         CreateParameter("@last_updated_by", SqlDbType.VarChar, newLastUpdatedBy, ParameterDirection.InputOutput),
                         CreateParameter("@PlainLabelID", SqlDbType.Int, newPlainLabelID, ParameterDirection.Output));
 
@@ -350,7 +365,7 @@ namespace DataService
                 for (int i = 0; i < rows.Length; i++)
                 {
                     DataRow dr = rows[i];
-                    date = Convert.ToDateTime(dr["last_updated_on"]);
+                    newLastUpdatedOn = Convert.ToDateTime(dr["last_updated_on"]);
                     //CREATE PROCEDURE [dbo].[UpdatePlasmoPlainLabels](@PlainLabelID int, @Code char(31), @Description varchar(101), 
                     //@ItemClass char(11), @LabelNo varchar(10), @Purpose varchar(100), @last_updated_on datetime2(7) output)
                     ExecuteNonQuery("UpdatePlasmoPlainLabels",
@@ -360,7 +375,7 @@ namespace DataService
                         CreateParameter("@ItemClass", SqlDbType.VarChar, dr["ItemClass"].ToString()),
                         CreateParameter("@LabelNo", SqlDbType.VarChar, dr["LabelNo"].ToString()),
                         CreateParameter("@Purpose", SqlDbType.VarChar, dr["Purpose"].ToString()),                        
-                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, date, ParameterDirection.InputOutput),
+                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, newLastUpdatedOn, ParameterDirection.InputOutput),
                         CreateParameter("@last_updated_by", SqlDbType.VarChar, newLastUpdatedBy, ParameterDirection.InputOutput));
 
                     newLastUpdatedOn = (DateTime)this.DABCmd.Parameters["@last_updated_on"].Value;
@@ -479,7 +494,7 @@ namespace DataService
                         CreateParameter("@CtnQty", SqlDbType.Int, Convert.ToInt32(dr["CtnQty"].ToString())),
                         CreateParameter("@CtnSize", SqlDbType.VarChar, dr["CtnSize"].ToString()),
                         CreateParameter("@Grade", SqlDbType.VarChar, dr["Grade"].ToString()),
-                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, date, ParameterDirection.Output),
+                        CreateParameter("@last_updated_on", SqlDbType.DateTime2, newLastUpdatedOn, ParameterDirection.Output),
                         CreateParameter("@last_updated_by", SqlDbType.VarChar, newLastUpdatedBy, ParameterDirection.Output),
                         CreateParameter("@PastelID", SqlDbType.Int, newPastelID, ParameterDirection.Output));
                     
@@ -561,15 +576,7 @@ namespace DataService
             try
             {
 
-                //Process new rows:-
-                /* AddProductMaterial(@Code varchar(31),
-                   @CompanyCode varchar(10),
-                   @MaterialID int,
-                   @GradeID int,
-                   @last_updated_on datetime2(7) OUTPUT,
-                   @last_updated_by varchar(50) OUTPUT,
-                   @PmID int OUTPUT)
-               */
+                //Process new rows:-                
                 DataViewRowState dvrs = DataViewRowState.Added;
                 DataRow[] rows = ds.Tables[0].Select("", "", dvrs);
                 int newID = 0;
@@ -585,7 +592,8 @@ namespace DataService
                         CreateParameter("@Code", SqlDbType.VarChar, dr["Code"].ToString()),
                         CreateParameter("@CompanyCode", SqlDbType.VarChar, dr["CompanyCode"].ToString()),
                         CreateParameter("@MaterialID", SqlDbType.Int, Convert.ToInt32(dr["MaterialID"].ToString())),
-                        CreateParameter("@GradeID", SqlDbType.Int, Convert.ToInt32(dr["GradeID"].ToString())),                        
+                        CreateParameter("@GradeID", SqlDbType.Int, Convert.ToInt32(dr["GradeID"].ToString())),
+                        CreateParameter("@DGNumber", SqlDbType.VarChar, dr["DGNumber"].ToString()),
                         CreateParameter("@last_updated_on", SqlDbType.DateTime2, date, ParameterDirection.Output),
                         CreateParameter("@last_updated_by", SqlDbType.VarChar, newLastUpdatedBy, ParameterDirection.Output),
                         CreateParameter("@PmID", SqlDbType.Int, newID, ParameterDirection.Output));
@@ -604,16 +612,7 @@ namespace DataService
                 }
 
 
-                //Process modified rows:-
-                /*CREATE PROCEDURE[dbo].[UpdateProductMaterial](
-		            @Code varchar(31),
-		            @CompanyCode varchar(10),
-		            @MaterialID int,
-		            @GradeID int,
-		            @last_updated_on datetime2(7),
-		            @last_updated_by varchar(50) OUTPUT,
-		            @PmID int)
-                */
+                //Process modified rows:-                
                 dvrs = DataViewRowState.ModifiedCurrent;
                 rows = ds.Tables[0].Select("", "", dvrs);
                 for (int i = 0; i < rows.Length; i++)
@@ -626,6 +625,7 @@ namespace DataService
                         CreateParameter("@CompanyCode", SqlDbType.VarChar, dr["CompanyCode"].ToString()),
                         CreateParameter("@MaterialID", SqlDbType.Int, Convert.ToInt32(dr["MaterialID"].ToString())),
                         CreateParameter("@GradeID", SqlDbType.Int, Convert.ToInt32(dr["GradeID"].ToString())),
+                        CreateParameter("@DGNumber", SqlDbType.VarChar, dr["DGNumber"].ToString()),
                         CreateParameter("@last_updated_on", SqlDbType.DateTime2, date, ParameterDirection.InputOutput),
                         CreateParameter("@last_updated_by", SqlDbType.VarChar, newLastUpdatedBy, ParameterDirection.Output),
                         CreateParameter("@PmID", SqlDbType.Int, Convert.ToInt32(dr["pmID"].ToString())));
@@ -646,10 +646,9 @@ namespace DataService
                     // Console.WriteLine(dr["Run", DataRowVersion.Original].ToString());
                     if (dr["PmID", DataRowVersion.Original] != null)
                     {
-                        ExecuteNonQuery("DeleteProductMaterial",
+                        ExecuteNonQuery("[PlasmoIntegration].[dbo].[DeleteProductMaterial]",
                           CreateParameter("@PmID", SqlDbType.Int, Convert.ToInt32(dr["PmID", DataRowVersion.Original].ToString())));
                     }
-
                 }
 
                 ds.AcceptChanges();
@@ -664,11 +663,12 @@ namespace DataService
         }
 
 
-        public DataSet GetMaterialAndGrade()
+        public DataSet GetMaterialAndGrade(string compCode)
         {
             try
             {
-                DataSet ds = ExecuteDataSet("[PlasmoIntegration].[dbo].[GetMaterialAndGrade]");
+                DataSet ds = ExecuteDataSet("[PlasmoIntegration].[dbo].[GetMaterialAndGrade]",
+                     CreateParameter("@CompanyCode", SqlDbType.VarChar, compCode));
                 return ds;
             }
             catch (Exception ex)
@@ -693,7 +693,22 @@ namespace DataService
             }
 
         }
+        public DataSet GetLabelTypesByCompany(string compCode)
+        {
+            try
+            {
+                DataSet ds = ExecuteDataSet("BarTender.dbo.GetLabelTypesByCompany",
+                    CreateParameter("@CompanyCode", SqlDbType.VarChar, compCode));
+                //ds.Tables[0].Columns["Code"].DefaultValue = defaultCode;
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
 
+        }
         public DataSet GetLabelTypesTV()
         {
             try
@@ -710,11 +725,24 @@ namespace DataService
 
         }
        
-    public DataSet GetProductCompany()
+        public DataSet GetProductCompany()
         {
             try
             {
                 return ExecuteDataSet("GetProductCompany");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        public DataSet GetCompany()
+        {
+            try
+            {
+                return ExecuteDataSet("PlasmoIntegration.dbo.GetCompany");
             }
             catch (Exception ex)
             {
@@ -837,7 +865,45 @@ namespace DataService
                 return null;
             }
         }
-
+        public DataSet GetProductType()
+        {
+            try
+            {
+                return ExecuteDataSet("ProdPlasmoProduct.dbo.GetProductType");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+        public DataSet SelectProductItemClassLabelLink(string compCode)
+        {
+            try
+            {
+                return ExecuteDataSet("PlasmoIntegration.dbo.SelectProductItemClassLabelLink",
+                    CreateParameter("@CompanyCode", SqlDbType.VarChar, compCode));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+        //SelectItemClassByCompany
+        public DataSet SelectItemClassByCompany(string compCode)
+        {
+            try
+            {
+                return ExecuteDataSet("PlasmoIntegration.dbo.SelectItemClassByCompany",
+                    CreateParameter("@CompanyCode", SqlDbType.VarChar, compCode));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
         public DataSet GetPlasmoProductIndex()
         {
             try
@@ -888,7 +954,7 @@ namespace DataService
             try
             {
                 //PROCEDURE [dbo].[GetLabelPrintJob] (@JobID int, @LabelTypeID int, @NumSpare int)
-                return ExecuteDataSet("GetLabelPrintJob",
+                return ExecuteDataSet("TestPlasmoIntegration.dbo.GetLabelPrintJob",
                     CreateParameter("@JobId", SqlDbType.Int, jobId),
                     CreateParameter("@labelTypeID", SqlDbType.Int, labelTypeId),                    
                     CreateParameter("@NumSpare", SqlDbType.Int, numSpare),

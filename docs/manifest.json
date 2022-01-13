@@ -5,29 +5,50 @@
   "files": [
     {
       "type": "Conceptual",
-      "source_relative_path": "Concepts/Abstract.md",
+      "source_relative_path": "Concepts/Advanced/Abstract.md",
       "output": {
         ".html": {
-          "relative_path": "Concepts/Abstract.html",
-          "hash": "bDsJ8uRHmzmWTpPcJnC+SQ=="
+          "relative_path": "Concepts/Advanced/Abstract.html",
+          "hash": "cGfHJLTYQ0sw0E1AH8D/4g=="
         }
       },
       "is_incremental": true,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
-      "type": "Toc",
-      "source_relative_path": "Concepts/toc.yml",
+      "type": "Conceptual",
+      "source_relative_path": "Concepts/Advanced/Advanced.md",
       "output": {
         ".html": {
-          "relative_path": "Concepts/toc.html",
-          "hash": "5R0X0OqOda0VspFv1v3wyQ=="
+          "relative_path": "Concepts/Advanced/Advanced.html",
+          "hash": "3pqgQRlf29Uu34IpbZimrQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Concepts/Easy/Abstract.md",
+      "output": {
+        ".html": {
+          "relative_path": "Concepts/Easy/Abstract.html",
+          "hash": "vauoeWIc3dq4isS8xJbbFA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Concepts/Easy/Easy.md",
+      "output": {
+        ".html": {
+          "relative_path": "Concepts/Easy/Easy.html",
+          "hash": "EBHStHLWcZFA6IyLxxyzqQ=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -36,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "reference/DataService.Constants.html",
-          "hash": "UdKTRdIRHovqFITu14pyOA=="
+          "hash": "q14/gGA8eAowvyfybZHczw=="
         }
       },
       "is_incremental": true,
@@ -48,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/DataService.DataAccessBase.html",
-          "hash": "wtM3m/gDqZyPRn88+TYdew=="
+          "hash": "ekxpScKm2vRGHNLrxW9+MQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -60,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/DataService.ProductDataService.html",
-          "hash": "1zbUW7l8cROVOOC/ebE6mA=="
+          "hash": "G5tCmwCD63ASE0hu0KtxoQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -72,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/DataService.html",
-          "hash": "dL8AZNkX8UC+lwspax+qNA=="
+          "hash": "cc/lPBCLzyD6MGsp1l3ykw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -84,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.ComboBoxItem.html",
-          "hash": "t9gN3PQe4ErdUKVCpBA03Q=="
+          "hash": "uk2NnPtBXxGhopVrqBo1TQ=="
         }
       },
       "is_incremental": true,
@@ -96,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.EditPastelMaster.html",
-          "hash": "1ng+HSRKhFMCWzh/zHEKNQ=="
+          "hash": "H7wwgTnlkNDZ2ylLlAK6jA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -108,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.EditPastelMasterRow.html",
-          "hash": "EsS/XFrDZx3iUIpId326dw=="
+          "hash": "m8f52bdcWUc6WLy1eZ8Ehw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -120,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.EditPlainLabelRow.html",
-          "hash": "AJKEkC+HuR5bgO2eXqxbtg=="
+          "hash": "VdEr/Z/6g3EpZObrFPwb6g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -132,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.EditPlainLabels.html",
-          "hash": "g9xI90K/HjOy+S2DEQSg1g=="
+          "hash": "TDxd3CgFsCeGLqKBm4CmHg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -144,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.EditProductMaterialRow.html",
-          "hash": "gUV4BxrzX54Sq6TKubwf/A=="
+          "hash": "MyOTEvovBed5xZDA3an2FA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -156,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.LabelDictionary.html",
-          "hash": "uPKRzdG+88t0mwtBkYNlGQ=="
+          "hash": "3BsR/cybRfd26d8wWx5upg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -168,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.LabelTypes.html",
-          "hash": "T9T3kOvTV51H4NO9J6c5TQ=="
+          "hash": "H0cgStZlVDNYNP8ha+RJdQ=="
         }
       },
       "is_incremental": true,
@@ -180,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.MainForm.html",
-          "hash": "8uCIkxnWE00WZna8IIhWwQ=="
+          "hash": "c6wMhfixElBAG3llPRLEMg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -192,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.PastelDataClass.html",
-          "hash": "ei67O+MX9LepDhTWKUACPA=="
+          "hash": "2cnClyrhJGFOlgzpen6vJw=="
         }
       },
       "is_incremental": true,
@@ -204,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.PlainLabel.html",
-          "hash": "iKRqb4D7WIX73WiKlLFOAg=="
+          "hash": "PevUdsgnpkoi7UPEQwt6nQ=="
         }
       },
       "is_incremental": true,
@@ -216,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.PlasmoLabelTypes.html",
-          "hash": "kFZLAfOGAg6GYzjF+uWkBQ=="
+          "hash": "Ym/008/M0ONt309WigXjLQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -228,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.ProductMaterial.html",
-          "hash": "O+doSFdB96OoH/vzmWFUig=="
+          "hash": "4bdYNqbePcjZtgcFY8x9VQ=="
         }
       },
       "is_incremental": true,
@@ -240,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.ProductMaterialMaint.html",
-          "hash": "3gcKF3C4+4pBhB1Tsag4Sg=="
+          "hash": "e61iV6P5zlBo3Spq8oPmbQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -252,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.SetMediaMsg.html",
-          "hash": "o/scgeziSOJMptA+k0BiAA=="
+          "hash": "m5Yt3PoytbgLor0CzZHiHQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -264,19 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "reference/LabelPrinting.html",
-          "hash": "O/SR3APE+6SFYazEkn9LWw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "reference/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "reference/toc.html",
-          "hash": "IScwy2nU+iBtvlyGNQYz9Q=="
+          "hash": "C+7eY+XpFN65Szbo1unAtw=="
         }
       },
       "is_incremental": false,
@@ -295,14 +304,14 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 1,
-          "skipped_file_count": 1
+          "total_file_count": 4,
+          "skipped_file_count": 4
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 20,
-          "skipped_file_count": 20
+          "skipped_file_count": 9
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

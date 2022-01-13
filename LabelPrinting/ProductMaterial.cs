@@ -22,6 +22,7 @@ namespace LabelPrinting
         public string CompanyCode { get; set; }
         public int? MaterialID { get; set; }
         public int? GradeID { get; set; }
+        public string DGNumber { get; set; }
         public DateTime? last_updated_on { get; set; }
         public string last_updated_by { get; set; }
         public string ImagePath { get; set; }  //read only

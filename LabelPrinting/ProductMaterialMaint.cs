@@ -12,9 +12,10 @@ namespace LabelPrinting
 {
     public partial class ProductMaterialMaint : Form
     {
-        DataSet MaterialAndGrade;        
+        DataSet MaterialAndGrade, dsCompany;        
         ProductMaterial pm;
         bool bIsLoading;
+        string CurrentCompanyCode;
 
         public ProductMaterialMaint()
         {
@@ -28,7 +29,7 @@ namespace LabelPrinting
             {
                 Cursor.Current = Cursors.WaitCursor;
 
-                dgvEdit.Visible = false;                
+                dgvEdit.Visible = false;
                 /*
                  SELECT [PmID]
                   ,[Code]
@@ -41,7 +42,13 @@ namespace LabelPrinting
                   FROM [PlasmoIntegration].[dbo].[vuMaterialAndGrade]
                   ORDER BY CompanyCode, Code
                 */
-                MaterialAndGrade = new DataService.ProductDataService().GetMaterialAndGrade();                
+                bIsLoading = true;
+                MaterialAndGrade = new DataService.ProductDataService().GetMaterialAndGrade(CurrentCompanyCode);
+                DataSet ds = MaterialAndGrade.Copy();
+                cboSearchCode.DataSource = ds.Tables[0];
+                cboSearchCode.DisplayMember = "Code";
+                cboSearchCode.ValueMember = "PmID";
+                cboSearchCode.ResetText();
                 dgvEdit.DataSource = null;
                 dgvEdit.Columns.Clear();
                 dgvEdit.DataSource = MaterialAndGrade.Tables[0];
@@ -74,7 +81,8 @@ namespace LabelPrinting
             pm.Code = (string)dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["Code"].Value;
             pm.Description = (string)dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["Description"].Value;
             pm.CompanyCode = (string)dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["CompanyCode"].Value;
-            pm.ImagePath = (string)dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["ImagePath"].Value;
+            pm.CompanyCode = (string)dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["CompanyCode"].Value;
+            pm.DGNumber = dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["DGNumber"].Value.ToString();
             pm.last_updated_by = (string)dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["last_updated_by"].Value;
             int numValue;
             if (Int32.TryParse((dgvEdit.CurrentRow.DataBoundItem as DataRowView).Row["PmID"].ToString(), out numValue))
@@ -96,18 +104,30 @@ namespace LabelPrinting
                 dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["MaterialID"].Value = (pm.MaterialID != null ?(int)pm.MaterialID : 0);
                 dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["Material"].Value = subForm.MaterialText;
                 dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["Grade"].Value = subForm.GradeText;
+                dgvEdit.Rows[dgvEdit.CurrentRow.Index].Cells["DGNumber"].Value = pm.DGNumber;
             }               
         }
 
         private void ProductMaterialMaint_Load(object sender, EventArgs e)
         {
-            bIsLoading = true;
-            SetupDataGrid();
-            DataSet ds = MaterialAndGrade.Copy();
-            cboSearchCode.DataSource = ds.Tables[0];
-            cboSearchCode.DisplayMember = "Code";
-            cboSearchCode.ValueMember = "PmID";
+            bIsLoading = true;            
+            
+
+            dsCompany = new DataService.ProductDataService().GetCompany();
+            DataView dv = new DataView(dsCompany.Tables[0]);
+            //dv.RowFilter = "CompanyCode <> 'PL'";
+            //this.cboCompanyCode = new ComboBox();
+            this.cboCompanyCode.ValueMember = "CMPANYID";
+            this.cboCompanyCode.DisplayMember = "CompanyCode";
+            this.cboCompanyCode.DataSource = dv;
+            //this.cboCompanyCode.Visible = false;
             cboSearchCode.ResetText();
+            CurrentCompanyCode = cboCompanyCode.Text;
+            //this.dgvEdit.Controls.Add(this.cboCompanyCode);
+            //Associate the event-handling method with the 
+            // SelectedIndexChanged event.
+            this.cboCompanyCode.SelectedIndexChanged += new System.EventHandler(cboCompanyCode_SelectedIndexChanged);
+            SetupDataGrid();
             
         }
 
@@ -186,6 +206,23 @@ namespace LabelPrinting
         {
             bIsLoading = false;
         }
+
+        private void cboCompanyCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!bIsLoading)
+            {
+                int pmID = (int)cboCompanyCode.SelectedValue;
+                DataTable table = dsCompany.Copy().Tables[0];
+                DataRow[] row = table.Select("CMPANYID = " + pmID.ToString());
+                string compCode = row[0]["CompanyCode"].ToString();
+                CurrentCompanyCode = compCode;
+                SetupDataGrid();
+                //CurrentCompanyCode = compCode;
+                //DataSet ds = pds.GetCustomerIndexByCompany(compCode);                                
+                //LoadProductCbo(compCode);
+                // locate product in grid goes here
+            }
+        }        
     }
     
 }

@@ -60,7 +60,7 @@ namespace DataService
         ////////////////////////////////////////////////////////////////////////
         // Connection and Transaction Methods
         ////////////////////////////////////////////////////////////////////////
-        protected static string GetConnectionString()
+        public static string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
         }

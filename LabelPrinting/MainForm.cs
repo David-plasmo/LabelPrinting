@@ -55,6 +55,7 @@ namespace LabelPrinting
         string manCompany = null;
         //**
         int RunNmbr;
+        int newJobRun;
         //int JobNmbr;
         //*
         DataSet JobRun;
@@ -169,7 +170,7 @@ namespace LabelPrinting
                 txtNumSpare.Enabled = (PrintJobs.Tables[0].Rows.Count > 0 ? true : false);
                 
                 ProductCode = new DataService.ProductDataService().GetProductIndex(CurrentLabel.LabelTypeID, CurrentLabel.LabelNo, CurrentLabel.Company);
-                RefreshComboColumns();
+                //RefreshComboColumns();
                 //dgvJobRun.Columns["Description"].Visible = true;
                 dgvJobRun.AutoResizeColumns();
                 for (int i = 0; i < dgvJobRun.ColumnCount; i++) { dgvJobRun.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable; }
@@ -392,6 +393,7 @@ namespace LabelPrinting
                         int labelTypeId = Convert.ToInt32(dgvJobRun.CurrentRow.Cells["LabelTypeId"].Value.ToString());
                         int startNo = Convert.ToInt32(dgvJobRun.CurrentRow.Cells["StartNo"].Value.ToString());
                         int endNo = Convert.ToInt32(dgvJobRun.CurrentRow.Cells["EndNo"].Value.ToString());
+                        newJobRun = Convert.ToInt32(dgvJobRun.CurrentRow.Cells["JobRun"].Value.ToString());
                         BMPrintLabels = new DataService.ProductDataService().GetLabelPrintJob(jobID, labelTypeId, numSpare, startNo, endNo);                    
                         dgvBMLabels.Columns.Clear();
                         if (BMPrintLabels != null && BMPrintLabels.Tables.Count > 0)
@@ -447,16 +449,18 @@ namespace LabelPrinting
                 //
                 Cursor = Cursors.WaitCursor;
                 DataService.ProductDataService ds = new DataService.ProductDataService();
-                CurrentLabel.Status = "";
+                CurrentLabel.Status = "Printed";
                 CurrentLabel.ErrMsg = "";
-                bIsPrinting = true;
-                int? newJobRun = null;
+                bIsPrinting = true;               
                 int numReqd = Convert.ToInt32(dgvJobRun.CurrentRow.Cells["NumReqd"].Value.ToString());
+                
+
                 if (!dgvBMLabels.Visible)
                 {
                     SaveGrid();
                     //RefreshComboColumns();
                     int numSpare = 0;
+                    
                     if (dgvJobRun.CurrentRow.Index > -1)
                     {
                         if (dgvJobRun.CurrentRow.Cells["Code"].Value.ToString().Length > 0)
@@ -465,17 +469,18 @@ namespace LabelPrinting
                             int labelTypeId = Convert.ToInt32(dgvJobRun.CurrentRow.Cells["LabelTypeId"].Value.ToString());
                             int startNo = Convert.ToInt32(dgvJobRun.CurrentRow.Cells["StartNo"].Value.ToString());
                             int endNo = Convert.ToInt32(dgvJobRun.CurrentRow.Cells["EndNo"].Value.ToString());
+                            newJobRun = Convert.ToInt32(dgvJobRun.CurrentRow.Cells["JobRun"].Value.ToString());
                             BMPrintLabels = new DataService.ProductDataService().GetLabelPrintJob(jobID, labelTypeId, numSpare, startNo, endNo);
                         }
                     }
                 }
-                ds.EnqueueBartenderLabels(BMPrintLabels, CurrentLabel.LabelTypeID, numReqd, ref newJobRun);
+                ds.EnqueueBartenderLabels(BMPrintLabels, CurrentLabel.LabelTypeID, numReqd, newJobRun);
                 RunPrint();
 
-                if (newJobRun != null)
-                {                                                       
-                    (dgvJobRun.CurrentRow.DataBoundItem as DataRowView).Row["JobRun"] = newJobRun;
-                }
+                //if (newJobRun != null)
+                //{                                                       
+                //    (dgvJobRun.CurrentRow.DataBoundItem as DataRowView).Row["JobRun"] = newJobRun;
+                //}
                 
                 (dgvJobRun.CurrentRow.DataBoundItem as DataRowView).Row["Status"] = (CurrentLabel.Status != "Error")  ? CurrentLabel.Status : CurrentLabel.ErrMsg; 
 
@@ -487,7 +492,7 @@ namespace LabelPrinting
                 SaveGrid();
                 btnPrint.Enabled = false;
                 dgvJobRun.Visible = false;                                
-                RefreshComboColumns();
+                //RefreshComboColumns();
                 dgvJobRun.Visible = true;              
                 Cursor = Cursors.Default;                            
                 if (CurrentLabel.Status == "Error")
@@ -1861,10 +1866,7 @@ namespace LabelPrinting
 
         private void pastelDataImportMaintenanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveGrid();
-            EditPastelMaster epm = new EditPastelMaster();            
-            epm.ShowDialog();
-            this.DialogResult = DialogResult.None;
+            
         }
 
         private void p110X10ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1923,6 +1925,53 @@ namespace LabelPrinting
             {
                 // do something when the value is not there
             }
+        }
+
+        private void gPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void itemClassLabelLinkMaintenanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveGrid();
+            EditProductItemClass epi = new EditProductItemClass();
+            epi.ShowDialog();
+            this.DialogResult = DialogResult.None;
+        }
+
+        private void productionOperatorMaintenanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveGrid();
+            ProductionOperatorMaint pom = new ProductionOperatorMaint();
+            pom.ShowDialog();
+            this.DialogResult = DialogResult.None;
+        }
+
+        private void assembledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (Labels.TryGetValue("CP Assembly", out CurrentLabel))
+            {
+                cboLabelType.Items.Clear();
+                cboLabelType.Items.Add(new ComboBoxItem(CurrentLabel.LabelType, CurrentLabel.LabelNo));
+                LoadPrintJobs();
+                RefreshCaptions();
+            }
+            else
+            {
+                // do something when the value is not there
+            }
+        }
+
+        private void manageJobRunToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            JobRun f = new JobRun();
+            f.ShowDialog();
         }
 
 

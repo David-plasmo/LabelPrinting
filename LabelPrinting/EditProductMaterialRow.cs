@@ -33,6 +33,7 @@ namespace LabelPrinting
                 txtImagePath.Text = PM.ImagePath;
                 txtLastUpdatedBy.Text = PM.last_updated_by;
                 txtPmlID.Text = PM.PmID.ToString();
+                txtDGNumber.Text = PM.DGNumber;
                 if (PM.last_updated_on.ToString().Length > 0) txtLastUpdatedOn.Text = PM.last_updated_on.ToString();
 
                 Material = new DataService.ProductDataService().GetMaterialIndex();

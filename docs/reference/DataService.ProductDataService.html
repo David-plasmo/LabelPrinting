@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc">
     
     
     
@@ -59,11 +59,89 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="DataService.html" title="DataService" class="">DataService</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="DataService.Constants.html" title="Constants" class="">Constants</a>
+                          </li>
+                          <li class="">
+                            <a href="DataService.DataAccessBase.html" title="DataAccessBase" class="">DataAccessBase</a>
+                          </li>
+                          <li class="active">
+                            <a href="DataService.ProductDataService.html" title="ProductDataService" class="active">ProductDataService</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="LabelPrinting.html" title="LabelPrinting" class="">LabelPrinting</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="LabelPrinting.ComboBoxItem.html" title="ComboBoxItem" class="">ComboBoxItem</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.EditPastelMaster.html" title="EditPastelMaster" class="">EditPastelMaster</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.EditPastelMasterRow.html" title="EditPastelMasterRow" class="">EditPastelMasterRow</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.EditPlainLabelRow.html" title="EditPlainLabelRow" class="">EditPlainLabelRow</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.EditPlainLabels.html" title="EditPlainLabels" class="">EditPlainLabels</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.EditProductMaterialRow.html" title="EditProductMaterialRow" class="">EditProductMaterialRow</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.LabelDictionary.html" title="LabelDictionary" class="">LabelDictionary</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.LabelTypes.html" title="LabelTypes" class="">LabelTypes</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.MainForm.html" title="MainForm" class="">MainForm</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.PastelDataClass.html" title="PastelDataClass" class="">PastelDataClass</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.PlainLabel.html" title="PlainLabel" class="">PlainLabel</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.PlasmoLabelTypes.html" title="PlasmoLabelTypes" class="">PlasmoLabelTypes</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.ProductMaterial.html" title="ProductMaterial" class="">ProductMaterial</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.ProductMaterialMaint.html" title="ProductMaterialMaint" class="">ProductMaterialMaint</a>
+                          </li>
+                          <li class="">
+                            <a href="LabelPrinting.SetMediaMsg.html" title="SetMediaMsg" class="">SetMediaMsg</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="article row grid-right">
@@ -218,7 +296,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_PSClasses.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.PSClasses%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L896">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L919">View Source</a>
   </span>
   <a id="DataService_ProductDataService_PSClasses_" data-uid="DataService.ProductDataService.PSClasses*"></a>
   <h4 id="DataService_ProductDataService_PSClasses" data-uid="DataService.ProductDataService.PSClasses">PSClasses</h4>
@@ -250,11 +328,15 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_EnqueueBartenderLabels_System_Data_DataSet_System_Int32_System_Int32_System_Nullable_System_Int32___.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.EnqueueBartenderLabels(System.Data.DataSet%2CSystem.Int32%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L30">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L37">View Source</a>
   </span>
   <a id="DataService_ProductDataService_EnqueueBartenderLabels_" data-uid="DataService.ProductDataService.EnqueueBartenderLabels*"></a>
   <h4 id="DataService_ProductDataService_EnqueueBartenderLabels_System_Data_DataSet_System_Int32_System_Int32_System_Nullable_System_Int32___" data-uid="DataService.ProductDataService.EnqueueBartenderLabels(System.Data.DataSet,System.Int32,System.Int32,System.Nullable{System.Int32}@)">EnqueueBartenderLabels(DataSet, Int32, Int32, ref Nullable&lt;Int32&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a BarTender print queue</p>
+<p>Implemented by table LabelPrintQueue in Database BarTender<br>
+Invokes SP BarTender.dbo.ClearBarTenderPrintQueue, PlasmoIntegration.dbo.EnqueuePrintLabels
+</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -273,22 +355,26 @@ which to operate</p>
       <tr>
         <td><span class="xref">System.Data.DataSet</span></td>
         <td><span class="parametername">ds</span></td>
-        <td></td>
+        <td><p>DataSet containing print queue</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">labelTypeId</span></td>
-        <td></td>
+        <td><p>Print label identifier</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">numReqd</span></td>
-        <td></td>
+        <td><p>Number of labels to print</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
         <td><span class="parametername">newJobRun</span></td>
-        <td></td>
+        <td><p>Identifies a production job run</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -297,7 +383,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetLabelPrintJob_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetLabelPrintJob(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L863">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L886">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetLabelPrintJob_" data-uid="DataService.ProductDataService.GetLabelPrintJob*"></a>
   <h4 id="DataService_ProductDataService_GetLabelPrintJob_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="DataService.ProductDataService.GetLabelPrintJob(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">GetLabelPrintJob(Int32, Int32, Int32, Int32, Int32)</h4>
@@ -374,7 +460,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetLabelSetting_System_String_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetLabelSetting(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L728">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L751">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetLabelSetting_" data-uid="DataService.ProductDataService.GetLabelSetting*"></a>
   <h4 id="DataService_ProductDataService_GetLabelSetting_System_String_" data-uid="DataService.ProductDataService.GetLabelSetting(System.String)">GetLabelSetting(String)</h4>
@@ -421,7 +507,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetLabelTypes.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetLabelTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L658">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L681">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetLabelTypes_" data-uid="DataService.ProductDataService.GetLabelTypes*"></a>
   <h4 id="DataService_ProductDataService_GetLabelTypes" data-uid="DataService.ProductDataService.GetLabelTypes">GetLabelTypes()</h4>
@@ -451,7 +537,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetLabelTypesTV.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetLabelTypesTV%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L674">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L697">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetLabelTypesTV_" data-uid="DataService.ProductDataService.GetLabelTypesTV*"></a>
   <h4 id="DataService_ProductDataService_GetLabelTypesTV" data-uid="DataService.ProductDataService.GetLabelTypesTV">GetLabelTypesTV()</h4>
@@ -481,7 +567,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetMaterialAndGrade.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetMaterialAndGrade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L644">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L667">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetMaterialAndGrade_" data-uid="DataService.ProductDataService.GetMaterialAndGrade*"></a>
   <h4 id="DataService_ProductDataService_GetMaterialAndGrade" data-uid="DataService.ProductDataService.GetMaterialAndGrade">GetMaterialAndGrade()</h4>
@@ -511,7 +597,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetMaterialIndex.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetMaterialIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L703">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L726">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetMaterialIndex_" data-uid="DataService.ProductDataService.GetMaterialIndex*"></a>
   <h4 id="DataService_ProductDataService_GetMaterialIndex" data-uid="DataService.ProductDataService.GetMaterialIndex">GetMaterialIndex()</h4>
@@ -541,7 +627,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetNextID.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetNextID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L903">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L926">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetNextID_" data-uid="DataService.ProductDataService.GetNextID*"></a>
   <h4 id="DataService_ProductDataService_GetNextID" data-uid="DataService.ProductDataService.GetNextID">GetNextID()</h4>
@@ -571,7 +657,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPastelCategory.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPastelCategory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L842">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L865">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetPastelCategory_" data-uid="DataService.ProductDataService.GetPastelCategory*"></a>
   <h4 id="DataService_ProductDataService_GetPastelCategory" data-uid="DataService.ProductDataService.GetPastelCategory">GetPastelCategory()</h4>
@@ -601,7 +687,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPastelMaster.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPastelMaster%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L400">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L423">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetPastelMaster_" data-uid="DataService.ProductDataService.GetPastelMaster*"></a>
   <h4 id="DataService_ProductDataService_GetPastelMaster" data-uid="DataService.ProductDataService.GetPastelMaster">GetPastelMaster()</h4>
@@ -631,7 +717,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPastelProductIndex.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPastelProductIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L830">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L853">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetPastelProductIndex_" data-uid="DataService.ProductDataService.GetPastelProductIndex*"></a>
   <h4 id="DataService_ProductDataService_GetPastelProductIndex" data-uid="DataService.ProductDataService.GetPastelProductIndex">GetPastelProductIndex()</h4>
@@ -661,11 +747,13 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPlainLabels.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPlainLabels%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L382">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L405">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetPlainLabels_" data-uid="DataService.ProductDataService.GetPlainLabels*"></a>
   <h4 id="DataService_ProductDataService_GetPlainLabels" data-uid="DataService.ProductDataService.GetPlainLabels">GetPlainLabels()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Retrieves products designated for printing onto plain labels, for presentation on DataGridView</p>
+<p>Invokes SP GetPlasmoPlainLabels in database BarTender</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -682,7 +770,8 @@ which to operate</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Data.DataSet</span></td>
-        <td></td>
+        <td><p>DataSet</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -691,7 +780,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetPlasmoProductIndex.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetPlasmoProductIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L818">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L841">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetPlasmoProductIndex_" data-uid="DataService.ProductDataService.GetPlasmoProductIndex*"></a>
   <h4 id="DataService_ProductDataService_GetPlasmoProductIndex" data-uid="DataService.ProductDataService.GetPlasmoProductIndex">GetPlasmoProductIndex()</h4>
@@ -721,7 +810,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetProductCompany.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetProductCompany%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L690">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L713">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetProductCompany_" data-uid="DataService.ProductDataService.GetProductCompany*"></a>
   <h4 id="DataService_ProductDataService_GetProductCompany" data-uid="DataService.ProductDataService.GetProductCompany">GetProductCompany()</h4>
@@ -751,7 +840,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetProductGradeIndex.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetProductGradeIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L716">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L739">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetProductGradeIndex_" data-uid="DataService.ProductDataService.GetProductGradeIndex*"></a>
   <h4 id="DataService_ProductDataService_GetProductGradeIndex" data-uid="DataService.ProductDataService.GetProductGradeIndex">GetProductGradeIndex()</h4>
@@ -781,7 +870,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_GetProductIndex_System_Int32_System_String_System_String_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.GetProductIndex(System.Int32%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L801">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L824">View Source</a>
   </span>
   <a id="DataService_ProductDataService_GetProductIndex_" data-uid="DataService.ProductDataService.GetProductIndex*"></a>
   <h4 id="DataService_ProductDataService_GetProductIndex_System_Int32_System_String_System_String_" data-uid="DataService.ProductDataService.GetProductIndex(System.Int32,System.String,System.String)">GetProductIndex(Int32, String, String)</h4>
@@ -843,7 +932,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_PromptPrintJob_System_Int32_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.PromptPrintJob(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L414">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L437">View Source</a>
   </span>
   <a id="DataService_ProductDataService_PromptPrintJob_" data-uid="DataService.ProductDataService.PromptPrintJob*"></a>
   <h4 id="DataService_ProductDataService_PromptPrintJob_System_Int32_" data-uid="DataService.ProductDataService.PromptPrintJob(System.Int32)">PromptPrintJob(Int32)</h4>
@@ -890,7 +979,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdateLabelSetting_System_String_System_String_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdateLabelSetting(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L741">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L764">View Source</a>
   </span>
   <a id="DataService_ProductDataService_UpdateLabelSetting_" data-uid="DataService.ProductDataService.UpdateLabelSetting*"></a>
   <h4 id="DataService_ProductDataService_UpdateLabelSetting_System_String_System_String_" data-uid="DataService.ProductDataService.UpdateLabelSetting(System.String,System.String)">UpdateLabelSetting(String, String)</h4>
@@ -927,7 +1016,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdatePastelMaster_System_Data_DataSet_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdatePastelMaster(System.Data.DataSet)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L431">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L454">View Source</a>
   </span>
   <a id="DataService_ProductDataService_UpdatePastelMaster_" data-uid="DataService.ProductDataService.UpdatePastelMaster*"></a>
   <h4 id="DataService_ProductDataService_UpdatePastelMaster_System_Data_DataSet_" data-uid="DataService.ProductDataService.UpdatePastelMaster(System.Data.DataSet)">UpdatePastelMaster(DataSet)</h4>
@@ -959,11 +1048,14 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdatePlainLabels_System_Data_DataSet_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdatePlainLabels(System.Data.DataSet)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L285">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L304">View Source</a>
   </span>
   <a id="DataService_ProductDataService_UpdatePlainLabels_" data-uid="DataService.ProductDataService.UpdatePlainLabels*"></a>
   <h4 id="DataService_ProductDataService_UpdatePlainLabels_System_Data_DataSet_" data-uid="DataService.ProductDataService.UpdatePlainLabels(System.Data.DataSet)">UpdatePlainLabels(DataSet)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Maintains a table of items designated for printing onto plain labels</p>
+<p>Implemented by table PlasmoPlainLabels, in database BarTender <br>
+Invokes SP AddPlasmoLabels, UpdatePlasmoPlainLabels, DeletePlasmoPlainLabels</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -982,7 +1074,8 @@ which to operate</p>
       <tr>
         <td><span class="xref">System.Data.DataSet</span></td>
         <td><span class="parametername">ds</span></td>
-        <td></td>
+        <td><p>DataSet containing plain label product items</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -991,7 +1084,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdatePrintJobs_System_Data_DataSet_System_Int32_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdatePrintJobs(System.Data.DataSet%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L88">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L101">View Source</a>
   </span>
   <a id="DataService_ProductDataService_UpdatePrintJobs_" data-uid="DataService.ProductDataService.UpdatePrintJobs*"></a>
   <h4 id="DataService_ProductDataService_UpdatePrintJobs_System_Data_DataSet_System_Int32_" data-uid="DataService.ProductDataService.UpdatePrintJobs(System.Data.DataSet,System.Int32)">UpdatePrintJobs(DataSet, Int32)</h4>
@@ -1028,7 +1121,7 @@ which to operate</p>
     <a href="https://github.com/David-plasmo/LabelPrinting/new/main/apiSpec/new?filename=DataService_ProductDataService_UpdateProductMaterial_System_Data_DataSet_.md&amp;value=---%0Auid%3A%20DataService.ProductDataService.UpdateProductMaterial(System.Data.DataSet)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L536">View Source</a>
+    <a href="https://github.com/David-plasmo/LabelPrinting/blob/main/LabelPrinting/DataService.cs/#L559">View Source</a>
   </span>
   <a id="DataService_ProductDataService_UpdateProductMaterial_" data-uid="DataService.ProductDataService.UpdateProductMaterial*"></a>
   <h4 id="DataService_ProductDataService_UpdateProductMaterial_System_Data_DataSet_" data-uid="DataService.ProductDataService.UpdateProductMaterial(System.Data.DataSet)">UpdateProductMaterial(DataSet)</h4>
