@@ -14,21 +14,22 @@ namespace LabelPrinting
 		public string Description { get; set; }
 		public int CtnQty { get; set; }
 		public int StartNo { get; set; }
-		public int EndNo { get; set; }
-		public string BottleSize { get; set; }
-		public string Style { get; set; }
-		public string NeckSize { get; set; }
-		public string Colour { get; set; }
-		public string Material { get; set; }
+		public int EndNo { get; set; } 
+		public string BottleSize { get; set; } = "";
+		public string Style { get; set; } = "";
+		public string NeckSize { get; set; } = "";
+		public string Colour { get; set; } = "";
+		public string Material { get; set; } = "";
 		public int NumReqd { get; set; }
 		public int JobRun { get; set; }
 		public string CompanyCode { get; set; }
-		public string Status { get; set; }
-		public string last_updated_by { get; set; }
-		public DateTime last_updated_on { get; set; }
+		public string Status { get; set; } = "";
+		public string last_updated_by { get; set; } = "";
+		public DateTime? last_updated_on { get; set; } = DateTime.MinValue;
 
 		public LabelPrintJobDC()
         {
+
         }
 		public LabelPrintJobDC(int JobID_, int LabelTypeId_, string Code_, string Description_, int CtnQty_, int StartNo_, int EndNo_, string BottleSize_, string Style_, string NeckSize_, string Colour_, string Material_, int NumReqd_, int JobRun_, string CompanyCode_, string Status_, string last_updated_by_, DateTime last_updated_on_)
 		{
@@ -53,3 +54,4 @@ namespace LabelPrinting
 		}
 	}
 }
+

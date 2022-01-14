@@ -23,19 +23,29 @@ namespace LabelPrinting
         int NumSpare = 0;
 
         private void btnPrint_Click(object sender, EventArgs e)
-        {    
-            if (dc.StartNo > 0 && dc.EndNo > 0 && dc.StartNo <= dc.EndNo)
+        {    try
             {
-                LabelPrintJobDAL.AddPrintJob(ref dc);
-                DataSet BMPrintLabels = new DataService.ProductDataService().GetLabelPrintJob(dc.JobID, dc.LabelTypeId, NumSpare, dc.StartNo, dc.EndNo);
-                DataService.ProductDataService pds = new DataService.ProductDataService();
-                pds.EnqueueBartenderLabels(BMPrintLabels, dc.LabelTypeId, dc.NumReqd, dc.JobRun);
-                RunPrint();
+                if (dc.StartNo > 0 && dc.EndNo > 0 && dc.StartNo <= dc.EndNo)
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    dc.Description = Description;
+                    LabelPrintJobDAL.AddPrintJob(ref dc);
+                    DataSet BMPrintLabels = new DataService.ProductDataService().GetLabelPrintJob(dc.JobID, dc.LabelTypeId, NumSpare, dc.StartNo, dc.EndNo);
+                    DataService.ProductDataService pds = new DataService.ProductDataService();
+                    pds.EnqueueBartenderLabels(BMPrintLabels, dc.LabelTypeId, dc.NumReqd, dc.JobRun);
+                    RunPrint();
+                    Cursor.Current = Cursors.Default;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid CtnQty or StartNo or EndNo");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Invalid CtnQty or StartNo or EndNo");
+                MessageBox.Show(ex.Message);
             }
+            
            
         }
 

@@ -20,7 +20,8 @@ namespace LabelPrinting
                 SqlConnection connection = new SqlConnection(ProductDataService.GetConnectionString());
                 connection.Open();
                 cmd = new System.Data.SqlClient.SqlCommand("TestPlasmoIntegration.dbo.AddPrintJob", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.Add("@LabelTypeId", SqlDbType.Int, 4);
                 cmd.Parameters["@LabelTypeId"].Direction = System.Data.ParameterDirection.Input;
