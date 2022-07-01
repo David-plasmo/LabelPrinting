@@ -19,22 +19,31 @@ namespace LabelPrinting
         //public int CtnQty, NumReqd, StartNo, EndNo, LabelTypeID;
 
         public LabelPrintJobDC dc;
-        public string LabelNo, DfltPrinter, Description;
+        public string LabelNo, DfltPrinter, Description, ItemClass;
         int NumSpare = 0;
 
         private void btnPrint_Click(object sender, EventArgs e)
-        {    try
+        {    
+            try
             {
                 if (dc.StartNo > 0 && dc.EndNo > 0 && dc.StartNo <= dc.EndNo)
                 {
                     Cursor.Current = Cursors.WaitCursor;
+                    btnPrint.Enabled = false;
                     dc.Description = Description;
                     LabelPrintJobDAL.AddPrintJob(ref dc);
                     DataSet BMPrintLabels = new DataService.ProductDataService().GetLabelPrintJob(dc.JobID, dc.LabelTypeId, NumSpare, dc.StartNo, dc.EndNo);
+                    if (chkPrintOptions.Checked)
+                    {
+                        LabelOptions f = new LabelOptions(BMPrintLabels, dc.LabelTypeId);
+                        f.ShowDialog();
+                    }
                     DataService.ProductDataService pds = new DataService.ProductDataService();
                     pds.EnqueueBartenderLabels(BMPrintLabels, dc.LabelTypeId, dc.NumReqd, dc.JobRun);
                     RunPrint();
                     Cursor.Current = Cursors.Default;
+                    MessageBox.Show("Sent to printer.");
+                    btnPrint.Enabled = true;
                 }
                 else
                 {
@@ -53,7 +62,7 @@ namespace LabelPrinting
         {
             try
             {
-                //var p = new System.Diagnostics.Process();
+                var p = new System.Diagnostics.Process();
                 var appSettings = ConfigurationManager.AppSettings;
 
 
@@ -64,7 +73,7 @@ namespace LabelPrinting
                 //ds.UpdateLabelSetting(cboPrinter.SelectedItem.ToString(), labelNo);
                 //txtLastSetting.Text = labelNo;
 
-                //p.StartInfo.FileName = appSettings["BarTenderExePath"] ?? "Not Found";
+                p.StartInfo.FileName = appSettings["BarTenderExePath"] ?? "Not Found";
                 string fmtFileKey = appSettings[LabelNo] ?? "Not Found";
                 //check for special customer format labels
                 if (LabelNo == "P5" || LabelNo == "P6")
@@ -85,9 +94,9 @@ namespace LabelPrinting
                             int ctnQty = dc.CtnQty;
                             int numCopies = (numReqd > ctnQty && ctnQty > 0) ? numReqd / ctnQty : 1;
                             printCmd = printCmd.Replace("[n]", numCopies.ToString());
-                            //p.StartInfo.Arguments = printCmd;
-                            //p.Start();                            
-                            RunBTPrint(printCmd);
+                            p.StartInfo.Arguments = printCmd;
+                            p.Start();                            
+                            //RunBTPrint(printCmd);
                             break;
                         }
                     }
@@ -107,7 +116,9 @@ namespace LabelPrinting
                         //DataTable dt = dv.ToTable();
                         string fmtValue = appSettings[fmtFileKey];
                         string printCmd = fmtValue.Replace("[Printer]", printer);
-                        RunBTPrint(printCmd);
+                        p.StartInfo.Arguments = printCmd;
+                        p.Start();
+                        //RunBTPrint(printCmd);
                         /*
                         if (dt.Rows.Count > 0  && dt.Rows[0]["Grade"] != null && dt.Rows[0]["Grade"].ToString().Length > 0 && dt.Rows[0]["Grade"].ToString() != "ST")
                         {
@@ -115,8 +126,8 @@ namespace LabelPrinting
                             //string printer = appSettings[cboPrinter.SelectedItem.ToString()] ?? "Not Found";
                             string printCmd = fmtValue.Replace("[Printer]", printer);
                             printCmd = printCmd.Replace("[Grade]", dt.Rows[0]["Grade"].ToString());
-                            //p.StartInfo.Arguments = printCmd;
-                            //p.Start();
+                            p.StartInfo.Arguments = printCmd;
+                            p.Start();
                             RunBTPrint(printCmd);
                         }
                         else
@@ -137,9 +148,9 @@ namespace LabelPrinting
                     {
                         //string printer = appSettings[cboPrinter.SelectedItem.ToString()] ?? "Not Found";
                         string printCmd = appSettings[fmtFileKey].Replace("[Printer]", printer);
-                        //p.StartInfo.Arguments = printCmd;
-                        //p.Start();
-                        RunBTPrint(printCmd);
+                        p.StartInfo.Arguments = printCmd;
+                        p.Start();
+                        //RunBTPrint(printCmd);
                     }
 
                 }
@@ -157,6 +168,13 @@ namespace LabelPrinting
 
         public void RunBTPrint(string cmdLine)
         {
+
+            //ZPL command to set print mode for Rewind
+            //^XA^MMR^JUS^XZ
+
+            //ZPL commabd to set print mode for Tear Off
+            //^XA^MTT^FS^XZ     
+
             // Initialize a new BarTender print engine.
             using (Engine btEngine = new Engine())
             {
@@ -169,8 +187,8 @@ namespace LabelPrinting
                 //btEngine.Documents.Open(@"C:\Format1.btw");
 
                 // Hook up to command line event.
-                //btEngine.CommandLineCompleted +=
-                //   new EventHandler<CommandLineCompletedEventArgs>(engine_CommandLineCompleted);
+                btEngine.CommandLineCompleted +=
+                  new EventHandler<CommandLineCompletedEventArgs>(engine_CommandLineCompleted);
 
                 // Sign up for print job events.
                 btEngine.JobCancelled += new EventHandler<PrintJobEventArgs>(Engine_JobCancelled);
@@ -195,16 +213,16 @@ namespace LabelPrinting
                 }
 
                 //input parameter cmdLine contains the format to be printed
-                btEngine.CommandLine(cmdLine);
+                btEngine.CommandLine(cmdLine); 
 
                 // Since the commandline is processed asynchronously, we must
                 // wait for printing to complete before stopping the engine.
                 while (btEngine.IsProcessingCommandLines || btEngine.IsPrinting)
                     System.Threading.Thread.Sleep(2000);
 
-                // Stop the BarTender print engine.
+                    //Stop the BarTender print engine.
                 btEngine.Stop(SaveOptions.DoNotSaveChanges);
-                // btEngine.Stop();
+                //btEngine.Stop();
             }
         }
 
@@ -215,7 +233,8 @@ namespace LabelPrinting
         void Engine_JobErrorOccurred(object sender, PrintJobEventArgs printJob)
         {
             dc.Status = "Error";
-            //dc.ErrMsg = printJob.PrinterInfo.Message;
+            string ErrMsg = printJob.PrinterInfo.Message;
+            MessageBox.Show(ErrMsg);
         }
 
         void Engine_JobPaused(object sender, PrintJobEventArgs printJob)
@@ -224,7 +243,7 @@ namespace LabelPrinting
         }
         void Engine_JobQueued(object sender, PrintJobEventArgs printJob)
         {
-            dc.Status = "Printed";
+            dc.Status = "Queued";
         }
         void Engine_JobRestarted(object sender, PrintJobEventArgs printJob)
         {
@@ -233,6 +252,10 @@ namespace LabelPrinting
         void Engine_JobResumed(object sender, PrintJobEventArgs printJob)
         {
             dc.Status = "Resumed";
+        }
+        void engine_CommandLineCompleted(object sender, CommandLineCompletedEventArgs printJob)
+        {
+            dc.Status = "CommandLine Completed";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -375,6 +398,16 @@ namespace LabelPrinting
             CheckPrintEnabled();
         }
 
+        private void cboLabelType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show(cboLabelType.SelectedIndex.ToString());
+            //dc.LabelTypeId = (int)cboLabelType.Items(cboLabelType[SelectedIndex]);
+            ComboItem selectedLabel = cboLabelType.SelectedItem as ComboItem;
+            dc.LabelTypeId = selectedLabel.Key;
+            LabelNo = selectedLabel.Value;
+
+        }
+
         private void txtCtnQty_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckInteger_OnKeyPress(sender, e);
@@ -390,16 +423,56 @@ namespace LabelPrinting
             txtStartNo.Text = dc.StartNo.ToString();
             txtEndNo.Text = dc.EndNo.ToString();
             cboLabelType.Items.Clear();
+            List<ComboItem> cboItems = new List<ComboItem>();
+            
 
-            //allow plain label print option for Plasmo Blow Mould or Injection Mould products
-            cboLabelType.Items.Add(new ComboBoxItem(dc.LabelTypeId.ToString(), LabelNo));    
-            if (dc.LabelTypeId == 2)
-                cboLabelType.Items.Add(new ComboBoxItem(24.ToString(), "P1b"));
-            if (dc.LabelTypeId == 3)
-                cboLabelType.Items.Add(new ComboBoxItem(23.ToString(), "P4"));
+
+
+            //special labels for Yates products
+            if (dc.Code.Contains("09-YAT"))
+            {
+                cboItems.Add(new ComboItem(3, "P2"));
+                cboItems.Add(new ComboItem(19, "P5"));
+                cboItems.Add(new ComboItem(20, "P6"));
+                LabelNo = "P5";
+                dc.LabelTypeId = 19;
+            }  
+            // Specific Jars - to be treated like Customer Injection Mould
+            //Changed 29/06/22, request by Susan Brennan.  Labels now to be printed on Plasmo Labels, on Plasmo Cartons
+            //else if (dc.Code.Contains("08-3000J-6PH"))  
+            //{
+            //    cboItems.Add(new ComboItem(3, "P2"));
+            //    cboItems.Add(new ComboItem(23, "P4"));
+            //    LabelNo = "P4";                
+            //}
+            //allow large size of plain label print option for Plasmo Blow Mould                               
+            else if (dc.LabelTypeId == 2 && ItemClass.Trim() != "BLOW-CUS")
+            {
+                cboItems.Add(new ComboItem(dc.LabelTypeId, LabelNo));
+                cboItems.Add(new ComboItem(24, "P1b"));
+            }
+            //allow smaller size of plain label print option for Customer-owned Plasmo Blow Mould 
+            else if (dc.LabelTypeId == 2 && ItemClass.Trim() == "BLOW-CUS")
+            {                                
+                cboItems.Add(new ComboItem(dc.LabelTypeId, LabelNo));  // LabelNo will be P1, for Plasmo Injection Mould
+                cboItems.Add(new ComboItem(23, "P4"));
+                LabelNo = "P4";
+            }                
+            //allow plain label print option for Plasmo Injection Mould Customer owned labels
+            else if (dc.LabelTypeId == 3 && ItemClass.Trim() == "INJ-M-CUS")
+            {
+                cboItems.Add(new ComboItem(dc.LabelTypeId, LabelNo));
+                cboItems.Add(new ComboItem(23, "P4"));
+                LabelNo = "P4";
+            }                
+            else
+                cboLabelType.Items.Add(new ComboItem(dc.LabelTypeId, LabelNo));
+
+            cboLabelType.DataSource = cboItems;
+            cboLabelType.DisplayMember = "Value";
+            cboLabelType.ValueMember = "Key";
             cboLabelType.Text = LabelNo;
             cboLabelType.Enabled = cboLabelType.Items.Count > 1;
-
             
             // Get the list of printers visible to BarTender (as named by printer driver)
             Printers btprinters = new Printers();
@@ -417,9 +490,12 @@ namespace LabelPrinting
                 }
             }
             if (cboPrinter.Items.Count > 0)
-                //    cboPrinter.SelectedIndex = 0;
+            {
+                // cboPrinter.SelectedIndex = 0;
                 cboPrinter.Text = DfltPrinter;
-
+                int index = cboPrinter.FindString(DfltPrinter);
+                if (index >= 0) cboPrinter.SelectedIndex = index;
+            }               
             CheckPrintEnabled();
         }
 

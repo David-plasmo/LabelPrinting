@@ -105,6 +105,8 @@ namespace LabelPrinting
         private void JobRun_Load(object sender, EventArgs e)
         {
             bIsLoading = true;
+            dtpDateTo.Value = DateTime.Today;
+            dtpDateFrom.Value = DateTime.Today.AddDays(-7);
         }
 
 
@@ -127,7 +129,7 @@ namespace LabelPrinting
                 dgvEdit.AutoGenerateColumns = true;
 
                 dal = new JobRunDAL();
-                dsJobRun = dal.SelectJobRun();
+                dsJobRun = dal.SelectJobRun((DateTime)dtpDateFrom.Value, (DateTime)dtpDateTo.Value);                
                 DataTable dt = dsJobRun.Tables[0];
                 dgvEdit.DataSource = dt;
 
@@ -198,6 +200,9 @@ namespace LabelPrinting
                 this.dgvCombo = new ComboBox();
                 this.dgvCombo.Visible = false;
                 this.dgvEdit.Controls.Add(this.dgvCombo);
+                this.dgvCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+                this.dgvCombo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                this.dgvCombo.AutoCompleteSource = AutoCompleteSource.ListItems;
 
                 SetImageColumn();
                 bIsLoading = false;
@@ -397,6 +402,7 @@ namespace LabelPrinting
                                 f.dc = dc;
                                 f.LabelNo = dt.Rows[0]["LabelNo"].ToString();
                                 f.DfltPrinter = dt.Rows[0]["DfltPrinter"].ToString();
+                                f.ItemClass = dt.Rows[0]["ItemClass"].ToString();
 
                                 f.ShowDialog();
                                 curRow.Cells["CtnQty"].Value = numQty;
@@ -468,7 +474,9 @@ namespace LabelPrinting
                 default:
                     return;
             }
-            this.dgvCombo.SelectedIndex = 0;
+            if (dgvCombo.Items.Count > 0)
+                this.dgvCombo.SelectedIndex = 0;
+                        
             this.dgvCombo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             this.dgvCombo.AutoCompleteSource = AutoCompleteSource.ListItems;
             this.dgvCombo.Location = this.dgvEdit.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true).Location;
@@ -765,6 +773,11 @@ namespace LabelPrinting
             SetImageRow(sender, e);
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshGrid();
+        }
+
         private void JobRun_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -836,8 +849,20 @@ namespace LabelPrinting
             {
                 ((DataGridViewImageButtonCell)(row.Cells["Print"])).Enabled = false;
                 ((DataGridViewImageButtonCell)(row.Cells["Print"])).ButtonState = PushButtonState.Disabled;
-            }
-            //}
+            }            
+        }
+    }
+    public class ComboItem
+    {
+        public int Key { get; set; }
+        public string Value { get; set; }
+        public ComboItem(int key, string value)
+        {
+            Key = key; Value = value;
+        }
+        public override string ToString()
+        {
+            return Value;
         }
     }
 }

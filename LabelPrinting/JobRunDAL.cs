@@ -12,18 +12,20 @@ namespace LabelPrinting
 {
     class JobRunDAL : DataAccessBase
     {
-        public DataSet SelectJobRun()
+        public DataSet SelectJobRun(DateTime? DateFrom, DateTime? DateTo)
         {
             try
             {
-                return ExecuteDataSet("TestPlasmoIntegration.dbo.SelectJobRun");
+                return ExecuteDataSet("TestPlasmoIntegration.dbo.SelectJobRun",                     
+                     CreateParameter("@DateFrom", SqlDbType.DateTime2, DateFrom),
+                     CreateParameter("@DateTo", SqlDbType.DateTime2, DateTo));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 return null;
             }
-        }
+        }        
         public DataSet GetCompany()
         {
             try

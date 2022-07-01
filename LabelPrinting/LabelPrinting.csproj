@@ -97,6 +97,7 @@
     <Compile Include="DataClassHelper.cs" />
     <Compile Include="DataGridViewImageColumns.cs" />
     <Compile Include="DataService.cs" />
+    <Compile Include="DataGridViewDisableButtonColumn.cs" />
     <Compile Include="EditPastelMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +134,14 @@
     <Compile Include="EditProductMaterialRow.Designer.cs">
       <DependentUpon>EditProductMaterialRow.cs</DependentUpon>
     </Compile>
+    <Compile Include="GPDataEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GPDataEntry.Designer.cs">
+      <DependentUpon>GPDataEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GPDataEntryDAL.cs" />
+    <Compile Include="GPDataEntryDC.cs" />
     <Compile Include="JobRun.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +150,12 @@
     </Compile>
     <Compile Include="JobRunDAL.cs" />
     <Compile Include="JobRunDC.cs" />
+    <Compile Include="LabelOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LabelOptions.Designer.cs">
+      <DependentUpon>LabelOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="LabelPrintJobDAL.cs" />
     <Compile Include="LabelPrintJobDC.cs" />
     <Compile Include="MainForm.cs">
@@ -159,6 +174,14 @@
     <Compile Include="PlasmoLabelTypes.Designer.cs">
       <DependentUpon>PlasmoLabelTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="PriceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PriceList.Designer.cs">
+      <DependentUpon>PriceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PriceListDAL.cs" />
+    <Compile Include="PriceListDC.cs" />
     <Compile Include="ProductionOperatorDAL.cs" />
     <Compile Include="ProductionOperatorDC.cs" />
     <Compile Include="ProductionOperatorMaint.cs">
@@ -209,14 +232,23 @@
     <EmbeddedResource Include="EditProductMaterialRow.resx">
       <DependentUpon>EditProductMaterialRow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GPDataEntry.resx">
+      <DependentUpon>GPDataEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JobRun.resx">
       <DependentUpon>JobRun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelOptions.resx">
+      <DependentUpon>LabelOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlasmoLabelTypes.resx">
       <DependentUpon>PlasmoLabelTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PriceList.resx">
+      <DependentUpon>PriceList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductionOperatorMaint.resx">
       <DependentUpon>ProductionOperatorMaint.cs</DependentUpon>

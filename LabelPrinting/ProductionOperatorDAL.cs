@@ -103,7 +103,7 @@ namespace LabelPrinting
                 System.Data.SqlClient.SqlCommand cmd = null;
                 SqlConnection connection = new SqlConnection(ProductDataService.GetConnectionString());
                 connection.Open();
-                cmd = new System.Data.SqlClient.SqlCommand("AddProductionOperator", connection);
+                cmd = new System.Data.SqlClient.SqlCommand("PlasmoIntegration.dbo.AddProductionOperator", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@OperatorID", SqlDbType.Int, 4);
@@ -145,7 +145,7 @@ namespace LabelPrinting
                 System.Data.SqlClient.SqlCommand cmd = null;
                 SqlConnection connection = new SqlConnection(ProductDataService.GetConnectionString());
                 connection.Open();
-                cmd = new System.Data.SqlClient.SqlCommand("UpdateProductionOperator", connection);
+                cmd = new System.Data.SqlClient.SqlCommand("PlasmoIntegration.dbo.UpdateProductionOperator", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@OperatorID", SqlDbType.Int, 4);
@@ -186,7 +186,7 @@ namespace LabelPrinting
                 System.Data.SqlClient.SqlCommand cmd = null;
                 SqlConnection connection = new SqlConnection(ProductDataService.GetConnectionString());
                 connection.Open();
-                cmd = new System.Data.SqlClient.SqlCommand("DeleteProductionOperator", connection);
+                cmd = new System.Data.SqlClient.SqlCommand("PlasmoIntegration.dbo.DeleteProductionOperator", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@OperatorID", SqlDbType.Int, 4);

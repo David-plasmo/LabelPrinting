@@ -102,7 +102,8 @@ namespace LabelPrinting
                     cboLabelType.SelectedIndex = i;
                     ComboBoxItem res = cboLabelType.SelectedItem as ComboBoxItem;
                     //Console.WriteLine("{0}: {1},{2}", res.Address, res.Longtitude, res.Latitude);
-                    if (res.Value == CurrentLabel.LabelType)
+                    //if (res.Value == CurrentLabel.LabelType)
+                    if (res.Text == CurrentLabel.LabelType)
                     {
                         Selected = i;
                         break;
@@ -1971,6 +1972,12 @@ namespace LabelPrinting
         private void manageJobRunToolStripMenuItem_Click(object sender, EventArgs e)
         {
             JobRun f = new JobRun();
+            f.ShowDialog();
+        }
+
+        private void gPProductDataEntryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GPDataEntry f = new GPDataEntry();
             f.ShowDialog();
         }
 

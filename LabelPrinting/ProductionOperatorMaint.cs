@@ -143,7 +143,7 @@ namespace LabelPrinting
                 }
                 dgvEdit.EndEdit();
                 dal.UpdateProductionOperator(dsOperator);
-                this.Close();
+                //this.Close();
             }
             catch
             {

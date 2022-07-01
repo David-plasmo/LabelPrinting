@@ -55,6 +55,7 @@ namespace LabelPrinting
             this.lblEndNoInvalid = new System.Windows.Forms.Label();
             this.lblCtnQtyNotValid = new System.Windows.Forms.Label();
             this.lblNumReqdNotValid = new System.Windows.Forms.Label();
+            this.chkPrintOptions = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -217,6 +218,7 @@ namespace LabelPrinting
             this.cboLabelType.Name = "cboLabelType";
             this.cboLabelType.Size = new System.Drawing.Size(47, 21);
             this.cboLabelType.TabIndex = 17;
+            this.cboLabelType.SelectedIndexChanged += new System.EventHandler(this.cboLabelType_SelectedIndexChanged);
             // 
             // btnPrint
             // 
@@ -300,11 +302,22 @@ namespace LabelPrinting
             this.lblNumReqdNotValid.Text = "*  NumReqd cannot be zero.";
             this.lblNumReqdNotValid.Visible = false;
             // 
+            // chkPrintOptions
+            // 
+            this.chkPrintOptions.AutoSize = true;
+            this.chkPrintOptions.Location = new System.Drawing.Point(196, 261);
+            this.chkPrintOptions.Name = "chkPrintOptions";
+            this.chkPrintOptions.Size = new System.Drawing.Size(116, 17);
+            this.chkPrintOptions.TabIndex = 26;
+            this.chkPrintOptions.Text = "Show Print Options";
+            this.chkPrintOptions.UseVisualStyleBackColor = true;
+            // 
             // PromptLabelPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 358);
+            this.Controls.Add(this.chkPrintOptions);
             this.Controls.Add(this.lblNumReqdNotValid);
             this.Controls.Add(this.lblCtnQtyNotValid);
             this.Controls.Add(this.lblEndNoInvalid);
@@ -367,5 +380,6 @@ namespace LabelPrinting
         private System.Windows.Forms.Label lblEndNoInvalid;
         private System.Windows.Forms.Label lblCtnQtyNotValid;
         private System.Windows.Forms.Label lblNumReqdNotValid;
+        private System.Windows.Forms.CheckBox chkPrintOptions;
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.cboLabelType = new System.Windows.Forms.ComboBox();
             this.lblHelp = new System.Windows.Forms.Label();
@@ -85,12 +85,13 @@
             this.productMaterialAndGradeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemClassLabelLinkMaintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productionOperatorMaintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageJobRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gPProductDataEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvJobRun = new System.Windows.Forms.DataGridView();
             this.dgvBMLabels = new System.Windows.Forms.DataGridView();
             this.lblProductType = new System.Windows.Forms.Label();
             this.txtNumSpare = new System.Windows.Forms.TextBox();
             this.lblNumSpare = new System.Windows.Forms.Label();
-            this.manageJobRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -109,6 +110,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitContainer1.Panel1.Controls.Add(this.cboLabelType);
             this.splitContainer1.Panel1.Controls.Add(this.lblHelp);
             this.splitContainer1.Panel1.Controls.Add(this.lblMediaType);
@@ -460,7 +462,8 @@
             this.productMaterialAndGradeToolStripMenuItem,
             this.itemClassLabelLinkMaintenanceToolStripMenuItem,
             this.productionOperatorMaintenanceToolStripMenuItem,
-            this.manageJobRunToolStripMenuItem});
+            this.manageJobRunToolStripMenuItem,
+            this.gPProductDataEntryToolStripMenuItem});
             this.otherToolStripMenuItem.Name = "otherToolStripMenuItem";
             this.otherToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.otherToolStripMenuItem.Text = "Other";
@@ -594,19 +597,33 @@
             this.productionOperatorMaintenanceToolStripMenuItem.Text = "Production Operator Maintenance";
             this.productionOperatorMaintenanceToolStripMenuItem.Click += new System.EventHandler(this.productionOperatorMaintenanceToolStripMenuItem_Click);
             // 
+            // manageJobRunToolStripMenuItem
+            // 
+            this.manageJobRunToolStripMenuItem.Name = "manageJobRunToolStripMenuItem";
+            this.manageJobRunToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.manageJobRunToolStripMenuItem.Text = "Manage Job Run";
+            this.manageJobRunToolStripMenuItem.Click += new System.EventHandler(this.manageJobRunToolStripMenuItem_Click);
+            // 
+            // gPProductDataEntryToolStripMenuItem
+            // 
+            this.gPProductDataEntryToolStripMenuItem.Name = "gPProductDataEntryToolStripMenuItem";
+            this.gPProductDataEntryToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.gPProductDataEntryToolStripMenuItem.Text = "GP Product Data Entry";
+            this.gPProductDataEntryToolStripMenuItem.Click += new System.EventHandler(this.gPProductDataEntryToolStripMenuItem_Click);
+            // 
             // dgvJobRun
             // 
             this.dgvJobRun.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvJobRun.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJobRun.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvJobRun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJobRun.Location = new System.Drawing.Point(0, 53);
             this.dgvJobRun.MultiSelect = false;
@@ -634,14 +651,14 @@
             this.dgvBMLabels.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBMLabels.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBMLabels.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvBMLabels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBMLabels.Location = new System.Drawing.Point(0, 53);
             this.dgvBMLabels.Name = "dgvBMLabels";
@@ -681,13 +698,6 @@
             this.lblNumSpare.TabIndex = 5;
             this.lblNumSpare.Text = "Number Spare";
             this.lblNumSpare.Visible = false;
-            // 
-            // manageJobRunToolStripMenuItem
-            // 
-            this.manageJobRunToolStripMenuItem.Name = "manageJobRunToolStripMenuItem";
-            this.manageJobRunToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.manageJobRunToolStripMenuItem.Text = "Manage Job Run";
-            this.manageJobRunToolStripMenuItem.Click += new System.EventHandler(this.manageJobRunToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -777,6 +787,7 @@
         private System.Windows.Forms.ToolStripMenuItem productionOperatorMaintenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem manageJobRunToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gPProductDataEntryToolStripMenuItem;
     }
 }
 
