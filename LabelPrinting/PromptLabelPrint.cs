@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
 using System.Windows.Forms;
 using Seagull.BarTender.Print;
@@ -473,7 +468,7 @@ namespace LabelPrinting
             cboLabelType.ValueMember = "Key";
             cboLabelType.Text = LabelNo;
             cboLabelType.Enabled = cboLabelType.Items.Count > 1;
-            
+
             // Get the list of printers visible to BarTender (as named by printer driver)
             Printers btprinters = new Printers();
             var appSettings = ConfigurationManager.AppSettings;

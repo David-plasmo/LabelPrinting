@@ -79,7 +79,7 @@ namespace LabelPrinting
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvEdit);
-            this.splitContainer1.Size = new System.Drawing.Size(1568, 875);
+            this.splitContainer1.Size = new System.Drawing.Size(1084, 875);
             this.splitContainer1.SplitterDistance = 54;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -287,7 +287,7 @@ namespace LabelPrinting
             this.dgvEdit.Location = new System.Drawing.Point(0, 0);
             this.dgvEdit.Name = "dgvEdit";
             this.dgvEdit.RowHeadersWidth = 26;
-            this.dgvEdit.Size = new System.Drawing.Size(1568, 817);
+            this.dgvEdit.Size = new System.Drawing.Size(1084, 817);
             this.dgvEdit.TabIndex = 0;
             this.dgvEdit.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvEdit_CellBeginEdit);
             this.dgvEdit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEdit_CellClick);
@@ -298,7 +298,7 @@ namespace LabelPrinting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1568, 875);
+            this.ClientSize = new System.Drawing.Size(1084, 875);
             this.Controls.Add(this.splitContainer1);
             this.Name = "GPDataEntry";
             this.Text = "GPDataEntry";

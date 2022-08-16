@@ -22,6 +22,11 @@ namespace LabelPrinting
         public DataSet dsCurrency;
         public DataSet dsUOFM;
 
+        //public event System.Windows.Forms.DataGridViewCellEventHandler CellValueChanged;
+        //public event System.Windows.Forms.DataGridViewRowsRemovedEventHandler RowsRemoved;
+
+        //public delegate void DataGridViewCellEventHandler(object? sender, DataGridViewCellEventArgs e);
+
         private DataSet dsPriceListDesc;
         private DataSet dsPriceListH;  //header     IV00107
         private DataSet dsPriceListQ;  //quantities IV00108
@@ -57,13 +62,13 @@ namespace LabelPrinting
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void PriceList_FormClosed(object sender, FormClosedEventArgs e)
         {
             try
             {
+                DoSave();
                 if (!CloseNow)
                 {
                     //click the collapse/expand button on the owner form (!!)
@@ -76,6 +81,29 @@ namespace LabelPrinting
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void DoSave()
+        {
+            try
+            {
+                //MessageBox.Show("Do Save");
+                if (dgvHeader.IsCurrentRowDirty)
+                {
+                    this.Validate();
+                }
+                dgvHeader.EndEdit();
+                dal.UpdatePriceList(dsPriceListH);
+                if(dgvDetail != null && dsPriceListQ != null)
+                {
+                    dgvDetail.EndEdit();
+                    dal.UpdatePriceList(dsPriceListQ);
+                }          
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void PriceList_Load(object sender, EventArgs e)
         {
@@ -91,8 +119,19 @@ namespace LabelPrinting
                 dsPriceListDesc = dal.GetPriceListDescription();
                 dsPriceListH = dal.GetGPPriceListForEdit(DatabaseName, CurrentEntryType, CurrentItemNmbr);
                 dgvHeader.Columns.Clear();
-                DataView dv = dsPriceListH.Tables[0].DefaultView;
-                //dv.RowFilter = "TableName = 'IV00107'";
+                DataTable dt = dsPriceListH.Tables[0];
+                dt.Columns["ITEMNMBR"].DefaultValue = CurrentItemNmbr;
+                dt.Columns["DatabaseName"].DefaultValue = DatabaseName;
+                dt.Columns["CURNCYID"].DefaultValue = "Z-AUD";
+                dt.Columns["PRCLEVEL"].DefaultValue = "STANDARD";
+                dt.Columns["TableName"].DefaultValue = "IV00107";
+                dt.Columns["UOFM"].DefaultValue = "EACH";
+                dt.Columns["RNDGAMNT"].DefaultValue = 0.00000;
+                dt.Columns["ROUNDHOW"].DefaultValue = 0;
+                dt.Columns["ROUNDTO"].DefaultValue = 1;
+                dt.Columns["UMSLSOPT"].DefaultValue = 2;
+
+                DataView dv = dsPriceListH.Tables[0].DefaultView;                
                 dgvHeader.DataSource = dv;
 
                 DataGridViewCellStyle style = dgvHeader.ColumnHeadersDefaultCellStyle;
@@ -245,10 +284,11 @@ namespace LabelPrinting
                             cbcPriceLevel.HeaderText = sHeader;
                             dgvHeader.Columns.Insert(i, cbcPriceLevel);
                             dgvHeader.Columns[i].Name = "PRCLEVEL";
-                            cbcPriceLevel.DataPropertyName = "PRCLEVEL";
-                        }
+                            cbcPriceLevel.DataPropertyName = "PRCLEVEL";                            
+                        }                        
                     }
                 }
+                dgvHeader.Columns["RNDGAMNT"].DefaultCellStyle.Format = "N5";
                 //dgvHeader.Columns["displayValue"].HeaderText = "Value";
                 //DataGridViewDisableButtonColumn column1 = new DataGridViewDisableButtonColumn();
                 var column1 = new DataGridViewButtonColumn();
@@ -415,6 +455,17 @@ namespace LabelPrinting
                             string uofm = row.Cells["UOFM"].Value.ToString();
                             dsPriceListQ = dal.SelectPriceListQty(CurrentItemNmbr, curncyID, prcLevel, uofm);
                             dgvDetail = new DataGridView();
+                            DataTable dt = dsPriceListQ.Tables[0];
+                            dt.Columns["ITEMNMBR"].DefaultValue = CurrentItemNmbr;
+                            dt.Columns["DatabaseName"].DefaultValue = DatabaseName;
+                            dt.Columns["CURNCYID"].DefaultValue = "Z-AUD";
+                            dt.Columns["PRCLEVEL"].DefaultValue = "STANDARD";
+                            dt.Columns["TableName"].DefaultValue = "IV00108";
+                            dt.Columns["UOFM"].DefaultValue = "EACH";
+                            dt.Columns["UOMPRICE"].DefaultValue = 0.00000;
+                            dt.Columns["FROMQTY"].DefaultValue = 1.00000;
+                            dt.Columns["TOQTY"].DefaultValue = 999999999999.00000;
+
                             dgvDetail.DataSource = dsPriceListQ.Tables[0];
                             DataGridViewCellStyle style = dgvDetail.ColumnHeadersDefaultCellStyle;
                             style.BackColor = Color.Navy;
@@ -427,8 +478,7 @@ namespace LabelPrinting
                             dgvDetail.EnableHeadersVisualStyles = false;
                             dgvDetail.RowHeadersWidth = 26;
                             dgvDetail.AutoSize = true;
-                            dgvDetail.AutoGenerateColumns = true;
-
+                            dgvDetail.AutoGenerateColumns = true;                                                        
                             dgvDetail.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                             //this.Controls.Add(dgvDetail);
                             this.splitContainer1.Panel2.Controls.Add(dgvDetail);
@@ -463,8 +513,15 @@ namespace LabelPrinting
 
                             dgvDetail.Visible = true;
 
-                            //add event handler
-                            dgvDetail.Leave += new System.EventHandler(dgvDetail_Leave);                            
+                            dgvDetail.Columns["UOMPRICE"].DefaultCellStyle.Format = "N5";
+                            dgvDetail.Columns["FROMQTY"].DefaultCellStyle.Format = "N5";
+                            dgvDetail.Columns["TOQTY"].DefaultCellStyle.Format = "N5";
+                            dgvDetail.Columns["FROMQTY"].ReadOnly = true;
+
+                            //add event handlers
+                            dgvDetail.Leave += new System.EventHandler(dgvDetail_Leave);
+                            dgvDetail.CellValueChanged += new DataGridViewCellEventHandler(dgvDetail_CellValueChanged);
+                            dgvDetail.RowsRemoved += new DataGridViewRowsRemovedEventHandler(dgvDetail_RowsRemoved);
                         }
                         else  // is expanded                    
                         {
@@ -489,6 +546,39 @@ namespace LabelPrinting
                 MessageBox.Show(ex.Message);
             }
         }
+        
+        private void dgvDetail_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateFromQty();
+        }
+
+        private void dgvDetail_RowsRemoved(
+            object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            // Update the balance column whenever rows are deleted.
+            UpdateFromQty();
+        }
+
+        private void UpdateFromQty()
+        {
+            try
+            {
+                int counter;
+                decimal FromQty;
+                // Iterate through the rows, skipping the starting row.
+                for (counter = 1; counter < (dgvDetail.Rows.Count - 1);
+                    counter++)
+                {  
+                    FromQty = decimal.Parse(dgvDetail.Rows[counter - 1]
+                        .Cells["TOQTY"].Value.ToString()) + 1;
+                    dgvDetail.Rows[counter].Cells["FROMQTY"].Value = FromQty;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }  
+        }
 
         private void dgvDetail_Leave(object sender, EventArgs e)
         {
@@ -505,7 +595,7 @@ namespace LabelPrinting
                 
                 if (dgvDetail != null)
                 {
-                    MessageBox.Show("ToDo: save detail");
+                    DoSave();
                     dgvDetail.Visible = false;
                     buttonCell.Value = "s"; //show expand icon
                 }                

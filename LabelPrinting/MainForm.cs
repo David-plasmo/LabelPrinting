@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Seagull.BarTender.Print;
-using LabelPrinting;
 
 namespace LabelPrinting
 {
- /// <summary>
- /// Application main form
- /// </summary>
+    /// Application main form
+    /// </summary>
     public partial class MainForm : Form
     {
         delegate void SetComboBoxCellType(int iRowIndex);
@@ -323,7 +315,7 @@ namespace LabelPrinting
                 //CurrentLabel = new LabelTypes();
                 Labels = new LabelDictionary();
                 Company = new DataService.ProductDataService().GetProductCompany();
-               
+
                 // Get the list of printers visible to BarTender (as named by printer driver)
                 Printers btprinters = new Printers();
 

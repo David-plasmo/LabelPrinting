@@ -506,10 +506,11 @@ namespace LabelPrinting
                             fpl.dsUOFM = dsUOFM;
                             fpl.DatabaseName = GPDbase;
                             fpl.CurrentEntryType = EntryType;
-                            fpl.Show(this);
+                            //fpl.Show(this);
+                            fpl.ShowDialog(this);
                             //buttonCell.Expanded = false;
                             //buttonCell.Value = "s";
-                            
+
                         }
                         else if (row.Cells["ColumnName"].Value.ToString().Trim() == "HasItemCurrency")
                         {
@@ -726,8 +727,8 @@ namespace LabelPrinting
                     Cursor.Current = Cursors.WaitCursor;
                     GPDbase = result[0]["INTERID"].ToString();
                     CompCode = result[0]["CompanyCode"].ToString();
-                    dsUOFM = dal.LookupUOMSCHDL_ByCompany(CompCode);
-                    dsUserCategory = dal.LookupUSCATVLS_ByCompany(CompCode);
+                    dsUOFM = dal.LookupUOMSCHDL_ByCompany(CompCode, dbEnv);
+                    dsUserCategory = dal.LookupUSCATVLS_ByCompany(CompCode, dbEnv);
                     btnGo.Enabled = true;
                     cboCode.Enabled = optExisting.Checked;
                     //lblCode.Enabled = optExisting.Checked;                           

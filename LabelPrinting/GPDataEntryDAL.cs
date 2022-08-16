@@ -52,12 +52,13 @@ namespace LabelPrinting
             }
         }
 
-        public DataSet LookupUSCATVLS_ByCompany(string compCode)
+        public DataSet LookupUSCATVLS_ByCompany(string compCode, string dbEnv)
         {
             try
             {
                 return ExecuteDataSet("TestPlasmoIntegration.[dbo].[LookupUSCATVLS_ByCompany]",
-                     CreateParameter("@CompanyCode", SqlDbType.VarChar, compCode));
+                     CreateParameter("@CompanyCode", SqlDbType.VarChar, compCode),
+                     CreateParameter("@dbEnv", SqlDbType.VarChar, dbEnv));
             }
             catch (Exception ex)
             {
@@ -65,12 +66,13 @@ namespace LabelPrinting
                 return null;
             }
         }
-        public DataSet LookupUOMSCHDL_ByCompany(string compCode)
+        public DataSet LookupUOMSCHDL_ByCompany(string compCode, string dbEnv)
         {
             try
             {
                 return ExecuteDataSet("TestPlasmoIntegration.[dbo].[LookupUOMSCHDL_ByCompany]",
-                     CreateParameter("@CompanyCode", SqlDbType.VarChar, compCode));
+                     CreateParameter("@CompanyCode", SqlDbType.VarChar, compCode),
+                     CreateParameter("@dbEnv", SqlDbType.VarChar, dbEnv));
             }
             catch (Exception ex)
             {
