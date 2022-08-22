@@ -35,13 +35,14 @@ namespace LabelPrinting
 
         private DataGridView dgvDetail;
         private DataGridViewButtonCell buttonCell;
-
-
+        private BindingManagerBase bindingManager;
 
         private bool bIsLoading;
         private bool buttonCellEnabled = true;
         private bool buttonCellExpanded = false;
-
+        private bool skipCheck = false;
+        private int buttonCellExpandedRow = -1;        
+        
         public PriceList()
         {
             InitializeComponent();
@@ -131,8 +132,12 @@ namespace LabelPrinting
                 dt.Columns["ROUNDTO"].DefaultValue = 1;
                 dt.Columns["UMSLSOPT"].DefaultValue = 2;
 
-                DataView dv = dsPriceListH.Tables[0].DefaultView;                
-                dgvHeader.DataSource = dv;
+                //DataView dv = dsPriceListH.Tables[0].DefaultView;                
+                //dgvHeader.DataSource = dv;
+                dgvHeader.DataSource = dt;
+
+                bindingManager = this.BindingContext[dgvHeader.DataSource];
+                bindingManager.PositionChanged += new System.EventHandler(RowChanged);
 
                 DataGridViewCellStyle style = dgvHeader.ColumnHeadersDefaultCellStyle;
                 style.BackColor = Color.Navy;
@@ -287,7 +292,7 @@ namespace LabelPrinting
                             cbcPriceLevel.DataPropertyName = "PRCLEVEL";                            
                         }                        
                     }
-                }
+                }                
                 dgvHeader.Columns["RNDGAMNT"].DefaultCellStyle.Format = "N5";
                 //dgvHeader.Columns["displayValue"].HeaderText = "Value";
                 //DataGridViewDisableButtonColumn column1 = new DataGridViewDisableButtonColumn();
@@ -306,7 +311,8 @@ namespace LabelPrinting
                 bIsLoading = false;
 
                 //show expand button on first row only
-                if (dv.Count > 0)
+                //if (dv.Count > 0)
+                if (dt.Rows.Count > 0)
                 {
                     dgvHeader.Rows[0].Cells["Buttons"].Value = "s";
                     buttonCellEnabled = true;
@@ -321,6 +327,118 @@ namespace LabelPrinting
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void RowChanged(object sender, System.EventArgs e)
+        {
+            skipCheck = true;  //to bypass cellvalue_changed
+
+            //Console.WriteLine("RowChanged " + bindingManager.Position.ToString());                                   
+            bool newRow = bindingManager.Count > ((DataTable)dgvHeader.DataSource).Rows.Count;
+            //if (newRow)
+            //{
+            //    Console.WriteLine("newRow");                
+            //}
+            if (dgvDetail != null && dgvDetail.Visible)
+            {
+                CollapseDetail();
+            }
+            bool rowOK = false;
+            foreach (DataGridViewRow row in dgvHeader.Rows)
+            {
+                dgvHeader.Rows[row.Index].Cells["Buttons"].Value = DBNull.Value;                                
+                if (!newRow && row.Index == bindingManager.Position)
+                {
+                    DataGridViewCell currency = dgvHeader.Rows[row.Index].Cells["CURNCYID"];
+                    DataGridViewCell pricelevel = dgvHeader.Rows[row.Index].Cells["PRCLEVEL"];
+                    DataGridViewCell uofm = dgvHeader.Rows[row.Index].Cells["UOFM"];
+                    rowOK = (currency.FormattedValue.ToString().Length != 0
+                        && pricelevel.FormattedValue.ToString().Length != 0
+                        && uofm.FormattedValue.ToString().Length != 0
+                        && !IsDuplicate(dgvHeader, "PRCLEVEL", row.Index));
+                }
+                else if (newRow && row.Index == bindingManager.Position)
+                {
+                    //dgvHeader.Rows[row.Index].Cells["CURNCYID"].Value = dsPriceListH.Tables[0].Columns["CURNCYID"].DefaultValue;     //dgvHeader.Rows[row.Index].Cells["CURNCYID"];
+                    //dgvHeader.Rows[row.Index].Cells["PRCLEVEL"].Value = dsPriceListH.Tables[0].Columns["PRCLEVEL"].DefaultValue;     //dgvHeader.Rows[row.Index].Cells["PRCLEVEL"];
+                    //dgvHeader.Rows[row.Index].Cells["UOFM"].Value = dsPriceListH.Tables[0].Columns["UOFM"].DefaultValue;             //dgvHeader.Rows[row.Index].Cells["UOFM"];
+                    //rowOK = !IsDuplicate(dgvHeader, "PRCLEVEL", row.Index, "STANDARD");
+                    //DataGridViewCell currency = dgvHeader.Rows[row.Index].Cells["CURNCYID"];
+                    //DataGridViewCell pricelevel = dgvHeader.Rows[row.Index].Cells["PRCLEVEL"];
+                    //DataGridViewCell uofm = dgvHeader.Rows[row.Index].Cells["UOFM"];
+                    //rowOK = (currency.FormattedValue.ToString().Length != 0
+                    //    && pricelevel.FormattedValue.ToString().Length != 0
+                    //    && uofm.FormattedValue.ToString().Length != 0
+                    //    && !IsDuplicate(dgvHeader, "PRCLEVEL", row.Index));
+                    //string currency = dsPriceListH.Tables[0].Columns["CURNCYID"].DefaultValue.ToString();     //dgvHeader.Rows[row.Index].Cells["CURNCYID"];
+                    //string pricelevel = dsPriceListH.Tables[0].Columns["PRCLEVEL"].DefaultValue.ToString().Trim();     //dgvHeader.Rows[row.Index].Cells["PRCLEVEL"];
+                    //string uofm = dsPriceListH.Tables[0].Columns["UOFM"].DefaultValue.ToString();             //dgvHeader.Rows[row.Index].Cells["UOFM"];
+                    rowOK = !IsDuplicate(dgvHeader, "PRCLEVEL", row.Index, "STANDARD");
+                }
+            }
+            if (rowOK)
+            {
+                buttonCell = (DataGridViewButtonCell)dgvHeader.Rows[bindingManager.Position].Cells["Buttons"];
+                buttonCellExpanded = false;
+                buttonCellEnabled = true;
+                buttonCell.Style.Font = new Font("Wingdings 3", 8, FontStyle.Regular);
+                buttonCell.Value = "s"; //show expand arrow
+                buttonCellExpandedRow = bindingManager.Position;
+            }
+
+            skipCheck = false;
+        }
+
+        private bool IsDuplicate(DataGridView dgv, string colName, int testRow)
+        {
+            try
+            {
+                bool result = false;
+                for (int row = 0; row < dgv.Rows.Count - 1; row++)
+                {
+
+                    if (dgv.Rows[row].Cells[colName].Value != null
+                        && row != testRow
+                        && dgv.Rows[row].Cells[colName].Value.Equals(dgv.Rows[testRow].Cells[colName].Value))
+                    {
+
+                        MessageBox.Show("Duplicate");
+                        result = true;
+                        break;
+                    }
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        private bool IsDuplicate(DataGridView dgv, string colName, int testRow, string testValue)
+        {
+            try
+            {
+                bool result = false;
+                for (int row = 0; row < dgv.Rows.Count - 1; row++)
+                {
+
+                    if (dgv.Rows[row].Cells[colName].Value != null
+                        && row != testRow
+                        && dgv.Rows[row].Cells[colName].Value.ToString().Trim() == testValue)
+                    {
+
+                        //MessageBox.Show("Duplicate");
+                        result = true;
+                        break;
+                    }
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 
@@ -345,7 +463,7 @@ namespace LabelPrinting
         {
             try
             {
-                if (e.RowIndex == -1)
+                if (e.RowIndex == -1 || skipCheck)
                     return;
 
                 //if (dgvHeader.Columns[e.ColumnIndex].Name == "Buttons")
@@ -373,13 +491,17 @@ namespace LabelPrinting
                     DataGridViewCell pricelevel = dgvHeader.Rows[e.RowIndex].Cells["PRCLEVEL"];
                     DataGridViewCell uofm = dgvHeader.Rows[e.RowIndex].Cells["UOFM"];
                     buttonCell = (DataGridViewButtonCell)dgvHeader.Rows[e.RowIndex].Cells["Buttons"];
-                    bool rowOK = (currency.FormattedValue.ToString().Length != 0 && pricelevel.FormattedValue.ToString().Length != 0 && uofm.FormattedValue.ToString().Length != 0);
+                    bool rowOK = (currency.FormattedValue.ToString().Length != 0 
+                        && pricelevel.FormattedValue.ToString().Length != 0 
+                        && uofm.FormattedValue.ToString().Length != 0
+                        && !IsDuplicate(dgvHeader, "PRCLEVEL", e.RowIndex));
                     if (rowOK)
                     {
                         buttonCellExpanded = false;
                         buttonCellEnabled = true;
                         buttonCell.Style.Font = new Font("Wingdings 3", 8, FontStyle.Regular);
-                        buttonCell.Value = "s"; //show expand arrow      
+                        buttonCell.Value = "s"; //show expand arrow
+                        buttonCellExpandedRow = e.RowIndex;                        
                     }
                     else
                     {
@@ -387,16 +509,16 @@ namespace LabelPrinting
                         buttonCellEnabled = false;
                     }
                     //remove expand/collapse icon for all other rows
-                    foreach (DataGridViewRow row in dgvHeader.Rows)
-                    {
-                        //if (row.Cells[1].Value.ToString().Equals(searchValue))
-                        if (row.Index != e.RowIndex)
-                        {
-                            //rowIndex = row.Index;
-                            //break;
-                            dgvHeader.Rows[row.Index].Cells["Buttons"].Value = DBNull.Value;
-                        }
-                    }
+                    //foreach (DataGridViewRow row in dgvHeader.Rows)
+                    //{
+                    //    //if (row.Cells[1].Value.ToString().Equals(searchValue))
+                    //    if (row.Index != e.RowIndex)
+                    //    {
+                    //        //rowIndex = row.Index;
+                    //        //break;
+                    //        dgvHeader.Rows[row.Index].Cells["Buttons"].Value = DBNull.Value;
+                    //    }
+                    //}
                 }
                                 
                 dgvHeader.Invalidate();
@@ -406,6 +528,8 @@ namespace LabelPrinting
                 MessageBox.Show(ex.Message);
             }
         }
+
+        
 
         private void dgvHeader_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
@@ -419,7 +543,8 @@ namespace LabelPrinting
         {
             try
             {
-                if (e.RowIndex < 0 || dgvHeader.CurrentRow.IsNewRow)
+                //if (e.RowIndex < 0 || dgvHeader.CurrentRow.IsNewRow || e.ColumnIndex < 0)
+                if (e.RowIndex < 0  || e.ColumnIndex < 0)
                     return;
 
                 if (dgvHeader.Columns[e.ColumnIndex].Name == "Buttons")
@@ -459,7 +584,7 @@ namespace LabelPrinting
                             dt.Columns["ITEMNMBR"].DefaultValue = CurrentItemNmbr;
                             dt.Columns["DatabaseName"].DefaultValue = DatabaseName;
                             dt.Columns["CURNCYID"].DefaultValue = "Z-AUD";
-                            dt.Columns["PRCLEVEL"].DefaultValue = "STANDARD";
+                            dt.Columns["PRCLEVEL"].DefaultValue = prcLevel;
                             dt.Columns["TableName"].DefaultValue = "IV00108";
                             dt.Columns["UOFM"].DefaultValue = "EACH";
                             dt.Columns["UOMPRICE"].DefaultValue = 0.00000;
@@ -522,6 +647,7 @@ namespace LabelPrinting
                             dgvDetail.Leave += new System.EventHandler(dgvDetail_Leave);
                             dgvDetail.CellValueChanged += new DataGridViewCellEventHandler(dgvDetail_CellValueChanged);
                             dgvDetail.RowsRemoved += new DataGridViewRowsRemovedEventHandler(dgvDetail_RowsRemoved);
+                            dgvDetail.UserDeletingRow += new DataGridViewRowCancelEventHandler(dgvDetail_UserDeletingRow);
                         }
                         else  // is expanded                    
                         {
@@ -530,11 +656,15 @@ namespace LabelPrinting
                             //if (fpl.Visible)
                             //    fpl.CloseNow = true;
                             //fpl.Close();
-                            //fpl.Dispose();
-                            buttonCellExpanded = false;
-                            buttonCell.Style.Font = new Font("WingDings 3", 8);
+                            //fpl.Dispose();                            
                             //MessageBox.Show("Do collapse");
-                            CollapseDetail();
+                            CollapseDetail();                            
+                            dgvHeader.Rows[e.RowIndex].Selected = true;
+                            buttonCellEnabled = true;
+                            buttonCellExpanded = false;
+                            buttonCell = (DataGridViewButtonCell)dgvHeader.Rows[e.RowIndex].Cells["Buttons"];
+                            buttonCell.Style.Font = new Font("WingDings 3", 8);                            
+                            buttonCell.Value = "s"; //show expand icon
                         }
                     }
                 }
@@ -596,8 +726,11 @@ namespace LabelPrinting
                 if (dgvDetail != null)
                 {
                     DoSave();
-                    dgvDetail.Visible = false;
-                    buttonCell.Value = "s"; //show expand icon
+                    dgvDetail.Visible = false;                    
+                    //buttonCell.Value = DBNull.Value;
+
+
+
                 }                
             }
             catch (Exception ex)
@@ -629,45 +762,21 @@ namespace LabelPrinting
                         //remove expand/collapse icons for all other rows
                         //String searchValue = "somestring";
                         //int rowIndex = -1;
-                        foreach (DataGridViewRow row in dgvHeader.Rows)
-                        {
-                            //if (row.Cells[1].Value.ToString().Equals(searchValue))
-                            if (row.Index != e.RowIndex)
-                            {
-                                //rowIndex = row.Index;
-                                //break;
-                                dgvHeader.Rows[row.Index].Cells["Buttons"].Value = DBNull.Value;
-                            }
-                        }
+                        //foreach (DataGridViewRow row in dgvHeader.Rows)
+                        //{
+                        //    //if (row.Cells[1].Value.ToString().Equals(searchValue))
+                        //    if (row.Index != e.RowIndex)
+                        //    {
+                        //        //rowIndex = row.Index;
+                        //        //break;
+                        //        dgvHeader.Rows[row.Index].Cells["Buttons"].Value = DBNull.Value;
+                        //    }
+                        //}
                     }
                     else
                     {
-                        buttonCell.Value = DBNull.Value; //show blank button face
+                        buttonCell.Value = DBNull.Value; 
                         buttonCellEnabled = false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void dgvHeader_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = dgvHeader.Rows[e.RowIndex];
-                    //if (row.Cells["ColumnName"].Value.ToString().Trim() == "Buttons")
-                    if (row.Cells[e.ColumnIndex].OwningColumn.Name == "Buttons")
-                    {
-                        e.CellStyle.Font = new Font("Wingdings 3", 8, FontStyle.Regular);
-                        //if (buttonCellEnabled)
-                        //{
-                        //    e.Value = buttonCellExpanded ? "s" : "r";
-                        //}      
                     }
                 }
             }
@@ -713,39 +822,7 @@ namespace LabelPrinting
         }
 
         private void dgvHeader_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                bool skip = false;
-                if (e.RowIndex < 0 || bIsLoading || dgvHeader.CurrentRow == null || skip)
-                    return;
-
-                if (!dgvHeader.CurrentRow.IsNewRow && e.RowIndex > 0)
-                {
-                    //DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)dgvHeader.Rows[e.RowIndex].Cells["Buttons"];
-                    buttonCell = (DataGridViewButtonCell)dgvHeader.CurrentRow.Cells["Buttons"];
-                    buttonCell.Value = DBNull.Value;
-                    buttonCellEnabled = false;
-                }
-                else
-                {
-                    DataGridViewRow row = dgvHeader.Rows[e.RowIndex];
-                    if (row.Cells["Buttons"].Value == DBNull.Value || row.Cells["Buttons"].Value == null)
-                    {
-                        //DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)dgvHeader.Rows[e.RowIndex].Cells["Buttons"];
-                        buttonCell = (DataGridViewButtonCell)dgvHeader.Rows[e.RowIndex].Cells["Buttons"];
-                        buttonCellExpanded = false;
-                        buttonCellEnabled = true;
-                        buttonCell.Style.Font = new Font("Wingdings 3", 8, FontStyle.Regular);
-                        buttonCell.Value = "s"; //show expand arrow                        
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+        {            
         }
 
         private void dgvHeader_SelectionChanged(object sender, EventArgs e)
@@ -753,58 +830,35 @@ namespace LabelPrinting
         }
 
         private void dgvHeader_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (!bIsLoading && !btnDone.Focused)  //&& !dgvHeader.CurrentRow.IsNewRow && e.RowIndex > 0)
-                {
-                    //DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)dgvHeader.Rows[e.RowIndex].Cells["Buttons"];
-                    buttonCell = (DataGridViewButtonCell)dgvHeader.CurrentRow.Cells["Buttons"];
-                    if (dgvDetail != null && dgvDetail.Visible)
-                    {
-                        buttonCell.Value = "r";
-                        buttonCellEnabled = false;
-                    }
-                    else
-                    {
-                        buttonCell.Value = DBNull.Value;
-                        buttonCellEnabled = false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        {            
         }
 
         private void dgvHeader_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            try
-            {
-                if (!bIsLoading)
-                {
-                    {
-                        DataGridViewButtonCell buttonCell = (DataGridViewButtonCell)dgvHeader.Rows[e.RowIndex].Cells["Buttons"];
-                        buttonCell = (DataGridViewButtonCell)dgvHeader.Rows[e.RowIndex].Cells["Buttons"];
-                        if (dgvDetail != null && dgvDetail.Visible)
-                        {
-                            buttonCell.Value = "r";
-                            buttonCellEnabled = false;
-                        }
-                        else
-                        {
-                            buttonCell.Value = DBNull.Value;
-                            buttonCellEnabled = false;
-                        }
-                    }
-                }
+        {            
+        }
 
-            }
-            catch (Exception ex)
-            
+        private void dgvHeader_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+
+            if (MessageBox.Show("Confirm Delete?", "Delete", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                MessageBox.Show(ex.Message);
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void dgvDetail_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (MessageBox.Show("Confirm Delete?", "Delete", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
             }
         }
     }

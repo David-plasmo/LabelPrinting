@@ -101,7 +101,7 @@ namespace LabelPrinting
                 {
                     DataRow dr = rows[i];
                     PriceListDC dc = DAL.CreateItemFromRow<PriceListDC>(dr);  //populate JobRun dataclass                   
-                    PriceListDAL.UpdateGP_Inventory_DataEntry_PriceList(dc);
+                    PriceListDAL.UpdateGP_Inventory_PriceList(dc);
                 }
 
                 //process deleted rows:-                
@@ -189,16 +189,20 @@ namespace LabelPrinting
                 MessageBox.Show(excp.Message);
             }
         }
-        public static void UpdateGP_Inventory_DataEntry_PriceList(PriceListDC dc)
+                           
+        public static void UpdateGP_Inventory_PriceList(PriceListDC dc)
         {
             try
             {
                 System.Data.SqlClient.SqlCommand cmd = null;
                 SqlConnection connection = new SqlConnection(ProductDataService.GetConnectionString());
                 connection.Open();
-                cmd = new System.Data.SqlClient.SqlCommand("TestPlasmoIntegration.dbo.UpdateGP_Inventory_DataEntry_PriceList", connection);
+                cmd = new System.Data.SqlClient.SqlCommand("TestPlasmoIntegration.dbo.UpdateGP_Inventory_PriceList", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
+                cmd.Parameters.Add("@ID", SqlDbType.Int, 4);
+                cmd.Parameters["@ID"].Direction = System.Data.ParameterDirection.Input;
+                cmd.Parameters["@ID"].Value = dc.ID;
                 cmd.Parameters.Add("@ITEMNMBR", SqlDbType.Char, 31);
                 cmd.Parameters["@ITEMNMBR"].Direction = System.Data.ParameterDirection.Input;
                 cmd.Parameters["@ITEMNMBR"].Value = dc.ITEMNMBR;
@@ -229,9 +233,15 @@ namespace LabelPrinting
                 cmd.Parameters.Add("@FROMQTY", SqlDbType.Decimal, 9);
                 cmd.Parameters["@FROMQTY"].Direction = System.Data.ParameterDirection.Input;
                 cmd.Parameters["@FROMQTY"].Value = dc.FROMQTY;
-                cmd.Parameters.Add("@ID", SqlDbType.Int, 4);
-                cmd.Parameters["@ID"].Direction = System.Data.ParameterDirection.Input;
-                cmd.Parameters["@ID"].Value = dc.ID;
+                cmd.Parameters.Add("@TableName", SqlDbType.VarChar, 100);
+                cmd.Parameters["@TableName"].Direction = System.Data.ParameterDirection.Input;
+                cmd.Parameters["@TableName"].Value = dc.TableName;
+                cmd.Parameters.Add("@DatabaseName", SqlDbType.VarChar, 100);
+                cmd.Parameters["@DatabaseName"].Direction = System.Data.ParameterDirection.Input;
+                cmd.Parameters["@DatabaseName"].Value = dc.DatabaseName;
+                cmd.Parameters.Add("@UMSLSOPT", SqlDbType.SmallInt, 2);
+                cmd.Parameters["@UMSLSOPT"].Direction = System.Data.ParameterDirection.Input;
+                cmd.Parameters["@UMSLSOPT"].Value = dc.UMSLSOPT;
 
                 cmd.ExecuteNonQuery();
 
@@ -242,6 +252,7 @@ namespace LabelPrinting
                 MessageBox.Show(excp.Message);
             }
         }
+
         public static void DeleteGP_Inventory_PriceList(PriceListDC dc)
         {
             try

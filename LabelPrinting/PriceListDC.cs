@@ -21,9 +21,9 @@ namespace LabelPrinting
 		public int ID { get; set; }
 		public string TableName { get; set; }
 		public string DatabaseName { get; set; }
-		public bool UMSLSOPT { get; set; }
+		public short UMSLSOPT { get; set; }
 
-		public PriceListDC(string ITEMNMBR_, string CURNCYID_, string PRCLEVEL_, string UOFM_, decimal TOQTY_, decimal UOMPRICE_, decimal RNDGAMNT_, short ROUNDHOW_, short ROUNDTO_, decimal FROMQTY_, int ID_, string TableName_, string DatabaseName_, bool UMSLSOPT_)
+		public PriceListDC(string ITEMNMBR_, string CURNCYID_, string PRCLEVEL_, string UOFM_, decimal TOQTY_, decimal UOMPRICE_, decimal RNDGAMNT_, short ROUNDHOW_, short ROUNDTO_, decimal FROMQTY_, int ID_, string TableName_, string DatabaseName_, short UMSLSOPT_)
 		{
 			this.ITEMNMBR = ITEMNMBR_;
 			this.CURNCYID = CURNCYID_;

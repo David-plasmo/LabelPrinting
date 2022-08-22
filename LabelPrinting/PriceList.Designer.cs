@@ -129,14 +129,10 @@ namespace LabelPrinting
             this.dgvHeader.Size = new System.Drawing.Size(1134, 420);
             this.dgvHeader.TabIndex = 0;
             this.dgvHeader.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHeader_CellClick);
-            this.dgvHeader.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHeader_CellFormatting);
             this.dgvHeader.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHeader_CellValueChanged);
             this.dgvHeader.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvHeader_CurrentCellDirtyStateChanged);
             this.dgvHeader.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvHeader_DataError);
-            this.dgvHeader.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHeader_RowEnter);
-            this.dgvHeader.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHeader_RowLeave);
-            this.dgvHeader.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvHeader_RowsAdded);
-            this.dgvHeader.SelectionChanged += new System.EventHandler(this.dgvHeader_SelectionChanged);
+            this.dgvHeader.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvHeader_UserDeletingRow);
             // 
             // ITEMNMBR
             // 
