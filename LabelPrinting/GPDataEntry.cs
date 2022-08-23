@@ -45,8 +45,9 @@ namespace LabelPrinting
             dsPackagingType = dal.SelectGP_PackagingType();
             dsCurrency = dal.GetCurrency();                      
             dgvEdit.CellValueChanged += new DataGridViewCellEventHandler(dgvEdit_CellValueChanged);
-            dgvEdit.CurrentCellDirtyStateChanged += new EventHandler(dgvEdit_CurrentCellDirtyStateChanged);     
-       }
+            dgvEdit.CurrentCellDirtyStateChanged += new EventHandler(dgvEdit_CurrentCellDirtyStateChanged);
+            
+        }
             
         private void SetCompany()
         {
@@ -61,14 +62,16 @@ namespace LabelPrinting
             {
                 dbEnv = optLive.Text;
             }
+            cboCompany.SelectedIndexChanged -= new System.EventHandler(cboCompany_SelectedIndexChanged);
             dsCompany = dal.GetCompany(dbEnv);
             cboCompany.DataSource = null;
             cboCompany.Items.Clear();            
             cboCompany.DisplayMember = "CMPNYNAM";
-            cboCompany.ValueMember = "CMPANYID";
+            cboCompany.ValueMember = "CMPANYID";            
             cboCompany.DataSource = dsCompany.Tables[0];            
             cboCompany.ResetText();
-            cboCompany.SelectedIndex = 2;
+            cboCompany.SelectedIndexChanged += new System.EventHandler(cboCompany_SelectedIndexChanged);
+            cboCompany.SelectedIndex = 2;            
             btnGo.Enabled = true;
             cboCode.Enabled = true;
             //lblCode.Enabled = false;
@@ -76,6 +79,7 @@ namespace LabelPrinting
             optExisting.Enabled = true;
             optCurrent.Enabled = true;
         }
+
         private void RefreshGrid(int EntryType)
         {
             try
@@ -422,7 +426,7 @@ namespace LabelPrinting
                     //DataSet dsLookupByTargetColumn = dal.GPLookupsByTargetCol(targetColumn);
                     //cboCell.DataSource = dsLookupByTargetColumn.Tables[0];
                     DataView dv = new DataView(dsUserCategory.Tables[0]);
-                    dv.RowFilter = ("CompanyCode = '" + CompCode + "'AND USERCATNAME = '" + targetColumn + "'");
+                    dv.RowFilter = ("USERCATNAME = '" + targetColumn + "'");
                     cboCell.DataSource = dv;
                     cboCell.DisplayMember = "USCATVAL";
                     cboCell.ValueMember = "USERCATNAME";
