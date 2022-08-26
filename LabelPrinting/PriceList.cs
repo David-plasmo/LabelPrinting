@@ -583,10 +583,10 @@ namespace LabelPrinting
                             DataTable dt = dsPriceListQ.Tables[0];
                             dt.Columns["ITEMNMBR"].DefaultValue = CurrentItemNmbr;
                             dt.Columns["DatabaseName"].DefaultValue = DatabaseName;
-                            dt.Columns["CURNCYID"].DefaultValue = "Z-AUD";
+                            dt.Columns["CURNCYID"].DefaultValue = curncyID;
                             dt.Columns["PRCLEVEL"].DefaultValue = prcLevel;
                             dt.Columns["TableName"].DefaultValue = "IV00108";
-                            dt.Columns["UOFM"].DefaultValue = "EACH";
+                            dt.Columns["UOFM"].DefaultValue = uofm;
                             dt.Columns["UOMPRICE"].DefaultValue = 0.00000;
                             dt.Columns["FROMQTY"].DefaultValue = 1.00000;
                             dt.Columns["TOQTY"].DefaultValue = 999999999999.00000;
