@@ -23,6 +23,7 @@ namespace LabelPrinting
         string dbEnv;
         PriceList fpl = null;
         ItemSites fps = null;
+        ItemVendors fpv = null;
         //internal protected DataGridView dgvEdit;
 
         public GPDataEntry()
@@ -294,6 +295,7 @@ namespace LabelPrinting
                 dgvEdit.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
+
         internal protected void dgvEdit_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvEdit.Rows[e.RowIndex];
@@ -552,9 +554,15 @@ namespace LabelPrinting
                             buttonCell.Expanded = true;
                             buttonCell.Style.Font = new Font("WingDings 3", 8);
                             buttonCell.Value = "r";  //show collapse arrow
-                            MessageBox.Show("Do Expand");
-                            buttonCell.Expanded = false;
-                            buttonCell.Value = "s"; //show expand arrow 
+                            fpv = new ItemVendors();
+                            fpv.CurrentItemNmbr = CurrentCode;
+                            fpv.CurrentDescription = CurrentDesc;
+                            //fps.dsCurrency = dsCurrency;
+                            //fps.dsUOFM = dsUOFM;
+                            fpv.DatabaseName = GPDbase;
+                            fpv.CurrentEntryType = EntryType;
+                            //fps.Show(this);
+                            fpv.ShowDialog(this);
                         }
                     }                    
                     else  // is expanded
@@ -596,11 +604,19 @@ namespace LabelPrinting
                         buttonCell.Value = DBNull.Value;
                     }
                     else if (row.Cells["ColumnName"].Value.ToString().Trim() == "HasItemVendor")
-                    {                        
-                        buttonCell.Expanded = false;
-                        buttonCell.Style.Font = new Font("WingDings 3", 8);
-                        buttonCell.Value = "r";
-                        MessageBox.Show("Do collapse");
+                    {
+                        if (fpv != null && fpv.Visible)
+                        {
+                            if (fpv.Visible)
+                                fpv.CloseNow = true;
+                            fpv.Close();
+                            fpv.Dispose();
+                            buttonCell.Expanded = false;
+                            buttonCell.Style.Font = new Font("WingDings 3", 8);
+                            buttonCell.Value = "s";
+                            //MessageBox.Show("Do collapse");
+                        }
+                        buttonCell.Value = DBNull.Value;
                     }
                 }
             }
