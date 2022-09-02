@@ -22,6 +22,7 @@ namespace LabelPrinting
         ComboBox cboCell; 
         string dbEnv;
         PriceList fpl = null;
+        ItemSites fps = null;
         //internal protected DataGridView dgvEdit;
 
         public GPDataEntry()
@@ -532,9 +533,18 @@ namespace LabelPrinting
                             buttonCell.Expanded = true;
                             buttonCell.Style.Font = new Font("WingDings 3", 8);
                             buttonCell.Value = "r";  //show collapse arrow
-                            MessageBox.Show("Do Expand");
-                            buttonCell.Expanded = false;
-                            buttonCell.Value = "s";   //show expand arrow 
+                            //MessageBox.Show("Do Expand");
+                            //buttonCell.Expanded = false;
+                            //buttonCell.Value = "s";   //show expand arrow 
+                            fps = new ItemSites();
+                            fps.CurrentItemNmbr = CurrentCode;
+                            fps.CurrentDescription = CurrentDesc;
+                            //fps.dsCurrency = dsCurrency;
+                            //fps.dsUOFM = dsUOFM;
+                            fps.DatabaseName = GPDbase;
+                            fps.CurrentEntryType = EntryType;
+                            //fps.Show(this);
+                            fps.ShowDialog(this);
                         }
                         else if (row.Cells["ColumnName"].Value.ToString().Trim() == "HasItemVendor")
                         {
@@ -571,11 +581,19 @@ namespace LabelPrinting
                         MessageBox.Show("Do collapse");
                     }
                     else if (row.Cells["ColumnName"].Value.ToString().Trim() == "HasItemSite")
-                    {                        
-                        buttonCell.Expanded = false;
-                        buttonCell.Style.Font = new Font("WingDings 3", 8);
-                        buttonCell.Value = "r";
-                        MessageBox.Show("Do collapse");
+                    {
+                        if (fps != null && fps.Visible)
+                        {
+                            if (fps.Visible)
+                                fps.CloseNow = true;
+                            fps.Close();
+                            fps.Dispose();
+                            buttonCell.Expanded = false;
+                            buttonCell.Style.Font = new Font("WingDings 3", 8);
+                            buttonCell.Value = "s";
+                            //MessageBox.Show("Do collapse");
+                        }
+                        buttonCell.Value = DBNull.Value;
                     }
                     else if (row.Cells["ColumnName"].Value.ToString().Trim() == "HasItemVendor")
                     {                        
