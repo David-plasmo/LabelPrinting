@@ -111,7 +111,7 @@ namespace LabelPrinting
             txtCode.Text = CurrentItemNmbr;
             txtDescription.Text = CurrentDescription;
         }
-        void RefreshGrid()
+        private void RefreshGrid()
         {
             try
             {
