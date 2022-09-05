@@ -145,15 +145,24 @@ namespace LabelPrinting
                         //dgvHeader.Columns.Add(cbcRoundHow);
                     }
                     dgvEdit.Columns["QTYRQSTN"].DefaultCellStyle.Format = "N5";
+                    dgvEdit.Columns["QTYRQSTN"].Width = 70;
                     //dgvEdit.Columns["QTYONORD"].DefaultCellStyle.Format = "N5";
                     dgvEdit.Columns["AVRGLDTM"].DefaultCellStyle.Format = "G";
+                    dgvEdit.Columns["AVRGLDTM"].Width = 70;
                     dgvEdit.Columns["NORCTITM"].DefaultCellStyle.Format = "G";
+                    dgvEdit.Columns["NORCTITM"].Width = 70;
                     dgvEdit.Columns["MINORQTY"].DefaultCellStyle.Format = "N5";
                     dgvEdit.Columns["MAXORDQTY"].DefaultCellStyle.Format = "N5";
+                    dgvEdit.Columns["MAXORDQTY"].Width = 70;
                     dgvEdit.Columns["ECORDQTY"].DefaultCellStyle.Format = "N5";
+                    dgvEdit.Columns["ECORDQTY"].Width = 70;
                     dgvEdit.Columns["Last_Originating_Cost"].DefaultCellStyle.Format = "N5";
+                    dgvEdit.Columns["Last_Originating_Cost"].Width = 70;
                     dgvEdit.Columns["PLANNINGLEADTIME"].DefaultCellStyle.Format = "G";
+                    dgvEdit.Columns["PLANNINGLEADTIME"].Width = 70;
                     dgvEdit.Columns["ORDERMULTIPLE"].DefaultCellStyle.Format = "N5";
+                    dgvEdit.Columns["ORDERMULTIPLE"].Width = 70;
+
 
                     dgvEdit.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     bIsLoading = false;

@@ -24,6 +24,7 @@ namespace LabelPrinting
         PriceList fpl = null;
         ItemSites fps = null;
         ItemVendors fpv = null;
+        ItemCurrencies fpc = null;
         //internal protected DataGridView dgvEdit;
 
         public GPDataEntry()
@@ -521,13 +522,19 @@ namespace LabelPrinting
                         }
                         else if (row.Cells["ColumnName"].Value.ToString().Trim() == "HasItemCurrency")
                         {
-                            //buttonCell.Value = DBNull.Value;                            
                             buttonCell.Expanded = true;
                             buttonCell.Style.Font = new Font("WingDings 3", 8);
                             buttonCell.Value = "r";  //show collapse arrow
-                            MessageBox.Show("Do Expand");
-                            buttonCell.Expanded = false;
-                            buttonCell.Value = "s";   //show expand arrow 
+                            //MessageBox.Show("Do expand");
+                            fpc = new ItemCurrencies();
+                            fpc.CurrentItemNmbr = CurrentCode;
+                            fpc.CurrentDescription = CurrentDesc;
+                            fpc.DatabaseName = GPDbase;
+                            fpc.CurrentEntryType = EntryType;
+                            //fpc.Show(this);
+                            fpc.ShowDialog(this);
+                            //buttonCell.Expanded = false;
+                            //buttonCell.Value = "s";
                         }
                         else if (row.Cells["ColumnName"].Value.ToString().Trim() == "HasItemSite")
                         {
@@ -582,11 +589,19 @@ namespace LabelPrinting
                         buttonCell.Value = DBNull.Value;
                     }
                     else if (row.Cells["ColumnName"].Value.ToString().Trim() == "HasItemCurrency")
-                    {                                               
-                        buttonCell.Expanded = false;
-                        buttonCell.Style.Font = new Font("WingDings 3", 8);
-                        buttonCell.Value = "r";
-                        MessageBox.Show("Do collapse");
+                    {
+                        if (fpc != null && fpc.Visible)
+                        {
+                            if (fpc.Visible)
+                                fpc.CloseNow = true;
+                            fpc.Close();
+                            fpc.Dispose();
+                            buttonCell.Expanded = false;
+                            buttonCell.Style.Font = new Font("WingDings 3", 8);
+                            buttonCell.Value = "s";
+                            //MessageBox.Show("Do collapse");
+                        }
+                        buttonCell.Value = DBNull.Value;
                     }
                     else if (row.Cells["ColumnName"].Value.ToString().Trim() == "HasItemSite")
                     {
