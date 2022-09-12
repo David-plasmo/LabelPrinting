@@ -119,7 +119,7 @@ namespace LabelPrinting
                     {
                         DataGridViewComboBoxColumn cbcCurrency = new DataGridViewComboBoxColumn();
                         cbcCurrency.Name = "CURNCYID";
-                        dsCurrency = dal.LookupSiteLocations(DatabaseName);
+                        dsCurrency = dal.LookupCurrencies();
                         cbcCurrency.DataSource = dsCurrency.Tables[0];
                         cbcCurrency.DisplayMember = "CURNCYID";
                         cbcCurrency.ValueMember = "CURNCYID";

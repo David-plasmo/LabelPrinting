@@ -441,13 +441,14 @@ namespace LabelPrinting
             //    LabelNo = "P4";                
             //}
             //allow large size of plain label print option for Plasmo Blow Mould                               
-            else if (dc.LabelTypeId == 2 && ItemClass.Trim() != "BLOW-CUS" && dc.Code.Trim() != "08-AGE002LAB508")
+            else if (dc.LabelTypeId == 2 && ItemClass.Trim() != "BLOW-CUS" && dc.Code.Trim() != "08-AGE002LAB508" && !Description.Contains("(IML)"))
             {
                 cboItems.Add(new ComboItem(dc.LabelTypeId, LabelNo));
                 cboItems.Add(new ComboItem(24, "P1b"));                                
             }
             // special case for 08 - AGE002LAB508 - prints as P1 but need P2
-            if (dc.Code.Trim() == "08-AGE002LAB508")
+            //if (dc.Code.Trim() == "08-AGE002LAB508")
+            if (Description.Contains("(IML)"))
             {
                 cboLabelType.Items.Add(new ComboItem(5, "P2"));
                 LabelNo = "P2";

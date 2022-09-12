@@ -29,8 +29,8 @@ namespace LabelPrinting
             }
         }
 
-        //LookupSiteLocations(@CompDB varchar(10)=NULL)
-        public DataSet LookupSiteLocations(string databaseName)
+       
+        public DataSet LookupCurrencies()
         {
             try
             {
@@ -44,7 +44,7 @@ namespace LabelPrinting
             }
         }
 
-        //LookupVendors
+        /*LookupVendors
         public DataSet LookupVendors(string databaseName)
         {
             try
@@ -58,6 +58,7 @@ namespace LabelPrinting
                 return null;
             }
         }
+        */
 
         //GetItemCurrency_Description
         public DataSet GetItemCurrency_Description()
@@ -101,6 +102,7 @@ namespace LabelPrinting
                     DataRow dr = rows[i];
                     ItemCurrenciesDC dc = DAL.CreateItemFromRow<ItemCurrenciesDC>(dr);  //populate JobRun dataclass                   
                     ItemCurrenciesDAL.UpdateGP_Inventory_DataEntry_ItemCurrency(dc);
+                                      
                 }
 
                 //process deleted rows:-                
@@ -131,7 +133,7 @@ namespace LabelPrinting
                 System.Data.SqlClient.SqlCommand cmd = null;
                 SqlConnection connection = new SqlConnection(ProductDataService.GetConnectionString());
                 connection.Open();
-                cmd = new System.Data.SqlClient.SqlCommand("AddGP_Inventory_DataEntry_ItemCurrency", connection);
+                cmd = new System.Data.SqlClient.SqlCommand("TestPlasmoIntegration.dbo.AddGP_Inventory_DataEntry_ItemCurrency", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@ITEMNMBR", SqlDbType.Char, 31);
@@ -177,7 +179,7 @@ namespace LabelPrinting
                 System.Data.SqlClient.SqlCommand cmd = null;
                 SqlConnection connection = new SqlConnection(ProductDataService.GetConnectionString());
                 connection.Open();
-                cmd = new System.Data.SqlClient.SqlCommand("UpdateGP_Inventory_DataEntry_ItemCurrency", connection);
+                cmd = new System.Data.SqlClient.SqlCommand("TestPlasmoIntegration.dbo.UpdateGP_Inventory_DataEntry_ItemCurrency", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@ITEMNMBR", SqlDbType.Char, 31);
@@ -222,7 +224,7 @@ namespace LabelPrinting
                 System.Data.SqlClient.SqlCommand cmd = null;
                 SqlConnection connection = new SqlConnection(ProductDataService.GetConnectionString());
                 connection.Open();
-                cmd = new System.Data.SqlClient.SqlCommand("DeleteGP_Inventory_DataEntry_ItemCurrency", connection);
+                cmd = new System.Data.SqlClient.SqlCommand("TestPlasmoIntegration.dbo.DeleteGP_Inventory_DataEntry_ItemCurrency", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@ID", SqlDbType.Int, 4);
