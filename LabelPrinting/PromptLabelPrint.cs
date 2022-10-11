@@ -448,7 +448,7 @@ namespace LabelPrinting
             }
             // special case for 08 - AGE002LAB508 - prints as P1 but need P2
             //if (dc.Code.Trim() == "08-AGE002LAB508")
-            if (Description.Contains("(IML)"))
+            if (Description.Contains("(IML)") || dc.Code.Contains("LAB"))
             {
                 cboLabelType.Items.Add(new ComboItem(5, "P2"));
                 LabelNo = "P2";
