@@ -28,39 +28,72 @@ namespace LabelPrinting
 
         private void LoadPlainLabels()
         {
+            SetupDataGrid();
+            
+        }
+        
+        private void SetupDataGrid() 
+        {
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                
-                dgvEdit.Visible = false;                              
-                bIsLoading = true;                
+               
                 PlainLabels = new DataService.ProductDataService().GetPlainLabels();
-                dgvEdit.DataSource = null;                           
-                dgvEdit.Columns.Clear();               
+                dgvEdit.DataSource = null;
+                dgvEdit.Columns.Clear();
                 dgvEdit.DataSource = PlainLabels.Tables[0];
                 dgvEdit.EditMode = DataGridViewEditMode.EditOnEnter;
-                dgvEdit.Columns["Description"].ReadOnly = true;                
-                dgvEdit.Columns["PlainLabelID"].Visible = true;                
+                dgvEdit.AutoGenerateColumns = true;
+                dgvEdit.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvEdit.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgvEdit.ReadOnly = true;
+                dgvEdit.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvEdit.MultiSelect = false;
+
+                dgvEdit.Columns["Description"].ReadOnly = true;
+                dgvEdit.Columns["PlainLabelID"].Visible = false;
                 dgvEdit.Columns["last_updated_on"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm:ss";//"yyyy-MM-dd HH:mm:ss.fffffff";
                 dgvEdit.Columns["last_updated_on"].Visible = true;
                 dgvEdit.Columns["last_updated_by"].Visible = true;
-                dgvEdit.Columns["last_updated_by"].ReadOnly = true;
-                dgvEdit.Columns["last_updated_on"].ReadOnly = true;
-                
-                dgvEdit.AutoResizeColumns();
-                for (int i = 0; i < dgvEdit.ColumnCount; i++) { dgvEdit.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable; }                
-                bIsLoading = false;
+                //dgvEdit.Columns["last_updated_by"].ReadOnly = true;
+                //dgvEdit.Columns["last_updated_on"].ReadOnly = true;
+
+                // Set the column header style.
+                DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
+                dgvEdit.EnableHeadersVisualStyles = false;
+                columnHeaderStyle.BackColor = Color.LightGray;
+                columnHeaderStyle.Font =
+                    new Font("Arial", 8, FontStyle.Bold);
+                columnHeaderStyle.WrapMode = DataGridViewTriState.True;
+                dgvEdit.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dgvEdit.ColumnHeadersDefaultCellStyle =
+                    columnHeaderStyle;
+
+                //this setting prevents column header cell from highlighting when row is selected
+                dgvEdit.ColumnHeadersDefaultCellStyle.SelectionBackColor = dgvEdit.ColumnHeadersDefaultCellStyle.BackColor;
+
+                dgvEdit.CellClick += dgvEdit_CellClick;
+
+
+                //dgvEdit.AutoResizeColumns();
+                //for (int i = 0; i < dgvEdit.ColumnCount; i++) { dgvEdit.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable; }
+                //bIsLoading = false;
                 //dgvEdit.ResumeLayout(true);
-                dgvEdit.Visible = true;
+                
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);                
+                MessageBox.Show(ex.Message);
                 Application.Exit();
             }
         }
-        
+
+        private void dgvEdit_CellClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("todo: doedit");
+        }
+
         private void EditPlainLabels_FormClosing(object sender, FormClosingEventArgs e)
         {
                 
@@ -126,15 +159,11 @@ namespace LabelPrinting
         }
     
 
-    private void dgvEdit_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-    {
-        DoEdit();
-           
-    }
+    
 
         private void dgvEdit_CellToolTipTextNeeded(object sender, DataGridViewCellToolTipTextNeededEventArgs e)
         {
-            e.ToolTipText = "Double-Click to Edit";
+            e.ToolTipText = "Select row to Edit";
         }
 
         private void EditPlainLabels_Load(object sender, EventArgs e)

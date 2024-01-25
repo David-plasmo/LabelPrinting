@@ -57,7 +57,6 @@
             this.dgvEdit.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvEdit.Size = new System.Drawing.Size(1201, 468);
             this.dgvEdit.TabIndex = 2;
-            this.dgvEdit.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEdit_CellDoubleClick);
             this.dgvEdit.CellToolTipTextNeeded += new System.Windows.Forms.DataGridViewCellToolTipTextNeededEventHandler(this.dgvEdit_CellToolTipTextNeeded);
             // 
             // label1
