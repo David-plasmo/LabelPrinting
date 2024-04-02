@@ -16,8 +16,8 @@ namespace LabelPrinting
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm()); //obsolete
-            //Application.Run(new JobRun());
+            Application.Run(new MainForm()); //full version
+            //Application.Run(new JobRun()); //print job short cut
             //Application.Run(new PrintJobStatusMonitor());
         }
     }

@@ -1973,6 +1973,12 @@ namespace LabelPrinting
             f.ShowDialog();
         }
 
+        private void palletPlainLabelP4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PromptPalletLabelPrint f = new PromptPalletLabelPrint();
+            f.ShowDialog();
+        }
+
 
 
 

@@ -94,6 +94,19 @@ namespace DataService
             }
         }
 
+        public void PalletLabelPrintJob(int palletStartNo, int palletEndNo)
+        {
+            try
+            {
+                ExecuteNonQuery("[BarTender].[dbo].[CreatePalletLabelJob]",
+                             CreateParameter("@PalletStart", SqlDbType.Int, palletStartNo),
+                             CreateParameter("@PalletFin", SqlDbType.Int, palletEndNo));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         /// <summary>
         /// Logs label printing jobs, and updates print status        
