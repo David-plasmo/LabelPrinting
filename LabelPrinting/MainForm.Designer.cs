@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.cboLabelType = new System.Windows.Forms.ComboBox();
             this.lblHelp = new System.Windows.Forms.Label();
@@ -73,6 +73,7 @@
             this.gPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p4EgBubblesUrnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p7EgKomatsuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.palletPlainLabelP4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.specifyFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p110X10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p210X75ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +93,6 @@
             this.lblProductType = new System.Windows.Forms.Label();
             this.txtNumSpare = new System.Windows.Forms.TextBox();
             this.lblNumSpare = new System.Windows.Forms.Label();
-            this.palletPlainLabelP4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -193,7 +193,7 @@
             // lblPrinter
             // 
             this.lblPrinter.AutoSize = true;
-            this.lblPrinter.Location = new System.Drawing.Point(553, 9);
+            this.lblPrinter.Location = new System.Drawing.Point(596, 9);
             this.lblPrinter.Name = "lblPrinter";
             this.lblPrinter.Size = new System.Drawing.Size(37, 13);
             this.lblPrinter.TabIndex = 22;
@@ -202,9 +202,9 @@
             // cboPrinter
             // 
             this.cboPrinter.FormattingEnabled = true;
-            this.cboPrinter.Location = new System.Drawing.Point(596, 3);
+            this.cboPrinter.Location = new System.Drawing.Point(639, 3);
             this.cboPrinter.Name = "cboPrinter";
-            this.cboPrinter.Size = new System.Drawing.Size(129, 21);
+            this.cboPrinter.Size = new System.Drawing.Size(86, 21);
             this.cboPrinter.TabIndex = 21;
             this.cboPrinter.SelectedIndexChanged += new System.EventHandler(this.cboPrinter_SelectedIndexChanged);
             // 
@@ -222,9 +222,9 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(455, 1);
+            this.btnPrint.Location = new System.Drawing.Point(528, 1);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(92, 25);
+            this.btnPrint.Size = new System.Drawing.Size(62, 25);
             this.btnPrint.TabIndex = 3;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -233,9 +233,9 @@
             // btnSetupLabels
             // 
             this.btnSetupLabels.Enabled = false;
-            this.btnSetupLabels.Location = new System.Drawing.Point(320, 0);
+            this.btnSetupLabels.Location = new System.Drawing.Point(435, 2);
             this.btnSetupLabels.Name = "btnSetupLabels";
-            this.btnSetupLabels.Size = new System.Drawing.Size(116, 25);
+            this.btnSetupLabels.Size = new System.Drawing.Size(87, 25);
             this.btnSetupLabels.TabIndex = 2;
             this.btnSetupLabels.Text = "Print Options...";
             this.btnSetupLabels.UseVisualStyleBackColor = true;
@@ -497,16 +497,23 @@
             // p4EgBubblesUrnsToolStripMenuItem
             // 
             this.p4EgBubblesUrnsToolStripMenuItem.Name = "p4EgBubblesUrnsToolStripMenuItem";
-            this.p4EgBubblesUrnsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.p4EgBubblesUrnsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.p4EgBubblesUrnsToolStripMenuItem.Text = "P4 eg Bubbles, Urns";
             this.p4EgBubblesUrnsToolStripMenuItem.Click += new System.EventHandler(this.p4EgBubblesUrnsToolStripMenuItem_Click);
             // 
             // p7EgKomatsuToolStripMenuItem
             // 
             this.p7EgKomatsuToolStripMenuItem.Name = "p7EgKomatsuToolStripMenuItem";
-            this.p7EgKomatsuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.p7EgKomatsuToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.p7EgKomatsuToolStripMenuItem.Text = "P7 eg Komatsu";
             this.p7EgKomatsuToolStripMenuItem.Click += new System.EventHandler(this.p7EgKomatsuToolStripMenuItem_Click);
+            // 
+            // palletPlainLabelP4ToolStripMenuItem
+            // 
+            this.palletPlainLabelP4ToolStripMenuItem.Name = "palletPlainLabelP4ToolStripMenuItem";
+            this.palletPlainLabelP4ToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.palletPlainLabelP4ToolStripMenuItem.Text = "Pallet Plain Label (P4)";
+            this.palletPlainLabelP4ToolStripMenuItem.Click += new System.EventHandler(this.palletPlainLabelP4ToolStripMenuItem_Click);
             // 
             // specifyFormatToolStripMenuItem
             // 
@@ -525,49 +532,49 @@
             // p110X10ToolStripMenuItem
             // 
             this.p110X10ToolStripMenuItem.Name = "p110X10ToolStripMenuItem";
-            this.p110X10ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.p110X10ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.p110X10ToolStripMenuItem.Text = "P1 (10 x 10)";
             this.p110X10ToolStripMenuItem.Click += new System.EventHandler(this.p110X10ToolStripMenuItem_Click);
             // 
             // p210X75ToolStripMenuItem
             // 
             this.p210X75ToolStripMenuItem.Name = "p210X75ToolStripMenuItem";
-            this.p210X75ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.p210X75ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.p210X75ToolStripMenuItem.Text = "P2 (10 x 7.5)";
             this.p210X75ToolStripMenuItem.Click += new System.EventHandler(this.p210X75ToolStripMenuItem_Click);
             // 
             // p310X75ToolStripMenuItem
             // 
             this.p310X75ToolStripMenuItem.Name = "p310X75ToolStripMenuItem";
-            this.p310X75ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.p310X75ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.p310X75ToolStripMenuItem.Text = "P3 (10 x 7.5)";
             this.p310X75ToolStripMenuItem.Click += new System.EventHandler(this.p310X75ToolStripMenuItem_Click);
             // 
             // p410X75ToolStripMenuItem
             // 
             this.p410X75ToolStripMenuItem.Name = "p410X75ToolStripMenuItem";
-            this.p410X75ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.p410X75ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.p410X75ToolStripMenuItem.Text = "P4 (10 x 7.5)";
             this.p410X75ToolStripMenuItem.Click += new System.EventHandler(this.p410X75ToolStripMenuItem_Click);
             // 
             // p510X6ToolStripMenuItem
             // 
             this.p510X6ToolStripMenuItem.Name = "p510X6ToolStripMenuItem";
-            this.p510X6ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.p510X6ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.p510X6ToolStripMenuItem.Text = "P5 (10 x 6)";
             this.p510X6ToolStripMenuItem.Click += new System.EventHandler(this.p510X6ToolStripMenuItem_Click);
             // 
             // p65X5ToolStripMenuItem
             // 
             this.p65X5ToolStripMenuItem.Name = "p65X5ToolStripMenuItem";
-            this.p65X5ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.p65X5ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.p65X5ToolStripMenuItem.Text = "P6 (5 x 5)";
             this.p65X5ToolStripMenuItem.Click += new System.EventHandler(this.p65X5ToolStripMenuItem_Click);
             // 
             // p75X5ToolStripMenuItem
             // 
             this.p75X5ToolStripMenuItem.Name = "p75X5ToolStripMenuItem";
-            this.p75X5ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.p75X5ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.p75X5ToolStripMenuItem.Text = "P7 (5 x 5)";
             this.p75X5ToolStripMenuItem.Click += new System.EventHandler(this.p75X5ToolStripMenuItem_Click);
             // 
@@ -619,14 +626,14 @@
             this.dgvJobRun.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvJobRun.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJobRun.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvJobRun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJobRun.Location = new System.Drawing.Point(0, 53);
             this.dgvJobRun.MultiSelect = false;
@@ -654,14 +661,14 @@
             this.dgvBMLabels.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBMLabels.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBMLabels.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvBMLabels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBMLabels.Location = new System.Drawing.Point(0, 53);
             this.dgvBMLabels.Name = "dgvBMLabels";
@@ -701,13 +708,6 @@
             this.lblNumSpare.TabIndex = 5;
             this.lblNumSpare.Text = "Number Spare";
             this.lblNumSpare.Visible = false;
-            // 
-            // palletPlainLabelP4ToolStripMenuItem
-            // 
-            this.palletPlainLabelP4ToolStripMenuItem.Name = "palletPlainLabelP4ToolStripMenuItem";
-            this.palletPlainLabelP4ToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.palletPlainLabelP4ToolStripMenuItem.Text = "Pallet Plain Label (P4)";
-            this.palletPlainLabelP4ToolStripMenuItem.Click += new System.EventHandler(this.palletPlainLabelP4ToolStripMenuItem_Click);
             // 
             // MainForm
             // 

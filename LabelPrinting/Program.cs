@@ -12,13 +12,23 @@ namespace LabelPrinting
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+
+        static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm()); //full version
-            //Application.Run(new JobRun()); //print job short cut
-            //Application.Run(new PrintJobStatusMonitor());
+#if DEBUG
+            args = new[] { "MenuOptionJobRun" };
+            //args = new[] { "MenuOptionPlainPalletLabel" };
+#endif
+            if (args.Length == 0)
+                Application.Run(new MainForm(null));
+            else if (args.Length ==1)
+            {
+                string menuOption = args[0];
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);                
+                Application.Run(new MainForm(menuOption));
+            }
+            
         }
     }
 }

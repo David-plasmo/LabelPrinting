@@ -10,6 +10,8 @@ namespace LabelPrinting
     /// </summary>
     public partial class MainForm : Form
     {
+        public string MenuOption { get; set; }
+
         delegate void SetComboBoxCellType(int iRowIndex);
         public event DataGridViewCellEventHandler RowValidated;
         //LabelTypes CurrentLabel = new LabelTypes();        
@@ -67,12 +69,14 @@ namespace LabelPrinting
         Control cntObject;
         //*
 
-        public MainForm()
+        public MainForm(string menuOption)
         {
-            InitializeComponent();           
+            InitializeComponent();
+            if (menuOption != null)
+                MenuOption = menuOption;
+            
+
         }
-        
-       
         
         
         private void LoadPrintJobs()
@@ -347,8 +351,7 @@ namespace LabelPrinting
                 tt.SetToolTip(cboLabelType, "Help on Plasmo Label Types...");
                 tt.SetToolTip(lblMediaType, "Help on Plasmo Label Types...");
                 tt.SetToolTip(lblLastSetting, "Help on Plasmo Label Types...");
-
-
+                
             }
             catch (Exception ex)
             {
@@ -1178,16 +1181,6 @@ namespace LabelPrinting
                 dgvJobRun.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
-      
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-
-            this.menuStrip1.Focus();
-            this.plasmoToolStripMenuItem.ShowDropDown();
-            this.plasmoToolStripMenuItem.DropDownItems[0].Select();
-
-
-        }
         //private void plasmoToolStripMenuItem_Click(object sender, EventArgs e)
         //{
 
@@ -1977,6 +1970,30 @@ namespace LabelPrinting
         {
             PromptPalletLabelPrint f = new PromptPalletLabelPrint();
             f.ShowDialog();
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            this.menuStrip1.Focus();
+            if (MenuOption == "MenuOptionJobRun")
+            {
+                //testToolStripMenuItem.Select();
+                this.otherToolStripMenuItem.Select();
+                //MessageBox.Show("other selected");
+                this.otherToolStripMenuItem.ShowDropDown();                
+                this.manageJobRunToolStripMenuItem.Select();
+            }
+            else if (MenuOption == "MenuOptionPlainPalletLabel")
+            {
+                this.otherToolStripMenuItem.Select();
+                this.otherToolStripMenuItem.ShowDropDown();
+                this.otherToolStripMenuItem.DropDownItems[3].Select();
+            }
+            else
+            {
+                this.plasmoToolStripMenuItem.ShowDropDown();
+                this.plasmoToolStripMenuItem.DropDownItems[0].Select();
+            }
         }
 
 
