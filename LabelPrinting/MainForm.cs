@@ -73,9 +73,7 @@ namespace LabelPrinting
         {
             InitializeComponent();
             if (menuOption != null)
-                MenuOption = menuOption;
-            
-
+                MenuOption = menuOption;            
         }
         
         
@@ -1975,46 +1973,9 @@ namespace LabelPrinting
         private void MainForm_Shown(object sender, EventArgs e)
         {
             this.menuStrip1.Focus();
-            if (MenuOption == "MenuOptionJobRun")
-            {
-                //testToolStripMenuItem.Select();
-                this.otherToolStripMenuItem.Select();
-                //MessageBox.Show("other selected");
-                this.otherToolStripMenuItem.ShowDropDown();                
-                this.manageJobRunToolStripMenuItem.Select();
-            }
-            else if (MenuOption == "MenuOptionPlainPalletLabel")
-            {
-                this.otherToolStripMenuItem.Select();
-                this.otherToolStripMenuItem.ShowDropDown();
-                this.otherToolStripMenuItem.DropDownItems[3].Select();
-            }
-            else
-            {
-                this.plasmoToolStripMenuItem.ShowDropDown();
-                this.plasmoToolStripMenuItem.DropDownItems[0].Select();
-            }
+            this.plasmoToolStripMenuItem.ShowDropDown();
+            this.plasmoToolStripMenuItem.DropDownItems[0].Select();
         }
-
-
-
-
-
-        //force commit
-        //if (dgvJobRun.IsCurrentCellDirty)
-        //{
-        //    dgvJobRun.CommitEdit(DataGridViewDataErrorContexts.Commit);
-        //    btnSetupLabels.Enabled = true;
-        //}
-
-
-        //private void dgvJobRun_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    //if (e.RowIndex == dgvJobRun.NewRowIndex)
-        //    //{
-        //    //    // user is in the new row, disable controls.
-        //    //}
-        //}
     }
 }
 
