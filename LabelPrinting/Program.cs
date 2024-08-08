@@ -17,7 +17,7 @@ namespace LabelPrinting
         {
 #if DEBUG
             //args = new[] { "MenuOptionJobRun" };
-            args = new[] { "MenuOptionPalletLabel" };
+            //args = new[] { "MenuOptionPalletLabel" };
 #endif
 
             if (args.Length == 0)
