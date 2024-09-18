@@ -96,11 +96,11 @@
   <ItemGroup>
     <Reference Include="Seagull.BarTender.Print, Version=11.0.6.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Seagull\BarTender Suite\SDK\Assemblies\Seagull.BarTender.Print.dll</HintPath>
+      <HintPath>\\Plasmo-sql\Packages\LabelPrinting\Seagull.BarTender.Print.dll</HintPath>
     </Reference>
     <Reference Include="Seagull.Services.PrintScheduler, Version=11.0.6.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files\Seagull\BarTender Suite\SDK\Assemblies\Seagull.Services.PrintScheduler.dll</HintPath>
+      <HintPath>\\Plasmo-sql\Packages\LabelPrinting\Seagull.Services.PrintScheduler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -117,6 +117,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationAccess.cs" />
+    <Compile Include="ApplicationObjectListDAL.cs" />
+    <Compile Include="ApplicationObjectListDC.cs" />
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DataAccessBase.cs" />

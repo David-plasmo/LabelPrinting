@@ -75,8 +75,13 @@ namespace LabelPrinting
             if (menuOption != null)
                 MenuOption = menuOption;            
         }
-        
-        
+
+        public MainForm()
+        {
+           
+        }
+
+
         private void LoadPrintJobs()
         {
             try

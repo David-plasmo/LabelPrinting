@@ -65,6 +65,11 @@ namespace DataService
             return ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
         }
 
+        protected static string GetConnectionStringPlasmoSQL()
+        {
+            return ConfigurationManager.ConnectionStrings["DefaultPLASMO-SQL"].ConnectionString;
+        }
+
 
         public static IDbTransaction BeginTransaction()
         {

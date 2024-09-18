@@ -20,6 +20,11 @@ namespace LabelPrinting
             lblMsg.Text = msg;            
         }
 
+        public SetMediaMsg()
+        {
+           
+        }
+
         private void SetMediaMsg_HelpButtonClicked(object sender, CancelEventArgs e)
         {
             PlasmoLabelTypes plt = new PlasmoLabelTypes();

@@ -23,6 +23,11 @@ namespace LabelPrinting
             InitializeComponent();
         }
 
+        public LabelOptions()
+        {
+           
+        }
+
         private void LabelOptions_Load(object sender, EventArgs e)
         {
             dgvLabels.Columns.Clear();
