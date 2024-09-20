@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LabelPrinting</RootNamespace>
     <AssemblyName>LabelPrinting</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -94,6 +94,9 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ApplicationAccess">
+      <HintPath>..\..\ApplicationAccess\ApplicationAccess\bin\Debug\ApplicationAccess.dll</HintPath>
+    </Reference>
     <Reference Include="Seagull.BarTender.Print, Version=11.0.6.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\Plasmo-sql\Packages\LabelPrinting\Seagull.BarTender.Print.dll</HintPath>
@@ -117,9 +120,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationAccess.cs" />
-    <Compile Include="ApplicationObjectListDAL.cs" />
-    <Compile Include="ApplicationObjectListDC.cs" />
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DataAccessBase.cs" />
