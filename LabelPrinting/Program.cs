@@ -39,38 +39,38 @@ namespace LabelPrinting
         //        }
 
 
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string[] args = Environment.GetCommandLineArgs();
+            //string[] args = Environment.GetCommandLineArgs();
 #if DEBUG
-            args[0] = "AppendApplicationObjects";
+            //args[0] = "AppendApplicationObjects";
 #endif
-            if (args != null && args.Length != 0)
+
+
+            if (args.Length == 0)
             {
-                if (args[0] == "GetFormNames")
-                {
-                    ApplicationAccess aa = new ApplicationAccess();
-                    aa.GetFormNames("LabelPrinting");
-                }
-                else if (args[0] == "RefreshFormNames")
-                {
-                    ApplicationAccess aa = new ApplicationAccess();
-                    aa.RefreshFormNames("LabelPrinting");
-                }
-                else if (args[0] == "AppendApplicationObjects")
-                {
-                    ApplicationAccess aa = new ApplicationAccess();
-                    aa.AppendApplicationObjectList("LabelPrinting");
-                }
-
-
-                return;
-
+                Application.Run(new PromptPalletLabelPrint());
             }
-            Application.Run(new PromptPalletLabelPrint());
+            else if (args[0] == "GetFormNames")
+            {
+                ApplicationAccess aa = new ApplicationAccess();
+                aa.GetFormNames("LabelPrinting");
+            }
+            else if (args[0] == "RefreshFormNames")
+            {
+                ApplicationAccess aa = new ApplicationAccess();
+                aa.RefreshFormNames("LabelPrinting");
+            }
+            else if (args[0] == "AppendApplicationObjects")
+            {
+                ApplicationAccess aa = new ApplicationAccess();
+                aa.AppendApplicationObjectList("LabelPrinting");
+            }
+
+        }
+          
         }
     }
-}
