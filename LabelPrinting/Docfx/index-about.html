@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+	
+<style>
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 3px;
+}
+
+/* Divide the first column to 25% and the second column to 75% */
+td:nth-child(1) {
+  width: 25%;
+}
+
+td:nth-child(2) {
+  width: 75%;
+}
+
+tr:nth-child(even) {
+  background-color: #FFFFFF;
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+
+<br>
+
+
+<div>
+
+
+<h3> <span style='font-family:"Arial",sans-serif'>Details</span></h3>
+
+
+
+
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif'> ..... </span></p>
+
+<div >
+
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif'> .... </span></p>
+
+</div>
+
+<h4> <span style='font-family:"Arial",sans-serif'>Technologies</span></h4>
+
+<table>
+  <tr>
+    <td>NET Framework </td>
+    <td>Version 4.8.1</td> 
+  </tr>
+  <tr>
+    <td>Visual Studio</td>
+    <td>Version 2022</td>  
+  </tr>
+  <tr>
+    <td>C# / WinForms</td>
+    <td>C# Version 4.9.0</td>  
+  </tr>
+   <tr>
+    <td>GitHub</td>
+    <td> Version 2.43.2</td>  
+  </tr>
+  <tr>
+    <td> MS SQL </td>
+    <td>Microsoft SQL Server Version 19</td>  
+  </tr>
+  <tr>
+    <td> MSSMS</td>
+    <td>Microsoft SQL Server Management Studio Version 19</td>  
+  </tr>
+  <tr>
+    <td>NuGet</td>
+    <td>NuGet Package Manager 6.9.1</td>  
+  </tr>
+  <tr>
+    <td>Bartender</td>
+    <td>BT2016_R6_3141_full_x64</td>  
+  </tr>
+  
+  <tr>
+    <td>Google Chrome</td>
+    <td>Version 121.0.6167.185 (Official Build) (64-bit)</td>  
+  </tr>
+  
+</table>
+
+
+<h4> <span style='font-family:"Arial",sans-serif'>Libraries</span></h4>
+
+<table>
+  <tr>
+    <td>docfx.console </td>
+    <td>Version 2.59.4</td> 
+  </tr>
+  <tr>
+    <td>Guna.UI2.WinForms</td>
+    <td>Version 2.0.4.6</td>  
+  </tr>
+  <tr>
+    <td>Newtonsoft.Json</td>
+    <td>13.0.3</td>  
+  </tr>
+  
+  <tr>
+    <td> SimpleInjector </td>
+    <td>5.4.4</td>  
+  </tr>
+ 
+  
+</table>
+ 
+<h4><span style='font-family:"Arial",sans-serif'>Build</span></h4>
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif';"margin-bottom:0;" >Use DocfxTemplate application to copy template files, with the follwing options selected Include "Template Files", "New Files Only", and Include "Database".</span></p>
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif'>
+In the build event command window, add the following command. 
+ " xcopy "$(ProjectDir)..\DefaultFiles\*.*" "$(TargetDir)\DefaultFiles" /Y /I /E "
+
+<p/>
+
+<br>
+</div>
+
+</body>
+
+</html>
