@@ -967,8 +967,8 @@ namespace DataService
             try
             {
                 //PROCEDURE [dbo].[GetLabelPrintJob] (@JobID int, @LabelTypeID int, @NumSpare int)
-                //return ExecuteDataSet("TestPlasmoIntegration.dbo.GetLabelPrintJob",
-                  return ExecuteDataSet("GetLabelPrintJob",
+                  return ExecuteDataSet("TestPlasmoIntegration.dbo.GetLabelPrintJob",
+                  //return ExecuteDataSet("GetLabelPrintJob",
                     CreateParameter("@JobId", SqlDbType.Int, jobId),
                     CreateParameter("@labelTypeID", SqlDbType.Int, labelTypeId),                    
                     CreateParameter("@NumSpare", SqlDbType.Int, numSpare),

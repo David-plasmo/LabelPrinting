@@ -22,8 +22,8 @@ namespace LabelPrinting
 
 #if DEBUG
             //args = new[] { "MenuOptionJobRun" };
-            //args = new[] { "MenuOptionPalletLabel" };
-            args = new[] { "AppendApplicationObjects" };
+            args = new[] { "MenuOptionPalletLabel" };
+            //args = new[] { "AppendApplicationObjects" };
 #endif
             if (args.Length == 0)
                 Application.Run(new MainForm(null));
@@ -35,16 +35,16 @@ namespace LabelPrinting
                     Application.Run(new JobRun());
                 else if (menuOption == "MenuOptionPalletLabel")
                     Application.Run(new PromptPalletLabelPrint());
-                else if (menuOption == "GetFormNames")
-                {
-                    ApplicationAccess aa = new ApplicationAccess();
-                    aa.GetFormNames("LabelPrinting");
-                }
-                else if (menuOption == "RefreshFormNames")
-                {
-                    ApplicationAccess aa = new ApplicationAccess();
-                    aa.RefreshFormNames("LabelPrinting");
-                }
+                //else if (menuOption == "GetFormNames")
+                //{
+                //    ApplicationAccess aa = new ApplicationAccess();
+                //    aa.GetFormNames("LabelPrinting");
+                //}
+                //else if (menuOption == "RefreshFormNames")
+                //{
+                //    ApplicationAccess aa = new ApplicationAccess();
+                //    aa.RefreshFormNames("LabelPrinting");
+                //}
                 else if (menuOption == "AppendApplicationObjects")
                 {
                     ApplicationAccess aa = new ApplicationAccess();
