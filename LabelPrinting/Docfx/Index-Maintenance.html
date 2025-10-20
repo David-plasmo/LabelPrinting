@@ -2,81 +2,74 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-	
+  <meta charset="utf-8" />
 	<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width:100%;
+    }
 
-div.mycontainer {
-  width:100%;
-  overflow:auto;
-}
-div.mycontainer div {
-  width:50%;  
-  float:left;
-}
+    td {
+      border: 1px solid #686868;
+      text-align: left;
+      padding: 6px;
+    }
 
+    /* Divide the first column to 25% and the second column to 75% */
+    td:nth-child(1) {
+      width: 10%;
+    }
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    td:nth-child(2) {
+      width: 60%;
+    }
 
-td {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 3px;
-}
+    td:nth-child(3) {
+      width: 10%;
+    }
 
-/* Divide the first column to 25% and the second column to 75% */
-td:nth-child(1) {
-  width: 15%;
-}
+    td:nth-child(4) {
+      width: 20%;
+    }
+    tr:nth-child(odd) {
+      background-color: #fbfbfb;
+    }
 
-td:nth-child(2) {
-  width: 50%;
-}
+    h2{
+      text-align:center;
+      font-size: 30px;
+    }
 
-td:nth-child(3) {
-  width: 10%;
-}
+    .table-section{
+      padding-left:40px;
+      padding-right:40px;
+    }
 
-td:nth-child(4) {
-  width: 15%;
-}
-
-tr:nth-child(even) {
-  background-color: #FFFFFF;
-}
-
-
+    .row-heading{
+      font-weight: 600;
+    }
 </style>
 </head>
 
 <body>
-
-<p>&nbsp;</p>
-    <p>&nbsp;</p>
-   
-<h3> <span style='font-family:"Arial",sans-serif'>Maintenance</span></h3>
-
-<table>
-  <tr>
-    <td> <b> Date </b></td>
-	<td> <b> Description </b></td>
-	<td> <b> Status </b></td>
-	<td> <b> Contact </b> </td>
-  </tr>
-  <tr>
-    <td></td> 
-    <td></td> 
-	<td>Done</td> 	
-	<td> </td> 
-  </tr>
-</table>
-
-
+  <h2> <span style='font-family:"Arial",sans-serif ; text-align: center; color:#0f3d6b;'>Maintenance</span></h2>
+  <div class = "table-section">
+    <table>
+      <tr>
+        <td> <b> Date </b></td>
+      <td> <b> Description </b></td>
+      <td> <b> Status </b></td>
+      <td> <b> Contact </b> </td>
+      </tr>
+      <tr>
+        <td> 17/10/2025 </td> 
+        <td> Added docfx documentation </td> 
+        <td> Done </td> 	
+        <td> sasha@plasmo.com.au </td> 
+      </tr>
+    </table>
+  </div>
 </body>
 
 </html>

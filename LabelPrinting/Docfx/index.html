@@ -1,139 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<script>
-  lastp = document.referrer
-  var fpage = ("index-home.html");
-  slsh = (document.referrer.lastIndexOf('/'))
-  nme = (document.referrer.substring(slsh +1))
-  //if (lastp =="") {}
-  //else if ((lastp.indexOf('index-')) >=0) {fpage = nme}
-  //document.write('<iframe src=' + fpage + ' name="framepages" style="border: 0px solid ; height: 100%; width: 100%;"                                                                                                                                                                                                                                                                                                                                                                                                  //scrolling="auto"></iframe>')
-</script>
-<style>
-    body{
-        margin: 0; /* Remove default margin */
-    }
-    iframe{  
-        margin: auto;    
-        display: block;  /* iframes are inline by default */    
-        border: none; /* Remove default border */
-        /*background: lightyellow;  Just for styling */
-	height: 700px;
-	width: 100%;
-    }
-</style>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title> Documentation</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation</title>
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <style>
+    /* A4 page setup */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+    .a4-page {
+      width: 210mm;
+      height: 297mm;
+      margin: 10mm auto;
+      background: white;
+      box-sizing: border-box;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    
+    /* Enhanced navigation bar styling */
+    nav {
+      width: 100%;
+      background: linear-gradient(135deg, #7398bd 0%, #285b8f 50%, #0f3d6b 100%);
+      color: white;
+      padding: 5mm;
+      box-sizing: border-box;
+      height: 20mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(63, 99, 165, 0.3);
+      position: relative;
+      z-index: 1000;
+    }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+    /* Logo styling with hover effect */
+    .logo {
+      height: 10mm;
+      width: auto;
+      max-width: 50mm;
+      transition: transform 0.3s ease;
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    /* Mobile menu toggle */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .mobile-toggle:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+    /* Enhanced navigation links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+    
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+    
+    nav ul li {
+      position: relative;
+    }
+    
+    nav ul li > a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      display: block;
+      padding: 8px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Hover effects with modern animations */
+    nav ul li > a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    nav ul li > a:hover::before {
+      left: 100%;
+    }
+    
+    nav ul li > a:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(6, 59, 109, 0.15) 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(63, 99, 165, 0.4);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
 
- >
+    /* Enhanced dropdown styling */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: linear-gradient(145deg, #4479ad 0%, #0f3d6b 100%);
+      backdrop-filter: blur(15px);
+      padding: 12px;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(63, 99, 165, 0.3);
+      min-width: 180px;
+      border: 1px solid rgba(255,255,255,0.2);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    
+    nav ul li:hover ul {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    
+    /* Add padding to parent li for better hover area */
+    nav ul li {
+      position: relative;
+      padding-bottom: 2px;
+    }
+    
+    nav ul li ul li {
+      margin: 0;
+      width: 100%;
+    }
+    
+    nav ul li ul li a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.95);
+      padding: 12px 14px;
+      border-radius: 5px;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      display: block;
+      margin-bottom: 4px;
+      border: 1px solid transparent;
+    }
+    
+    nav ul li ul li a:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(6, 59, 109, 0.15) 100%);
+      color: white;
+      transform: translateX(4px);
+      border: 1px solid rgba(48, 48, 48, 0.3);  
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      nav {
+        padding: 3mm;
+        height: auto;
+        min-height: 15mm;
+      }
+      
+      .mobile-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #0f3d6b 0%, #9cb5dc 100%);
+        flex-direction: column;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+      }
+      
+      nav ul li {
+        width: 100%;
+        margin: 0;
+      }
+      
+      nav ul li > a {
+        padding: 12px 20px;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      nav ul li ul {
+        position: static;
+        display: none;
+        background: rgba(0,0,0,0.1);
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        opacity: 1;
+        transform: none;
+        margin-top: 0;
+      }
+      
+      nav ul li:hover ul {
+        display: block;
+      }
+      
+      nav ul li ul li a {
+        color: rgba(255,255,255,0.9);
+        padding: 10px 40px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      
+      nav ul li ul li a:hover {
+        background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        color: white;
+        transform: none;
+        border: 1px solid rgba(255,255,255,0.3);
+      }
+      
+      .logo {
+        height: 8mm;
+      }
+    }
+    nav ul li ul li.dropdown-divider {
+      height: 0;
+      border-top: 1px solid rgba(255,255,255,0.2); /* thin subtle line */
+      pointer-events: none; /* not clickable */
+    }
+
+    @media (max-width: 480px) {
+      .a4-page {
+        margin: 5mm auto;
+      }
+      
+      nav {
+        padding: 2mm;
+      }
+      
+      .logo {
+        height: 6mm;
+      }
+      
+      nav ul li > a {
+        font-size: 13px;
+        padding: 10px 15px;
+      }
+    }
+
+    /* Main content area */
+    .main-content {
+      width: 100%;
+      height: 277mm; /* 297mm - 20mm nav height */
+      padding: 5mm;
+      box-sizing: border-box;
+    }
+    /* Iframe styling */
+    iframe {
+      width: 100%;
+      height: 100%; /* Fills main-content height */
+      border: none;
+      display: block;
+    }
+    /* Print-specific styles */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      body {
+        margin: 0;
+        background: none;
+      }
+      .a4-page {
+        width: 95vw;
+        height: 95vh;
+        margin: 2.5vw auto;
+      }
+      nav {
+        background: #0f3d6b;
+        color: white;
+        height: 20mm;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .main-content {
+        height: 277mm;
+      }
+      iframe {
+        height: 100%;
+      }
+      .logo {
+        height: 10mm;
+      }
+      .mobile-toggle {
+        display: none;
+      }
+      .nav-links {
+        display: flex !important;
+      }
+    }
+
+  </style>
 </head>
-
 <body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center ">
-    <div class="container d-flex justify-content-between align-items-center">
-
-      <div id="logo">
-        <a href="index1.html"><img src="assets/img/logo.png" alt="" width="19%" ></a>
-        <!-- Uncomment below if you prefer to use a text logo -->
-        <!--<h1><a href="index.html">Regna</a></h1>-->
+  <div class="a4-page">
+    <nav>
+      <div class="logo-container">
+        <img src="assets/img/logo.png" alt="Company Logo" class="logo">
       </div>
-
-      <nav id="navbar" class="navbar">
+      <button class="mobile-toggle" onclick="toggleNav()">☰</button>
+      <div class="nav-links" id="navLinks">
         <ul>
           <li><a class="nav-link scrollto" href="index-Home.html" target="framepages">Home</a></li>
-          <li><a class="nav-link scrollto" href="index-About.html" target="framepages">About</a></li>
-          <li class="dropdown"><a href="#"><span>DataBase<i class="bi bi-chevron-down"></i></a>
+          <li><a href="index-Requirements.html" target="framepages">Requirements</a></li>
+          <li>
+            <a href="#">DataBase</a>
             <ul>
-              <li class="dropdown"><a href="../DB_Doc/DataModel.html" target="framepages"><span>Data Model</span> <i class="bi bi-chevron-right"></i></a></li>
-			  <li class="dropdown"><a class="nav-link scrollto" href="index-ErDiagram.html" target="framepages"><span>ER Diagram</span> <i class="bi bi-chevron-right"></i></a></li>
+              <li><a href="index-ErDiagram.html" target="framepages">ER Diagram</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="..\DB_Doc\DataModel.html" target="_blank">Data Model</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="..\_site_pdf\DocfxAPI.pdf" target="_blank"><span>API Documentation</span> <i class=""></i></a></li>
-		  
-		  <li class="dropdown"><a href="#"><span>Project<i class="bi bi-chevron-down"></i></a>
+          <li><a href="..\_site_pdf\DocfxAPI.pdf" target="_blank">API Documentation</a></li>
+          <li>
+            <a href="#">Project</a>
             <ul>
-              <li class="dropdown"><a class="nav-link scrollto" href="Index-Requirements.html" target="framepages"><span>Requirements</span> <i class="bi bi-chevron-right"></i></a></li>
-			  <li class="dropdown"><a class="nav-link scrollto" href="Index-Detailed.html" target="framepages"><span>Detailed</span> <i class="bi bi-chevron-right"></i></a></li>
-			  <li class="dropdown"><a class="nav-link scrollto" href="Index-Quote.html" target="framepages"><span>Quote</span> <i class="bi bi-chevron-right"></i></a></li>
-			  <li class="dropdown"><a class="nav-link scrollto" href="index-Maintenance.html" target="framepages"><span>Maintenance</span> <i class="bi bi-chevron-right"></i></a></li>
+              <li><a href="index-Maintenance.html" target="framepages">Maintenance</a></li>
             </ul>
           </li>
-		  
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-	  
-	  
-	  
-	  
-	  
-	  
-    </div>
-  </header><!-- End Header -->
-
-  <main id="main">
-      <iframe name="framepages" src="index-home.html" scrolling="auto">
-      </iframe> 
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
       </div>
+    </nav>
+    <div class="main-content">
+      <iframe name="framepages" id="framepages" src="index-home.html" scrolling="auto" style="width: 100%; border: none;"></iframe>
     </div>
+  </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong>Plasmo</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="https://plasmo.com.au/">Plasmo</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+  <script>
+    function toggleNav() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+    
+    document.addEventListener('click', function(event) {
+      const nav = document.querySelector('nav');
+      const navLinks = document.getElementById('navLinks');
+      
+      if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+      }
+    });
+    
+    window.addEventListener('resize', function() {
+      const navLinks = document.getElementById('navLinks');
+      if (window.innerWidth > 768) {
+        navLinks.classList.remove('active');
+      }
+    });
+  </script>
 </body>
-
 </html>

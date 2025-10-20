@@ -9,6 +9,10 @@ namespace LabelPrinting
 {
     static class Program
     {
+        // ***also dllimport of that function***
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,6 +20,8 @@ namespace LabelPrinting
 
         static void Main(string[] args)
         {
+            if (Environment.OSVersion.Version.Major >= 6)
+                SetProcessDPIAware();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -23,7 +29,7 @@ namespace LabelPrinting
 #if DEBUG
             //args = new[] { "MenuOptionJobRun" };
             args = new[] { "MenuOptionPalletLabel" };
-            //args = new[] { "AppendApplicationObjects" };
+            args = new[] { "Edit" };
 #endif
             if (args.Length == 0)
                 Application.Run(new MainForm(null));
@@ -45,10 +51,10 @@ namespace LabelPrinting
                 //    ApplicationAccess aa = new ApplicationAccess();
                 //    aa.RefreshFormNames("LabelPrinting");
                 //}
-                else if (menuOption == "AppendApplicationObjects")
+                else if (menuOption == "Edit")
                 {
                     ApplicationAccess aa = new ApplicationAccess();
-                    aa.AppendApplicationObjectList("LabelPrinting");
+                    aa.Edit("LabelPrinting");
                 }
             }
         }
