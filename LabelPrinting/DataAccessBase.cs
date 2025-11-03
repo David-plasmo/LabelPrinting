@@ -19,30 +19,52 @@ namespace DataService
         ////////////////////////////////////////////////////////////////////////
         // Fields
         ////////////////////////////////////////////////////////////////////////
-        private bool _isOwner = false;   //True if service owns the transaction        
+        
+        /// <summary>
+        /// Indicates whether the service owns the transaction.
+        /// </summary>
+        private bool _isOwner = false;   //True if service owns the transaction
+                                       
+        /// <summary>
+        /// Represents a reference to the current SQL transaction.
+        /// </summary>
         private SqlTransaction _txn;     //Reference to the current transaction
 
 
         ////////////////////////////////////////////////////////////////////////
         // Properties 
         ////////////////////////////////////////////////////////////////////////
+        
+        /// <summary>
+        /// Gets or sets the current database transaction.
+        /// </summary>
         public IDbTransaction Txn
         {
             get { return (IDbTransaction)_txn; }
             set { _txn = (SqlTransaction)value; }
         }
 
+        /// <summary>
+        /// Gets or sets the SQL command associated with the data access operation.
+        /// </summary>
         public SqlCommand DABCmd { get; set; }
 
 
         ////////////////////////////////////////////////////////////////////////
         // Constructors
         ////////////////////////////////////////////////////////////////////////
-
+        /// <summary>
+        /// Initializes a new instance of the DataAccessBase class.
+        /// </summary>
         public DataAccessBase() : this(null) { }
         //public SqlCommand Command { get; set; }
         
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataAccessBase"/> class with the specified database
+        /// transaction.
+        /// </summary>
+        /// <param name="txn">The transaction to be used by the data access operations. If <see langword="null"/>, a new transaction will
+        /// be created and managed internally.</param>
         public DataAccessBase(IDbTransaction txn)
         {
             if (txn == null)
@@ -60,17 +82,29 @@ namespace DataService
         ////////////////////////////////////////////////////////////////////////
         // Connection and Transaction Methods
         ////////////////////////////////////////////////////////////////////////
+        
+        /// <summary>
+        /// Retrieves the connection string for the default database connection.
+        /// </summary>
+        /// <returns>The connection string associated with the "Default" connection in the application's configuration file.</returns>
         public static string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
         }
 
+        /// <summary>
+        /// Retrieves the connection string for the default PLASMO-SQL database.
+        /// </summary>
+        /// <returns>The connection string associated with the "DefaultPLASMO-SQL" entry in the application's configuration file.</returns>
         protected static string GetConnectionStringPlasmoSQL()
         {
             return ConfigurationManager.ConnectionStrings["DefaultPLASMO-SQL"].ConnectionString;
         }
 
-
+        /// <summary>
+        /// Begins a new database transaction.
+        /// </summary>
+        /// <returns>An IDbTransaction representing the new transaction.</returns>
         public static IDbTransaction BeginTransaction()
         {
             SqlConnection txnConnection =
@@ -83,6 +117,8 @@ namespace DataService
         ////////////////////////////////////////////////////////////////////////
         // ExecuteDataSet Methods
         ////////////////////////////////////////////////////////////////////////
+        
+>
         protected DataSet ExecuteDataSet(string procName,
             params IDataParameter[] procParams)
         {
