@@ -1,9 +1,10 @@
-﻿using ApplicationAccessControl;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AccessControl;
 
 namespace LabelPrinting
 {
@@ -28,29 +29,21 @@ namespace LabelPrinting
 
 #if DEBUG
             //args = new[] { "MenuOptionJobRun" };
-            args = new[] { "MenuOptionPalletLabel" };
-            args = new[] { "Edit" };
+            //args = new[] { "MenuOptionPalletLabel" };
+            //args = new[] { "Edit" };
+            args = new[] { "LabelPrinting" };  // default for release
 #endif
             if (args.Length == 0)
                 Application.Run(new MainForm(null));
             else if (args.Length == 1)
             {
                 string menuOption = args[0];
-
-                if (menuOption == "MenuOptionJobRun")
+                if (menuOption == "LabelPrinting")
+                    Application.Run(new MainForm(null));
+                else if (menuOption == "MenuOptionJobRun")
                     Application.Run(new JobRun());
                 else if (menuOption == "MenuOptionPalletLabel")
-                    Application.Run(new PromptPalletLabelPrint());
-                //else if (menuOption == "GetFormNames")
-                //{
-                //    ApplicationAccess aa = new ApplicationAccess();
-                //    aa.GetFormNames("LabelPrinting");
-                //}
-                //else if (menuOption == "RefreshFormNames")
-                //{
-                //    ApplicationAccess aa = new ApplicationAccess();
-                //    aa.RefreshFormNames("LabelPrinting");
-                //}
+                    Application.Run(new PromptPalletLabelPrint());                
                 else if (menuOption == "Edit")
                 {
                     ApplicationAccess aa = new ApplicationAccess();
