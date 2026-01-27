@@ -144,7 +144,7 @@ namespace LabelPrinting
                 dgvEdit.Columns.Insert(3, columnPrint);
                 dgvEdit.Columns[4].Width = 50;  //CompanyCode
                 dgvEdit.Columns[5].Width = 150;  //ProductCode
-                dgvEdit.Columns[6].Width = 250; //Description
+                dgvEdit.Columns[6].Width = 300; //Description
                 dgvEdit.Columns[7].Width = 60;  //CtnQty
                 dgvEdit.Columns[8].Width = 60;  //NumReqd
                 dgvEdit.Columns[9].Width = 60;  //StartNo

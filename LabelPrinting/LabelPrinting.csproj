@@ -95,7 +95,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ApplicationAccess">
-      <HintPath>..\..\ApplicationAccess\ApplicationAccess\bin\ApplicationAccess.dll</HintPath>
+      <HintPath>\\Plasmo-sql\Packages\ApplicationAccess\bin\ApplicationAccess.dll</HintPath>
     </Reference>
     <Reference Include="Seagull.BarTender.Print, Version=11.0.6.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
