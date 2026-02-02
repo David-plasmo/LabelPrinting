@@ -142,23 +142,23 @@ namespace LabelPrinting
                 columnPrint.HeaderText = "";
                 //dgvEdit.Columns.Add(columnPrint);
                 dgvEdit.Columns.Insert(3, columnPrint);
-                dgvEdit.Columns[4].Width = 50;  //CompanyCode
-                dgvEdit.Columns[5].Width = 150;  //ProductCode
-                dgvEdit.Columns[6].Width = 300; //Description
+                dgvEdit.Columns[4].Width = 40;  //CompanyCode
+                dgvEdit.Columns[5].Width = 200;  //ProductCode
+                dgvEdit.Columns[6].Width = 360; //Description
                 dgvEdit.Columns[7].Width = 60;  //CtnQty
                 dgvEdit.Columns[8].Width = 60;  //NumReqd
                 dgvEdit.Columns[9].Width = 60;  //StartNo
                 dgvEdit.Columns[10].Width = 60;  //EndNo
                 dgvEdit.Columns[11].Width = 80; //JobRun
-                dgvEdit.Columns[12].Width = 150; //Customer
-                dgvEdit.Columns[13].Width = 100;//DateReqd
-                dgvEdit.Columns[14].Width = 100;//Machine
+                dgvEdit.Columns[12].Width = 90; //Customer
+                dgvEdit.Columns[13].Width = 80;//DateReqd
+                dgvEdit.Columns[14].Width = 80;//Machine
                 dgvEdit.Columns[15].Width = 65; //Priority
                 dgvEdit.Columns[16].Width = 65; //NumMade
                 dgvEdit.Columns[17].Width = 75; //NumScanned
                 dgvEdit.Columns[18].Width = 65; //DaysToComplete
-                dgvEdit.Columns[19].Width = 100;//Status
-                dgvEdit.Columns[20].Width = 100;//Comment
+                dgvEdit.Columns[19].Width = 90;//Status
+                dgvEdit.Columns[20].Width = 90;//Comment
                 dgvEdit.Columns[21].Width = 100;//LastUpdatedOn
                 dgvEdit.Columns[22].Width = 100;//LastUpdatedBy
 

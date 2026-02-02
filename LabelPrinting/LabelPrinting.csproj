@@ -94,7 +94,8 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ApplicationAccess">
+    <Reference Include="ApplicationAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>\\Plasmo-sql\Packages\ApplicationAccess\bin\ApplicationAccess.dll</HintPath>
     </Reference>
     <Reference Include="Seagull.BarTender.Print, Version=11.0.6.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=AMD64">
@@ -170,7 +171,6 @@
       <DependentUpon>GPDataEntry.cs</DependentUpon>
     </Compile>
     <Compile Include="GPDataEntryDAL.cs" />
-    <Compile Include="GPDataEntryDC.cs" />
     <Compile Include="ItemCurrencies.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,7 +178,6 @@
       <DependentUpon>ItemCurrencies.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemCurrenciesDAL.cs" />
-    <Compile Include="ItemCurrenciesDC.cs" />
     <Compile Include="ItemSites.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,7 +185,6 @@
       <DependentUpon>ItemSites.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemSitesDAL.cs" />
-    <Compile Include="ItemSitesDC.cs" />
     <Compile Include="ItemVendors.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,7 +192,6 @@
       <DependentUpon>ItemVendors.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemVendorsDAL.cs" />
-    <Compile Include="ItemVendorsDC.cs" />
     <Compile Include="JobRun.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,7 +199,6 @@
       <DependentUpon>JobRun.cs</DependentUpon>
     </Compile>
     <Compile Include="JobRunDAL.cs" />
-    <Compile Include="JobRunDC.cs" />
     <Compile Include="LabelOptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,7 +206,6 @@
       <DependentUpon>LabelOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="LabelPrintJobDAL.cs" />
-    <Compile Include="LabelPrintJobDC.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,16 +229,13 @@
       <DependentUpon>PriceList.cs</DependentUpon>
     </Compile>
     <Compile Include="PriceListDAL.cs" />
-    <Compile Include="PriceListDC.cs" />
     <Compile Include="ProductionOperatorDAL.cs" />
-    <Compile Include="ProductionOperatorDC.cs" />
     <Compile Include="ProductionOperatorMaint.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProductionOperatorMaint.Designer.cs">
       <DependentUpon>ProductionOperatorMaint.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductItemClassLabelLinkDC.cs" />
     <Compile Include="ProductItemLabelLinkDAL.cs" />
     <Compile Include="ProductMaterial.cs" />
     <Compile Include="ProductMaterialMaint.cs">

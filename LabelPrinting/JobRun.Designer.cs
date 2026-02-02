@@ -66,7 +66,7 @@ namespace LabelPrinting
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvEdit);
             this.splitContainer1.Size = new System.Drawing.Size(1814, 450);
-            this.splitContainer1.SplitterDistance = 25;
+            this.splitContainer1.SplitterDistance = 35;
             this.splitContainer1.TabIndex = 0;
             // 
             // label1

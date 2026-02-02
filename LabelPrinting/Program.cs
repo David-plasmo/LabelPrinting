@@ -46,8 +46,7 @@ namespace LabelPrinting
                     Application.Run(new PromptPalletLabelPrint());                
                 else if (menuOption == "Edit")
                 {
-                    ApplicationAccess aa = new ApplicationAccess();
-                    aa.Edit("LabelPrinting");
+                    throw new NotImplementedException("Edit functionality is not implemented in ApplicationAccess.");
                 }
             }
         }
