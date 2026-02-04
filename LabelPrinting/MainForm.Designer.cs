@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.cboLabelType = new System.Windows.Forms.ComboBox();
             this.lblHelp = new System.Windows.Forms.Label();
@@ -264,6 +264,7 @@
             this.labellingToolStripMenuItem,
             this.assemblyToolStripMenuItem,
             this.nonCodedProductToolStripMenuItem});
+            this.plasmoToolStripMenuItem.Enabled = false;
             this.plasmoToolStripMenuItem.Name = "plasmoToolStripMenuItem";
             this.plasmoToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.plasmoToolStripMenuItem.Text = "Plasmo";
@@ -271,8 +272,9 @@
             // boughtInToolStripMenuItem
             // 
             this.boughtInToolStripMenuItem.Name = "boughtInToolStripMenuItem";
-            this.boughtInToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.boughtInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.boughtInToolStripMenuItem.Text = "Bought In";
+            this.boughtInToolStripMenuItem.Visible = false;
             this.boughtInToolStripMenuItem.Click += new System.EventHandler(this.boughtInToolStripMenuItem_Click);
             // 
             // manufacturedToolStripMenuItem
@@ -281,8 +283,9 @@
             this.blowMouldToolStripMenuItem,
             this.injectionMouldToolStripMenuItem});
             this.manufacturedToolStripMenuItem.Name = "manufacturedToolStripMenuItem";
-            this.manufacturedToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.manufacturedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manufacturedToolStripMenuItem.Text = "Manufactured";
+            this.manufacturedToolStripMenuItem.Visible = false;
             // 
             // blowMouldToolStripMenuItem
             // 
@@ -301,22 +304,25 @@
             // printingToolStripMenuItem
             // 
             this.printingToolStripMenuItem.Name = "printingToolStripMenuItem";
-            this.printingToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.printingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.printingToolStripMenuItem.Text = "Printing";
+            this.printingToolStripMenuItem.Visible = false;
             this.printingToolStripMenuItem.Click += new System.EventHandler(this.printingToolStripMenuItem_Click);
             // 
             // labellingToolStripMenuItem
             // 
             this.labellingToolStripMenuItem.Name = "labellingToolStripMenuItem";
-            this.labellingToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.labellingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.labellingToolStripMenuItem.Text = "Labelling";
+            this.labellingToolStripMenuItem.Visible = false;
             this.labellingToolStripMenuItem.Click += new System.EventHandler(this.labellingToolStripMenuItem_Click);
             // 
             // assemblyToolStripMenuItem
             // 
             this.assemblyToolStripMenuItem.Name = "assemblyToolStripMenuItem";
-            this.assemblyToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.assemblyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.assemblyToolStripMenuItem.Text = "Assembly";
+            this.assemblyToolStripMenuItem.Visible = false;
             this.assemblyToolStripMenuItem.Click += new System.EventHandler(this.assemblyToolStripMenuItem_Click);
             // 
             // nonCodedProductToolStripMenuItem
@@ -326,8 +332,9 @@
             this.injectionMouldToolStripMenuItem1,
             this.extrusionToolStripMenuItem});
             this.nonCodedProductToolStripMenuItem.Name = "nonCodedProductToolStripMenuItem";
-            this.nonCodedProductToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.nonCodedProductToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nonCodedProductToolStripMenuItem.Text = "Non Coded";
+            this.nonCodedProductToolStripMenuItem.Visible = false;
             // 
             // blowMouldToolStripMenuItem1
             // 
@@ -357,14 +364,16 @@
             this.manufacturedToolStripMenuItem1,
             this.toolStripMenuItem1,
             this.nonCodedToolStripMenuItem2});
+            this.consolidatedPlasticsToolStripMenuItem.Enabled = false;
             this.consolidatedPlasticsToolStripMenuItem.Name = "consolidatedPlasticsToolStripMenuItem";
             this.consolidatedPlasticsToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
             this.consolidatedPlasticsToolStripMenuItem.Text = "Consolidated Plastics";
+            this.consolidatedPlasticsToolStripMenuItem.Visible = false;
             // 
             // boughtInToolStripMenuItem1
             // 
             this.boughtInToolStripMenuItem1.Name = "boughtInToolStripMenuItem1";
-            this.boughtInToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.boughtInToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.boughtInToolStripMenuItem1.Text = "Bought In";
             this.boughtInToolStripMenuItem1.Click += new System.EventHandler(this.boughtInToolStripMenuItem1_Click);
             // 
@@ -374,28 +383,30 @@
             this.injectionMouldedToolStripMenuItem,
             this.extrudedToolStripMenuItem});
             this.manufacturedToolStripMenuItem1.Name = "manufacturedToolStripMenuItem1";
-            this.manufacturedToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.manufacturedToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.manufacturedToolStripMenuItem1.Text = "Manufactured";
+            this.manufacturedToolStripMenuItem1.Visible = false;
             // 
             // injectionMouldedToolStripMenuItem
             // 
             this.injectionMouldedToolStripMenuItem.Name = "injectionMouldedToolStripMenuItem";
-            this.injectionMouldedToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.injectionMouldedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.injectionMouldedToolStripMenuItem.Text = "Injection Mould";
             this.injectionMouldedToolStripMenuItem.Click += new System.EventHandler(this.injectionMouldedToolStripMenuItem_Click);
             // 
             // extrudedToolStripMenuItem
             // 
             this.extrudedToolStripMenuItem.Name = "extrudedToolStripMenuItem";
-            this.extrudedToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.extrudedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.extrudedToolStripMenuItem.Text = "Extruded";
             this.extrudedToolStripMenuItem.Click += new System.EventHandler(this.extrudedToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "Assembly";
+            this.toolStripMenuItem1.Visible = false;
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // nonCodedToolStripMenuItem2
@@ -404,8 +415,9 @@
             this.injectionMouldToolStripMenuItem2,
             this.extrusionToolStripMenuItem1});
             this.nonCodedToolStripMenuItem2.Name = "nonCodedToolStripMenuItem2";
-            this.nonCodedToolStripMenuItem2.Size = new System.Drawing.Size(149, 22);
+            this.nonCodedToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.nonCodedToolStripMenuItem2.Text = "Non Coded";
+            this.nonCodedToolStripMenuItem2.Visible = false;
             // 
             // injectionMouldToolStripMenuItem2
             // 
@@ -427,6 +439,7 @@
             this.boughtInToolStripMenuItem2,
             this.manufacturedToolStripMenuItem2,
             this.nonCodedToolStripMenuItem1});
+            this.angelToolStripMenuItem.Enabled = false;
             this.angelToolStripMenuItem.Name = "angelToolStripMenuItem";
             this.angelToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.angelToolStripMenuItem.Text = "Angel";
@@ -434,22 +447,25 @@
             // boughtInToolStripMenuItem2
             // 
             this.boughtInToolStripMenuItem2.Name = "boughtInToolStripMenuItem2";
-            this.boughtInToolStripMenuItem2.Size = new System.Drawing.Size(149, 22);
+            this.boughtInToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.boughtInToolStripMenuItem2.Text = "Bought In";
+            this.boughtInToolStripMenuItem2.Visible = false;
             this.boughtInToolStripMenuItem2.Click += new System.EventHandler(this.boughtInToolStripMenuItem2_Click);
             // 
             // manufacturedToolStripMenuItem2
             // 
             this.manufacturedToolStripMenuItem2.Name = "manufacturedToolStripMenuItem2";
-            this.manufacturedToolStripMenuItem2.Size = new System.Drawing.Size(149, 22);
+            this.manufacturedToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.manufacturedToolStripMenuItem2.Text = "Manufactured";
+            this.manufacturedToolStripMenuItem2.Visible = false;
             this.manufacturedToolStripMenuItem2.Click += new System.EventHandler(this.manufacturedToolStripMenuItem2_Click);
             // 
             // nonCodedToolStripMenuItem1
             // 
             this.nonCodedToolStripMenuItem1.Name = "nonCodedToolStripMenuItem1";
-            this.nonCodedToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.nonCodedToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.nonCodedToolStripMenuItem1.Text = "Non Code";
+            this.nonCodedToolStripMenuItem1.Visible = false;
             this.nonCodedToolStripMenuItem1.Click += new System.EventHandler(this.nonCodedToolStripMenuItem1_Click);
             // 
             // otherToolStripMenuItem
@@ -532,49 +548,49 @@
             // p110X10ToolStripMenuItem
             // 
             this.p110X10ToolStripMenuItem.Name = "p110X10ToolStripMenuItem";
-            this.p110X10ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.p110X10ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.p110X10ToolStripMenuItem.Text = "P1 (10 x 10)";
             this.p110X10ToolStripMenuItem.Click += new System.EventHandler(this.p110X10ToolStripMenuItem_Click);
             // 
             // p210X75ToolStripMenuItem
             // 
             this.p210X75ToolStripMenuItem.Name = "p210X75ToolStripMenuItem";
-            this.p210X75ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.p210X75ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.p210X75ToolStripMenuItem.Text = "P2 (10 x 7.5)";
             this.p210X75ToolStripMenuItem.Click += new System.EventHandler(this.p210X75ToolStripMenuItem_Click);
             // 
             // p310X75ToolStripMenuItem
             // 
             this.p310X75ToolStripMenuItem.Name = "p310X75ToolStripMenuItem";
-            this.p310X75ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.p310X75ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.p310X75ToolStripMenuItem.Text = "P3 (10 x 7.5)";
             this.p310X75ToolStripMenuItem.Click += new System.EventHandler(this.p310X75ToolStripMenuItem_Click);
             // 
             // p410X75ToolStripMenuItem
             // 
             this.p410X75ToolStripMenuItem.Name = "p410X75ToolStripMenuItem";
-            this.p410X75ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.p410X75ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.p410X75ToolStripMenuItem.Text = "P4 (10 x 7.5)";
             this.p410X75ToolStripMenuItem.Click += new System.EventHandler(this.p410X75ToolStripMenuItem_Click);
             // 
             // p510X6ToolStripMenuItem
             // 
             this.p510X6ToolStripMenuItem.Name = "p510X6ToolStripMenuItem";
-            this.p510X6ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.p510X6ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.p510X6ToolStripMenuItem.Text = "P5 (10 x 6)";
             this.p510X6ToolStripMenuItem.Click += new System.EventHandler(this.p510X6ToolStripMenuItem_Click);
             // 
             // p65X5ToolStripMenuItem
             // 
             this.p65X5ToolStripMenuItem.Name = "p65X5ToolStripMenuItem";
-            this.p65X5ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.p65X5ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.p65X5ToolStripMenuItem.Text = "P6 (5 x 5)";
             this.p65X5ToolStripMenuItem.Click += new System.EventHandler(this.p65X5ToolStripMenuItem_Click);
             // 
             // p75X5ToolStripMenuItem
             // 
             this.p75X5ToolStripMenuItem.Name = "p75X5ToolStripMenuItem";
-            this.p75X5ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.p75X5ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.p75X5ToolStripMenuItem.Text = "P7 (5 x 5)";
             this.p75X5ToolStripMenuItem.Click += new System.EventHandler(this.p75X5ToolStripMenuItem_Click);
             // 
@@ -626,14 +642,14 @@
             this.dgvJobRun.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvJobRun.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJobRun.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvJobRun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJobRun.Location = new System.Drawing.Point(0, 53);
             this.dgvJobRun.MultiSelect = false;
@@ -661,14 +677,14 @@
             this.dgvBMLabels.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBMLabels.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBMLabels.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvBMLabels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBMLabels.Location = new System.Drawing.Point(0, 53);
             this.dgvBMLabels.Name = "dgvBMLabels";

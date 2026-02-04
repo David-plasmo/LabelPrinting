@@ -49,7 +49,6 @@ namespace LabelPrinting
                 //Process new rows:-
                 DataViewRowState dvrs = DataViewRowState.Added;
                 DataRow[] rows = ds.Tables[0].Select("", "", dvrs);
-                //MachineDAL md = new MachineDAL();
 
 
                 for (int i = 0; i < rows.Length; i++)

@@ -111,7 +111,9 @@ namespace LabelPrinting
                 PrintJobs = new DataService.ProductDataService().PromptPrintJob((int)CurrentLabel.LabelTypeID);
                 dgvJobRun.DataSource = null;
                 //dgvJobRun.SuspendLayout();                
-                dgvJobRun.Columns.Clear();                                                        
+                dgvJobRun.Columns.Clear(); 
+              
+
                 PrintJobs.Tables[0].Columns["LabelTypeID"].DefaultValue = CurrentLabel.LabelTypeID;
                 if (PrintJobs.Tables[0].Columns.Contains("Company"))
                     PrintJobs.Tables[0].Columns["Company"].DefaultValue = CurrentLabel.Company;
@@ -235,6 +237,7 @@ namespace LabelPrinting
                 }
             }                          
         }
+
         private void ChangeCellToComboBox(int iRowIndex)
         {
             try
