@@ -26,7 +26,7 @@ namespace LabelPrinting
                     Cursor.Current = Cursors.WaitCursor;
                     btnPrint.Enabled = false;
                     dc.Description = Description;
-                    LabelPrintJobDAL.AddPrintJob(ref dc);
+                    LabelPrintingDAL.AddPrintJob(ref dc);
                     DataSet BMPrintLabels = new DataService.ProductDataService().GetLabelPrintJob(dc.JobID, dc.LabelTypeId, NumSpare, dc.StartNo, dc.EndNo);
                     if (chkPrintOptions.Checked)
                     {

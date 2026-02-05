@@ -241,7 +241,7 @@ namespace LabelPrinting
                     this.Validate();
                 }
                 dgView.EndEdit();
-                ProductItemLabelLinkDAL dal = new ProductItemLabelLinkDAL();
+                LabelPrintingDAL dal = new LabelPrintingDAL();
                 dal.UpdateProductItemClassLabelLink(dsItemClassLabelLink);                
             }
             catch(Exception ex)
@@ -249,32 +249,6 @@ namespace LabelPrinting
                 MessageBox.Show(ex.Message);
             }
         }
-
-        //private void dgView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    //try
-        //    //{
-        //    //    //if (e.ColumnIndex == dgView.Columns.IndexOf("ItemClass")) //VALIDATE FIRST COLUMN
-        //    //    int columnIndex = dgView.CurrentCell.ColumnIndex;
-        //    //    string columnName = dgView.Columns[columnIndex].Name;
-        //    //    if (columnName == "ItemClass")
-        //    //        for (int row = 0; row < dgView.Rows.Count - 1; row++)
-        //    //        {
-
-        //    //            if (dgView.Rows[row].Cells[0].Value != null 
-        //    //                && row != e.RowIndex 
-        //    //                && dgView.Rows[row].Cells[0].Value.Equals(dgView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value))
-        //    //            {
-        //    //                MessageBox.Show("This value cannot be duplicated");
-        //    //                dgView.CurrentCell.Value = null;
-        //    //            }                        
-        //    //        }
-        //    //}
-        //    //catch (Exception ex)
-        //    //{
-        //    //    MessageBox.Show(ex.Message);
-        //    //}
-        //}
 
         private void dgView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
@@ -314,30 +288,6 @@ namespace LabelPrinting
         {
             DoUpdate();
         }
-
-        //try
-        //{
-        //    //if (e.ColumnIndex == dgView.Columns.IndexOf("ItemClass")) //VALIDATE FIRST COLUMN
-        //    int columnIndex = dgView.CurrentCell.ColumnIndex;
-        //    string columnName = dgView.Columns[columnIndex].Name;
-        //    if (columnName == "ItemClass")
-        //        for (int row = 0; row < dgView.Rows.Count - 1; row++)
-        //        {
-
-        //            if (dgView.Rows[row].Cells[0].Value != null
-        //                && row != e.RowIndex
-        //                && dgView.Rows[row].Cells[0].Value.Equals(dgView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value))
-        //            {
-        //                MessageBox.Show("This value cannot be duplicated");
-        //                dgView.CurrentCell.Value = null;
-        //            }
-        //        }
-        //}
-        //catch (Exception ex)
-        //{
-        //    MessageBox.Show(ex.Message);
-        //}
-
 
         private void EditProductItemClass_Shown(object sender, EventArgs e)
         {

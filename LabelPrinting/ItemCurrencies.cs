@@ -19,7 +19,7 @@ namespace LabelPrinting
         public int CurrentEntryType;
 
         private DataSet dsItemCurrency, dsItemCurrencyDesc, dsCurrency;
-        private ItemCurrenciesDAL dal;
+        private LabelPrintingDAL dal;
 
         private bool bIsLoading;
 
@@ -73,7 +73,7 @@ namespace LabelPrinting
         private void RefreshGrid()
         {
             bIsLoading = true;
-            dal = new ItemCurrenciesDAL();
+            dal = new LabelPrintingDAL();
             dsItemCurrencyDesc = dal.GetItemCurrency_Description();
             dsItemCurrency = dal.GetGPItemCurrencyForEdit(DatabaseName, CurrentEntryType, CurrentItemNmbr);
             dgvEdit.Columns.Clear();

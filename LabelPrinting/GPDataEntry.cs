@@ -18,7 +18,7 @@ namespace LabelPrinting
         int EntryType;
         string GPDbase, CurrentCode, CompCode, CurrentDesc;
         DataSet dsGPDataEntry, dsCompany, dsPackagingType, dsProductCode, dsItemClass, dsCurrency, dsUserCategory, dsUOFM;
-        GPDataEntryDAL dal;
+        LabelPrintingDAL dal;
         ComboBox cboCell; 
         string dbEnv;
         PriceList fpl = null;
@@ -44,7 +44,7 @@ namespace LabelPrinting
             EntryType = 3;  //fetch current edit item
             bIsLoading = true;
             //buttonCell.Expanded = false;
-            dal = new GPDataEntryDAL();
+            dal = new LabelPrintingDAL();
             dsPackagingType = dal.SelectGP_PackagingType();
             dsCurrency = dal.GetCurrency();                      
             dgvEdit.CellValueChanged += new DataGridViewCellEventHandler(dgvEdit_CellValueChanged);

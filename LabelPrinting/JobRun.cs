@@ -21,7 +21,7 @@ namespace LabelPrinting
 
         ComboBox dgvCombo;
 
-        JobRunDAL dal;
+        LabelPrintingDAL dal;
         DataSet dsJobRun, dsCompany, dsMachine, dsProductCode, dsCustomer, dsStatus;
         DateTimePicker dtp;
         //ComboBox cboCurrentCell, cboProductCode, cboCustomer, cboCompany;
@@ -128,7 +128,7 @@ namespace LabelPrinting
                 dgvEdit.EnableHeadersVisualStyles = false;
                 dgvEdit.AutoGenerateColumns = true;
 
-                dal = new JobRunDAL();
+                dal = new LabelPrintingDAL();
                 dsJobRun = dal.SelectJobRun((DateTime)dtpDateFrom.Value, (DateTime)dtpDateTo.Value);                
                 DataTable dt = dsJobRun.Tables[0];
                 dgvEdit.DataSource = dt;

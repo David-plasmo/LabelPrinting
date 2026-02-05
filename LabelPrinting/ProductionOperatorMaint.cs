@@ -12,7 +12,7 @@ namespace LabelPrinting
 {
     public partial class ProductionOperatorMaint : Form
     {
-        ProductionOperatorDAL dal;
+        LabelPrintingDAL dal;
         DataSet dsOperator, dsOperatorClass;
 
         bool bIsLoading = true;
@@ -29,7 +29,7 @@ namespace LabelPrinting
             dgvEdit.GridColor = SystemColors.ActiveBorder;
             dgvEdit.EnableHeadersVisualStyles = false;
             dgvEdit.AutoGenerateColumns = true;
-            dal = new ProductionOperatorDAL();
+            dal = new LabelPrintingDAL();
             DataSet ds = dal.SelectProductionOperator();
             DataTable dt = ds.Tables[0];
 

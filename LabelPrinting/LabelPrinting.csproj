@@ -170,42 +170,37 @@
     <Compile Include="GPDataEntry.Designer.cs">
       <DependentUpon>GPDataEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="GPDataEntryDAL.cs" />
     <Compile Include="ItemCurrencies.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ItemCurrencies.designer.cs">
       <DependentUpon>ItemCurrencies.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemCurrenciesDAL.cs" />
     <Compile Include="ItemSites.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ItemSites.Designer.cs">
       <DependentUpon>ItemSites.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemSitesDAL.cs" />
     <Compile Include="ItemVendors.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ItemVendors.Designer.cs">
       <DependentUpon>ItemVendors.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemVendorsDAL.cs" />
     <Compile Include="JobRun.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="JobRun.Designer.cs">
       <DependentUpon>JobRun.cs</DependentUpon>
     </Compile>
-    <Compile Include="JobRunDAL.cs" />
     <Compile Include="LabelOptions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LabelOptions.Designer.cs">
       <DependentUpon>LabelOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="LabelPrintJobDAL.cs" />
+    <Compile Include="LabelPrintingDAL.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,15 +223,12 @@
     <Compile Include="PriceList.Designer.cs">
       <DependentUpon>PriceList.cs</DependentUpon>
     </Compile>
-    <Compile Include="PriceListDAL.cs" />
-    <Compile Include="ProductionOperatorDAL.cs" />
     <Compile Include="ProductionOperatorMaint.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProductionOperatorMaint.Designer.cs">
       <DependentUpon>ProductionOperatorMaint.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductItemLabelLinkDAL.cs" />
     <Compile Include="ProductMaterial.cs" />
     <Compile Include="ProductMaterialMaint.cs">
       <SubType>Form</SubType>

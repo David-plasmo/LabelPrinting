@@ -31,7 +31,7 @@ namespace LabelPrinting
         private DataSet dsPriceListH;  //header     IV00107
         private DataSet dsPriceListQ;  //quantities IV00108
         private DataSet dsPriceLevel;
-        private PriceListDAL dal;
+        private LabelPrintingDAL dal;
 
         private DataGridView dgvDetail;
         private DataGridViewButtonCell buttonCell;
@@ -116,7 +116,7 @@ namespace LabelPrinting
             try
             {
                 bIsLoading = true;
-                dal = new PriceListDAL();
+                dal = new LabelPrintingDAL();
                 dsPriceListDesc = dal.GetPriceListDescription();
                 dsPriceListH = dal.GetGPPriceListForEdit(DatabaseName, CurrentEntryType, CurrentItemNmbr);
                 dgvHeader.Columns.Clear();

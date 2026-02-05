@@ -19,7 +19,7 @@ namespace LabelPrinting
         public int CurrentEntryType;
 
         private DataSet dsItemSite, dsItemSiteDesc, dsLocationCode, dsVendor;
-        private ItemSitesDAL dal;
+        private LabelPrintingDAL dal;
 
         private bool bIsLoading;
 
@@ -73,7 +73,7 @@ namespace LabelPrinting
         private void RefreshGrid()
         {
             bIsLoading = true;
-            dal = new ItemSitesDAL();
+            dal = new LabelPrintingDAL();
             dsItemSiteDesc = dal.GetItemSite_Description();
             dsItemSite = dal.GetGPItemSiteForEdit(DatabaseName, CurrentEntryType, CurrentItemNmbr);
             dgvEdit.Columns.Clear();
