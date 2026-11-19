@@ -1833,7 +1833,7 @@ namespace LabelPrinting
             }
             catch (Exception excp)
             {
-                MessageBox.Show(excp.Message);
+                MessageBox.Show(excp.Message + "\n\n" + excp.StackTrace);
             }
         }
 

@@ -28,10 +28,10 @@ namespace LabelPrinting
             Application.SetCompatibleTextRenderingDefault(false);
 
 #if DEBUG
-            //args = new[] { "MenuOptionJobRun" };
+            args = new[] { "MenuOptionJobRun" };
             //args = new[] { "MenuOptionPalletLabel" };
             //args = new[] { "Edit" };
-            args = new[] { "LabelPrinting" };  // default for release
+            //args = new[] { "LabelPrinting" };  // default for release
 #endif
             if (args.Length == 0)
                 Application.Run(new MainForm(null));

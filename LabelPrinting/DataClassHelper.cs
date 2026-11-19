@@ -61,6 +61,14 @@ public static class DAL
     public static void SetItemFromRow<T>(T item, DataRow row)
     where T : new()
     {
+
+        if (item == null || row == null ||
+            row.RowState == DataRowState.Deleted ||
+            row.RowState == DataRowState.Detached)
+        {
+            return;
+        }
+
         // go through each column
         foreach (DataColumn c in row.Table.Columns)
         {

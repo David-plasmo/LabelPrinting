@@ -96,15 +96,15 @@
   <ItemGroup>
     <Reference Include="ApplicationAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\Plasmo-sql\Packages\ApplicationAccess\bin\ApplicationAccess.dll</HintPath>
+      <HintPath>..\Libs\ApplicationAccess\bin\ApplicationAccess.dll</HintPath>
     </Reference>
     <Reference Include="Seagull.BarTender.Print, Version=11.0.6.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\plasmo-sql\Packages\LabelPrinting\Seagull.BarTender.Print.dll</HintPath>
+      <HintPath>..\Libs\BarTender\bin\Seagull.BarTender.Print.dll</HintPath>
     </Reference>
     <Reference Include="Seagull.Services.PrintScheduler, Version=11.0.6.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\plasmo-sql\Packages\LabelPrinting\Seagull.Services.PrintScheduler.dll</HintPath>
+      <HintPath>..\Libs\BarTender\bin\Seagull.Services.PrintScheduler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -123,11 +123,9 @@
   <ItemGroup>
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="DataAccessBase.cs" />
-    <Compile Include="DataClassHelper.cs" />
     <Compile Include="DataGridViewImageColumns.cs" />
-    <Compile Include="DataService.cs" />
     <Compile Include="DataGridViewDisableButtonColumn.cs" />
+    <Compile Include="DataService.cs" />
     <Compile Include="EditPastelMaster.cs">
       <SubType>Form</SubType>
     </Compile>

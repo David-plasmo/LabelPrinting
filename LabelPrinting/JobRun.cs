@@ -316,109 +316,138 @@ namespace LabelPrinting
         {
             try
             {
-                bool bNewJobRun;
-                string curCompany, curCode;
-                int curNumReqd, curJobRun, lastJobRun, numStart, numFinish, numQty;
-                curJobRun = 0;
-                DataGridViewRow curRow = null;
+                if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-                if ((e.RowIndex > -1) && (e.ColumnIndex > -1))
+                DataGridViewRow clickedGridRow = dgvEdit.Rows[e.RowIndex];
+                if (clickedGridRow.IsNewRow) return;
+
+                // Guard against clicking a row whose underlying DataRow is already Deleted
+                if (clickedGridRow.DataBoundItem is DataRowView clickedDrv &&
+                    clickedDrv.Row.RowState == DataRowState.Deleted)
                 {
-                    if ((dgvEdit.Columns[e.ColumnIndex].GetType().Equals(typeof(DataGridViewImageButtonSaveColumn))) ||
-                        (dgvEdit.Columns[e.ColumnIndex].GetType().Equals(typeof(DataGridViewImageButtonPrintColumn))) ||
-                        (dgvEdit.Columns[e.ColumnIndex].GetType().Equals(typeof(DataGridViewImageButtonEmailColumn))))
+                    return;
+                }
+
+                Type colType = dgvEdit.Columns[e.ColumnIndex].GetType();
+                if (colType != typeof(DataGridViewImageButtonSaveColumn) &&
+                    colType != typeof(DataGridViewImageButtonPrintColumn) &&
+                    colType != typeof(DataGridViewImageButtonEmailColumn))
+                {
+                    return;
+                }
+
+                DataGridViewImageButtonCell buttonCell = (DataGridViewImageButtonCell)clickedGridRow.Cells[e.ColumnIndex];
+
+                if (!buttonCell.Enabled || dgvEdit.Columns[e.ColumnIndex].Name != "Print") return;
+
+                if (clickedGridRow.Cells["Company"].Value == null || clickedGridRow.Cells["Company"].Value == DBNull.Value ||
+                    clickedGridRow.Cells["Code"].Value == null || clickedGridRow.Cells["Code"].Value == DBNull.Value ||
+                    clickedGridRow.Cells["NumReqd"].Value == null || clickedGridRow.Cells["NumReqd"].Value == DBNull.Value)
+                {
+                    return;
+                }
+
+                bool bNewJobRun;
+                int curJobRun = 0;
+
+                if (clickedGridRow.Cells["JobRun"].Value == null ||
+                    clickedGridRow.Cells["JobRun"].Value == DBNull.Value)
+                {
+                    bNewJobRun = true;
+                }
+                else
+                {
+                    bNewJobRun = false;
+                    curJobRun = Convert.ToInt32(clickedGridRow.Cells["JobRun"].Value);
+                }
+
+                if (dgvEdit.IsCurrentRowDirty)
+                {
+                    this.Validate();
+                }
+
+                string curCompany = clickedGridRow.Cells["Company"].Value.ToString();
+                string curCode = clickedGridRow.Cells["Code"].Value.ToString().TrimEnd();
+                int curNumReqd = Convert.ToInt32(clickedGridRow.Cells["NumReqd"].Value);
+                int numStart = clickedGridRow.Cells["StartNo"].Value != DBNull.Value ? Convert.ToInt32(clickedGridRow.Cells["StartNo"].Value) : 1;
+                int numFinish = clickedGridRow.Cells["EndNo"].Value != DBNull.Value ? Convert.ToInt32(clickedGridRow.Cells["EndNo"].Value) : 0;
+                int numQty = clickedGridRow.Cells["CtnQty"].Value != DBNull.Value ? Convert.ToInt32(clickedGridRow.Cells["CtnQty"].Value) : 0;
+
+                dgvEdit.EndEdit();
+
+                int lastJobRun = 0;
+                dal.UpdateJobRun(dsJobRun, ref lastJobRun);
+                if (bNewJobRun) curJobRun = lastJobRun;
+
+                RefreshGrid();
+
+                // Position grid safely at the row being printed (skip NewRow and any Deleted DataRows)
+                DataGridViewRow curRow = null;
+                foreach (DataGridViewRow row in dgvEdit.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    if (row.DataBoundItem is DataRowView drv && drv.Row.RowState == DataRowState.Deleted)
+                        continue;
+
+                    if (row.Cells["JobRun"].Value == null || row.Cells["JobRun"].Value == DBNull.Value)
+                        continue;
+
+                    if (Convert.ToInt32(row.Cells["JobRun"].Value) == curJobRun &&
+                        row.Cells["Company"].Value?.ToString() == curCompany &&
+                        row.Cells["Code"].Value?.ToString().TrimEnd() == curCode &&
+                        Convert.ToInt32(row.Cells["NumReqd"].Value) == curNumReqd)
                     {
-                        DataGridViewImageButtonCell buttonCell = (DataGridViewImageButtonCell)dgvEdit.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                        row.Selected = true;
+                        dgvEdit.CurrentCell = row.Cells["Print"];
+                        curRow = row;
+                        break;
+                    }
+                }
 
-                        if (buttonCell.Enabled && dgvEdit.Columns[e.ColumnIndex].Name == "Print" &&
-                            dgvEdit.Rows[e.RowIndex].Cells["Company"].Value != DBNull.Value &&
-                            dgvEdit.Rows[e.RowIndex].Cells["Code"].Value != DBNull.Value &&
-                            dgvEdit.Rows[e.RowIndex].Cells["NumReqd"].Value != DBNull.Value)
-                        {
-                            if (dgvEdit.Rows[e.RowIndex].Cells["JobRun"].Value == DBNull.Value ||
-                                dgvEdit.Rows[e.RowIndex].Cells["JobRun"].Value == null)
-                            {
-                                bNewJobRun = true;
-                            }
-                            else
-                            {
-                                bNewJobRun = false;
-                                curJobRun = (int)dgvEdit.Rows[e.RowIndex].Cells["JobRun"].Value;
-                            }
-                            if (dgvEdit.IsCurrentRowDirty)
-                            {
-                                this.Validate();
-                            }
-                            curCompany = dgvEdit.Rows[e.RowIndex].Cells["Company"].Value.ToString();
-                            curCode = dgvEdit.Rows[e.RowIndex].Cells["Code"].Value.ToString().TrimEnd();
-                            curNumReqd = (int)dgvEdit.Rows[e.RowIndex].Cells["NumReqd"].Value;
-                            numStart = (int)dgvEdit.Rows[e.RowIndex].Cells["StartNo"].Value;
-                            numFinish = (int)dgvEdit.Rows[e.RowIndex].Cells["EndNo"].Value;
-                            numQty = (int)dgvEdit.Rows[e.RowIndex].Cells["CtnQty"].Value;
-                            dgvEdit.EndEdit();
-                            lastJobRun = 0;
-                            dal.UpdateJobRun(dsJobRun, ref lastJobRun);
-                            if (bNewJobRun) curJobRun = lastJobRun;
-                            RefreshGrid();
+                PromptLabelPrint f = new PromptLabelPrint();
+                DataSet ds = dal.GetProductLabelInfo(curCompany, curCode);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    DataTable dt = ds.Tables[0];
+                    LabelPrintJobDC dc = new LabelPrintJobDC
+                    {
+                        CompanyCode = dt.Rows[0]["Company"].ToString(),
+                        Code = dt.Rows[0]["Code"].ToString(),
+                        CtnQty = numQty,
+                        StartNo = 1,
+                        LabelTypeId = Convert.ToInt32(dt.Rows[0]["LabelTypeID"]),
+                        NumReqd = curNumReqd,
+                        JobRun = curJobRun,
+                        EndNo = numFinish
+                    };
 
-                            //position grid at row being printed
-                            foreach (DataGridViewRow row in dgvEdit.Rows)
-                            {
-                                if ((int)row.Cells["JobRun"].Value == curJobRun &&
-                                    row.Cells["Company"].Value.ToString() == curCompany &&
-                                    row.Cells["Code"].Value.ToString().TrimEnd() == curCode &&
-                                    (int)row.Cells["NumReqd"].Value == curNumReqd)
-                                {
-                                    int rowIndex = row.Index;
-                                    row.Selected = true;
-                                    curRow = row;
-                                    break;
-                                }
-                            }
+                    f.Description = dt.Rows[0]["Description"].ToString();
+                    f.dc = dc;
+                    f.LabelNo = dt.Rows[0]["LabelNo"].ToString();
+                    f.DfltPrinter = dt.Rows[0]["DfltPrinter"].ToString();
+                    f.ItemClass = dt.Rows[0]["ItemClass"].ToString();
 
-                            //MessageBox.Show("ToDo:  print label...");
-                            PromptLabelPrint f = new PromptLabelPrint();
-                            DataSet ds = dal.GetProductLabelInfo(curCompany, curCode);
-                            if (ds != null)
-                            {
-                                DataTable dt = ds.Tables[0];
-                                LabelPrintJobDC dc = new LabelPrintJobDC();
-                                dc.CompanyCode = dt.Rows[0]["Company"].ToString();
-                                dc.Code = dt.Rows[0]["Code"].ToString();
-                                //int number;
-                                //if (int.TryParse(dt.Rows[0]["CtnQty"].ToString(), out number))
-                                //{
-                                //    dc.CtnQty = (int)dt.Rows[0]["CtnQty"];                                    
-                                //    if (dc.CtnQty > 0) dc.EndNo = curNumReqd / dc.CtnQty;
-                                //}
-                                //
-                                dc.CtnQty = numQty;
-                                dc.StartNo = 1;
-                                dc.LabelTypeId = (int)dt.Rows[0]["LabelTypeID"];
-                                dc.NumReqd = curNumReqd;
-                                dc.JobRun = curJobRun;
-                                dc.EndNo = numFinish;
-                                f.Description = dt.Rows[0]["Description"].ToString();
-                                f.dc = dc;
-                                f.LabelNo = dt.Rows[0]["LabelNo"].ToString();
-                                f.DfltPrinter = dt.Rows[0]["DfltPrinter"].ToString();
-                                f.ItemClass = dt.Rows[0]["ItemClass"].ToString();
+                    f.ShowDialog();
 
-                                f.ShowDialog();
-                                curRow.Cells["CtnQty"].Value = numQty;
-                                curRow.Cells["StartNo"].Value = dc.StartNo;
-                                curRow.Cells["EndNo"].Value = dc.EndNo;
-                                curRow.Cells["NumReqd"].Value = dc.NumReqd;
-                            }
-                        }
+                    // Verify curRow is still valid and not Deleted before writing back
+                    if (curRow != null && !curRow.IsNewRow &&
+                        !(curRow.DataBoundItem is DataRowView postDrv && postDrv.Row.RowState == DataRowState.Deleted))
+                    {
+                        curRow.Cells["CtnQty"].Value = numQty;
+                        curRow.Cells["StartNo"].Value = dc.StartNo;
+                        curRow.Cells["EndNo"].Value = dc.EndNo;
+                        curRow.Cells["NumReqd"].Value = dc.NumReqd;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + "\n\n" + ex.StackTrace);
             }
+
         }
+
 
         private void dgvEdit_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {

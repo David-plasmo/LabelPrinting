@@ -24,6 +24,14 @@ namespace DataService
         /// </summary>
         ////////////////////////////////////////////////////////////////////////
         public ProductDataService(IDbTransaction txn) : base(txn) { }
+
+        /// <summary>
+        /// Gets or sets the SQL command associated with the data access operation.
+        /// </summary>
+        public SqlCommand DABCmd { get; set; }
+
+
+
         /// <summary>
         /// Creates a BarTender print queue              
         /// <para>Implemented by table LabelPrintQueue in Database BarTender<br/>
